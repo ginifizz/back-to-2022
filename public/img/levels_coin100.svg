@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100.96 100.96">
+  <defs>
+    <style>
+      .a {
+        fill: url(#a);
+      }
+
+      .b {
+        fill: url(#b);
+      }
+
+      .c {
+        fill: url(#c);
+      }
+
+      .d {
+        fill: url(#d);
+      }
+
+      .e, .f {
+        fill: #fff;
+      }
+
+      .f {
+        opacity: 0.2;
+      }
+    </style>
+    <linearGradient id="a" x1="50.71" x2="50.71" y2="100.96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffbbf"/>
+      <stop offset="1" stop-color="#d47800"/>
+    </linearGradient>
+    <linearGradient id="b" x1="50.71" y1="2.22" x2="50.71" y2="98.74" gradientTransform="translate(88.48 -10.29) rotate(76.99)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8ff94"/>
+      <stop offset="0.32" stop-color="#e9c300"/>
+      <stop offset="0.69" stop-color="#ffd215"/>
+      <stop offset="1" stop-color="#d4a000"/>
+    </linearGradient>
+    <linearGradient id="c" x1="50.71" y1="89.68" x2="50.71" y2="11.28" gradientTransform="translate(78.27 -15.56) rotate(67.78)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8ff94"/>
+      <stop offset="0.5" stop-color="#e9c300"/>
+      <stop offset="1" stop-color="#d48000"/>
+    </linearGradient>
+    <linearGradient id="d" x1="50.71" y1="14.8" x2="50.71" y2="86.16" gradientTransform="translate(88.41 -10.34) rotate(76.92)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8ff94"/>
+      <stop offset="0.32" stop-color="#e9ce00"/>
+      <stop offset="0.7" stop-color="#dda400"/>
+      <stop offset="1" stop-color="#d48d00"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="a" cx="50.71" cy="50.48" r="50.48"/>
+    <circle class="b" cx="50.71" cy="50.48" r="48.26" transform="translate(-9.89 88.53) rotate(-76.99)"/>
+    <circle class="c" cx="50.71" cy="50.48" r="39.2" transform="translate(-15.2 78.34) rotate(-67.78)"/>
+    <circle class="d" cx="50.71" cy="50.48" r="35.68" transform="translate(-9.93 88.46) rotate(-76.92)"/>
+    <path class="e" d="M15.59,57.83s6,28.1,34.88,28.1,35.29-28.1,35.29-28.1S78.16,84.91,50.47,84.3,15.59,57.83,15.59,57.83Z"/>
+    <path class="f" d="M84.34,55.27a34,34,0,1,0-67.4-5.86A33.81,33.81,0,0,0,17.58,56C52.4,60.28,74.81,57.23,84.34,55.27Z"/>
+    <path class="f" d="M10.5,54.5a45.78,45.78,0,0,1-.42-5C10.5,27.6,27.55,9.27,50.9,9.43c20.2.14,39,14.84,40.68,39.39a38.35,38.35,0,0,1-.37,5.68c2.64-.56,5.53-1.69,6.16-2.4q.06-1.16.06-2.31C97.43,24,76.47,4,50.67,4S4,24,4,49.79c0,.79,0,1.57.06,2.35C6.14,54,8.68,53.93,10.5,54.5Z"/>
+    <path class="e" d="M54.32,89.68S79,89.74,87.61,63.75C76.92,88.62,54.32,89.68,54.32,89.68Z"/>
+    <path class="e" d="M6.49,31.13S17.38,5.27,40.15,3.38C19.23,6.8,6.49,31.13,6.49,31.13Z"/>
+  </g>
+</svg>

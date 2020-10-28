@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 884.77 313.57">
+  <defs>
+    <style>
+      .a {
+        fill: url(#a);
+      }
+
+      .b {
+        fill: url(#b);
+      }
+    </style>
+    <linearGradient id="a" data-name="Dégradé sans nom 181" x1="442.53" y1="313.82" x2="442.53" y2="0.25" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#008ec2"/>
+      <stop offset="1" stop-color="#002092"/>
+    </linearGradient>
+    <radialGradient id="b" data-name="Dégradé sans nom 184" cx="440.68" cy="270.17" r="306.97" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d3c2"/>
+      <stop offset="1" stop-color="#0083c2"/>
+    </radialGradient>
+  </defs>
+  <path class="a" d="M26.1,41.21C-4.19,76.09-9.12,235.38,17.39,280.14c24.65,41.65,786.28,46.79,833.85,3.47S893.89,72,849.63,32,75.61-15.79,26.1,41.21Z" transform="translate(-0.14 -0.25)"/>
+  <path class="b" d="M49.83,61.11c-27.8,31-21.75,165.67,2.58,205.45,22.62,37,721.58,41.56,765.24,3.08s50.62-189.32,10-224.84S95.27,10.47,49.83,61.11Z" transform="translate(-0.14 -0.25)"/>
+</svg>
