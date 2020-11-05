@@ -14,7 +14,7 @@ import Curl from "../assets/curl.svg";
 import CloseIcon from "@material-ui/icons/Close";
 import Level from "./Level";
 import { CaseType } from "../Game";
-import { colors } from "../data/cases";
+import { colors, titles } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan } from "@material-ui/core/colors";
 
@@ -209,7 +209,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
         <div className={classes.title}>
           <div className={classes.ribbon}>
             <Typography variant="h5" color="inherit">
-              {`#${type}`}
+              {type && titles[type]}
             </Typography>
           </div>
         </div>
