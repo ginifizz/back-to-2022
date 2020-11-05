@@ -7,172 +7,191 @@ import {
   makeStyles,
   Theme,
   IconButton,
-  Slide,
+  darken,
+  Grow
 } from "@material-ui/core";
 import Curl from "../assets/curl.svg";
 import CloseIcon from "@material-ui/icons/Close";
-import Level from './Level';
-import { CaseType } from '../Game';
+import Level from "./Level";
+import { CaseType } from "../Game";
+import { colors } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
+import { cyan } from "@material-ui/core/colors";
 
-interface CaseModalProps extends Omit<DialogProps, 'open'> {
+interface CaseModalProps extends Omit<DialogProps, "open"> {
   content?: CaseType;
   onClose: () => void;
 }
 
-const useStyles = makeStyles<Theme>((theme) => ({
-  dialog: {
-    display: "flex",
-    flexDirection: "column",
-    overflowY: "auto",
-    borderRadius: theme.shape.borderRadius,
-    background: "#5dbfcd",
-    boxShadow:
-      "1px 1px 0px #118594,2px 2px 0px #118594,3px 3px 0px #118594,4px 4px 0px #118594,5px 5px 0px #118594,6px 6px 0px #118594,7px 7px 0px #118594,8px 8px 0px #118594,9px 9px 0px #118594,10px 10px 0px #118594,11px 11px 0px #118594",
-    padding: theme.spacing(2),
-  },
-  title: {
-    position: "absolute",
-    zIndex: 2,
-    top: 0,
-    left: "50%",
-    transform: "translate(-50%, -65%)",
-    minWidth: "50%",
-    "&::before": {
-      content: '""',
+const useStyles = (color: any) =>
+  makeStyles<Theme>((theme) => ({
+    dialog: {
+      display: "flex",
+      flexDirection: "column",
+      overflowY: "auto",
+      borderRadius: theme.shape.borderRadius,
+      background: color[300],
+      boxShadow: `1px 1px 0px ${color[800]},2px 2px 0px ${color[800]},3px 3px 0px ${color[800]},4px 4px 0px ${color[800]},5px 5px 0px ${color[800]},6px 6px 0px ${color[800]},7px 7px 0px ${color[800]},8px 8px 0px ${color[800]},9px 9px 0px ${color[800]},10px 10px 0px ${color[800]},11px 11px 0px ${color[800]}`,
+      padding: theme.spacing(2),
+      color: theme.palette.getContrastText(color[300]),
+    },
+    title: {
       position: "absolute",
-      zIndex: "-1",
-      left: 0,
-      border: "25px solid;",
-      top: "0",
-      transform: "translate(-70%, 15px)",
-      borderColor: "#04707b #04707b #04707b transparent",
+      zIndex: 2,
+      top: 0,
+      left: "50%",
+      transform: "translate(-50%, -65%)",
+      minWidth: "50%",
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        zIndex: "-1",
+        left: 0,
+        border: "25px solid;",
+        top: "0",
+        transform: "translate(-70%, 15px)",
+        borderColor: `${color[800]} ${color[800]} ${color[800]} transparent`,
+      },
+      "&::after": {
+        content: '""',
+        position: "absolute",
+        zIndex: "-1",
+        right: "0",
+        border: "25px solid;",
+        top: "0",
+        transform: "translate(70%, 15px)",
+        borderColor: `${color[800]} transparent ${color[800]} ${color[800]}`,
+      },
     },
-    "&::after": {
-      content: '""',
+    ribbon: {
+      position: "relative",
+      zIndex: 2,
+      background: color[700],
+      padding: theme.spacing(1),
+      textAlign: "center",
+      color: "white",
+      borderRadius: "5px 5px 0 0",
+      boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
+      "&::before": {
+        content: '""',
+        borderColor: `${darken(
+          color[900],
+          0.2
+        )} transparent transparent transparent`,
+        position: "absolute",
+        borderStyle: "solid",
+        bottom: "-15px",
+        left: 0,
+        borderWidth: "15px 0 0 15px",
+      },
+      "&::after": {
+        content: '""',
+        borderColor: `${darken(
+          color[900],
+          0.2
+        )} transparent transparent transparent`,
+        position: "absolute",
+        borderStyle: "solid",
+        bottom: "-15px",
+        right: 0,
+        borderWidth: "15px 15px 0 0",
+      },
+    },
+    top: {
+      zIndex: 1,
+      backgroundImage: `url(${Curl})`,
+      backgroundSize: "150%, 100%",
+      backgroundPosition: "center",
+      background: color[500],
+      borderRadius: theme.shape.borderRadius,
+      color: "white",
+      display: "flex",
+      flexDirection: "column",
+      position: "relative",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "200px",
+      overflow: "hidden",
+    },
+    circle: {
+      width: "250px",
+      height: "250px",
+      borderRadius: "50%",
+      border: `5px solid ${color[900]}`,
       position: "absolute",
-      zIndex: "-1",
-      right: "0",
-      border: "25px solid;",
-      top: "0",
-      transform: "translate(70%, 15px)",
-      borderColor: "#04707b transparent #04707b #04707b",
+      background: color[100],
+      overflow: "hidden",
     },
-  },
-  ribbon: {
-    position: "relative",
-    zIndex: 2,
-    background: "#108694",
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: "white",
-    borderRadius: "5px 5px 0 0",
-    boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
-    "&::before": {
-      content: '""',
-      borderColor: "#033135 transparent transparent transparent",
+    image: {
+      height: "100%",
       position: "absolute",
-      borderStyle: "solid",
-      bottom: "-15px",
-      left: 0,
-      borderWidth: "15px 0 0 15px",
+      left: "50%",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
     },
-    "&::after": {
-      content: '""',
-      borderColor: "#033135 transparent transparent transparent",
+    close: {
+      zIndex: 4,
       position: "absolute",
-      borderStyle: "solid",
-      bottom: "-15px",
-      right: 0,
-      borderWidth: "15px 15px 0 0",
+      right: -theme.spacing(2),
+      top: -theme.spacing(2),
+      background: color[800],
+      color: "#fff",
+      transition: "all ease 0.2s",
+      boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.63)",
+      transform: "scale(1.3)",
+      "&:hover": {
+        background: color[900],
+      },
     },
-  },
-  top: {
-    zIndex: 1,
-    backgroundImage: `url(${Curl})`,
-    backgroundSize: "150%, 100%",
-    backgroundPosition: "center",
-    background: "rgba(255, 255, 255, 0.2)",
-    borderRadius: theme.shape.borderRadius,
-    color: "white",
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "200px",
-    overflow: "hidden",
-  },
-  circle: {
-    width: "250px",
-    height: "250px",
-    borderRadius: "50%",
-    border: "5px solid #04707b",
-    position: "absolute",
-    background: "#108694",
-    overflow: 'hidden'
-  },
-  image: {
-    height: "100%",
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  close: {
-    zIndex: 4,
-    position: "absolute",
-    right: -theme.spacing(2),
-    top: -theme.spacing(2),
-    background: "#108694",
-    color: "#fff",
-    transition: "all ease 0.2s",
-    boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.63)",
-    transform: "scale(1.3)",
-    "&:hover": {
-      background: "#08646f",
-    },
-  },
-}));
+  }));
 
 const emptyCase = {
-  type: '',
-  text: {
-    main: '',
-    secondary: ''
-  },
-  score: {
-    reputation: 0,
-    money: 0,
-    followers: 0
-  }
+  type: undefined,
+  mainText: "",
+  secondaryText: "",
+  reputation: 0,
+  money: 0,
+  followers: 0,
 };
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement<any, any> },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction="down" ref={ref} {...props} />;
+  return (
+    <Grow
+      ref={ref}
+      {...props}
+      timeout={{ appear: 10000, enter: 500, exit: 300 }}
+    />
+  );
 });
-
 
 const CaseModal: React.ComponentType<CaseModalProps> = ({
   content = emptyCase,
   onClose,
   ...props
 }) => {
-  const classes = useStyles();
-  const { type, text, score } = content;
+  const {
+    type,
+    mainText,
+    secondaryText,
+    money,
+    followers,
+    reputation,
+  } = content;
 
+  const [open, setOpen] = useState(false);
+  const color = type ? colors[type] : cyan;
+  const classes = useStyles(color)();
 
-const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (type) setOpen(true);
+  }, [setOpen, type]);
 
-useEffect(() => {if (type !== '') setOpen(true)}, [setOpen, type]);
-
-
-const handleClose = () => {
-  setOpen(false);
-};
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Dialog
@@ -182,7 +201,6 @@ const handleClose = () => {
       keepMounted
       open={open}
       onExited={onClose}
-      onEntered={() => console.log("entered")}
     >
       <Box className={classes.dialog} display="flex" flexDirection="row">
         <IconButton className={classes.close} onClick={handleClose}>
@@ -220,7 +238,7 @@ const handleClose = () => {
             textAlign="center"
             pb={2}
           >
-            {text.main}
+            {mainText}
           </Box>
           <Box
             fontSize="body2.fontSize"
@@ -228,44 +246,36 @@ const handleClose = () => {
             textAlign="center"
             lineHeight={1.2}
           >
-            {text.secondary}
+            {secondaryText}
           </Box>
         </Box>
         <Box display="flex" alignItems="center" justifyContent="center" py={2}>
-          {!!score.money && (
+          {!!money && (
             <Box p={0.5}>
               <Level
                 type="coin"
-                value={score.money > 0 ? `+${score.money}` : `${score.money}`}
-                title=""
+                value={money > 0 ? `+${money}` : `${money}`}
+                title="Participation"
                 imageStep={100}
               />
             </Box>
           )}
-          {!!score.reputation && (
+          {!!reputation && (
             <Box p={0.5}>
               <Level
                 type="star"
-                value={
-                  score.reputation > 0
-                    ? `+${score.reputation}`
-                    : `${score.reputation}`
-                }
-                title=""
+                value={reputation > 0 ? `+${reputation}` : `${reputation}`}
+                title="Réputation"
                 imageStep={100}
               />
             </Box>
           )}
-          {!!score.followers && (
+          {!!followers && (
             <Box p={0.5}>
               <Level
                 type="heart"
-                value={
-                  score.followers > 0
-                    ? `+${score.followers}`
-                    : `${score.followers}`
-                }
-                title=""
+                value={followers > 0 ? `+${followers}` : `${followers}`}
+                title="Followers"
                 imageStep={100}
               />
             </Box>

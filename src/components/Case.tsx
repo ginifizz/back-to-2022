@@ -1,5 +1,5 @@
 import React from "react";
-import { lighten, makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import { colors } from '../data/cases';
 import { CASE_CATEGORY } from '../Game';
 
@@ -39,7 +39,7 @@ const useStyles = makeStyles<Theme, CaseProps>((theme) => ({
       borderRadius: "50%",
       opacity: 0.4,
     },
-    background: props => `radial-gradient(circle, ${lighten(colors[props.type], 0.3)} 46%, ${colors[props.type]} 100%)`,
+    background: props => `radial-gradient(circle, ${colors[props.type][500]} 46%, ${colors[props.type][800]} 100%)`,
     /*background: (props) => {
       switch (props.type) {
         case "babyfoot":

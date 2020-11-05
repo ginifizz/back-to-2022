@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback } from "react";
 import { Box, makeStyles, Button } from "@material-ui/core";
-import Level from "./components/Level";
+import Levels from "./components/Levels";
 import { DiceFaceType } from "./components/Dice";
 import Curl from "./assets/curl.svg";
 import { useRecoilState, atom, selector, DefaultValue } from "recoil";
@@ -10,8 +10,8 @@ import CaseModal from "./components/CaseModal";
 import Board from "./components/Board";
 import DiceButton from "./components/DiceButton";
 import Logo from "./assets/logo2.svg";
-import cases from "./data/cases";
 import boardCases from "./data/board";
+import cards from "./data/game.json";
 
 export enum GAME_STEPS {
   START_SCREEN = 0,
@@ -19,33 +19,32 @@ export enum GAME_STEPS {
   RESULT_SCREEN = 2,
 }
 
-export type CASE_CATEGORY = "food" |
-  "general" |
-  "accounting" |
-  "baby" |
-  "babyfoot" |
-  "beer" |
-  "conference" |
-  "covid" |
-  "duo" |
-  "hobbies" |
-  "music" |
-  "old" |
-  "tag" |
-  "travel" |
-  "vote";
+export type CASE_CATEGORY =
+  | "food"
+  | "general"
+  | "accounting"
+  | "baby"
+  | "babyfoot"
+  | "beer"
+  | "conference"
+  | "covid"
+  | "duo"
+  | "hobbies"
+  | "music"
+  | "old"
+  | "tag"
+  | "travel"
+  | "santa"
+  | "vote";
 
 export type CaseType = {
-  type: string;
-  score: {
-    money: number;
-    reputation: number;
-    followers: number;
-  };
-  text: {
-    main: string;
-    secondary: string;
-  }
+  type: CASE_CATEGORY;
+  money: number;
+  reputation: number;
+  followers: number;
+  mainText: string;
+  secondaryText: string;
+  asset?: string;
 };
 
 type GameStateType = {
@@ -58,6 +57,7 @@ type GameStateType = {
   };
   position: number;
   currentCase?: CaseType;
+  cards: CaseType[];
 };
 
 const initialGameState: GameStateType = {
@@ -69,6 +69,7 @@ const initialGameState: GameStateType = {
     followers: 100,
   },
   position: 0,
+  cards: cards as CaseType[],
 };
 
 interface DiceStateType {
@@ -80,14 +81,13 @@ interface DiceStateType {
 const initialDiceState: DiceStateType = {
   isRolling: false,
   face: 6,
-  canRoll: true
+  canRoll: true,
 };
 
 export const diceState = atom({
   key: "diceState",
   default: initialDiceState,
 });
-
 
 export const gameState = atom({
   key: "gameState",
@@ -112,6 +112,15 @@ export const currentCaseState = selector<CaseType | undefined>({
       : set(gameState, { ...get(gameState), currentCase: newValue }),
 });
 
+export const cardsState = selector<CaseType[]>({
+  key: "cards",
+  get: ({ get }) => get(gameState).cards,
+  set: ({ set, get }, newValue) =>
+    newValue instanceof DefaultValue
+      ? set(gameState, newValue)
+      : set(gameState, { ...get(gameState), cards: newValue }),
+});
+
 export const positionState = selector<number>({
   key: "position",
   get: ({ get }) => get(gameState).position,
@@ -121,11 +130,20 @@ export const positionState = selector<number>({
       : set(gameState, { ...get(gameState), position: newValue }),
 });
 
+export const scoreState = selector<{money: number, followers: number, reputation: number}>({
+  key: "score",
+  get: ({ get }) => get(gameState).score,
+  set: ({ set, get }, newValue) =>
+    newValue instanceof DefaultValue
+      ? set(gameState, newValue)
+      : set(gameState, { ...get(gameState), score: newValue }),
+});
+
 const useStyles = makeStyles({
   background: {
     backgroundImage: `url(${Curl}), radial-gradient(#00c4c2, #0383c2);`,
-    backgroundSize: '150%, 100%',
-    backgroundPosition: 'center',
+    backgroundSize: "150%, 100%",
+    backgroundPosition: "center",
     height: "100vh",
     overflow: "hidden",
   },
@@ -137,54 +155,52 @@ const useStyles = makeStyles({
   },
 });
 
-const useHasChanged = (val: any) => {
-  const prevVal = usePrevious(val);
-  return prevVal !== undefined && prevVal !== val;
-};
-
-const usePrevious = <T extends unknown>(value: T): T | undefined => {
-  const ref = useRef<T>();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
-
 const Game: React.ComponentType = () => {
   const [step, setStep] = useRecoilState(stepState);
-  const [position] = useRecoilState(positionState);
+  const [position, setPosition] = useRecoilState(positionState);
   const [currentCase, setCurrentCase] = useRecoilState(currentCaseState);
-  const hasChangedPosition = useHasChanged(position);
+  const [cards, setCards] = useRecoilState(cardsState);
+  const [game, setGame] = useRecoilState(gameState);
 
   const onResult = useCallback(() => {
     setStep(GAME_STEPS.RESULT_SCREEN);
   }, [setStep]);
   const classes = useStyles();
 
-  const getCaseContent = (category: CASE_CATEGORY) => {
-    const availableCases = cases[category];
-    return availableCases[Math.floor(Math.random() * availableCases.length)];
-  };
+  const getCaseContent = useCallback((category: CASE_CATEGORY) => {
+    const availableCases = cards.filter((card) => card.type === category);
+    const caseContent =
+      availableCases[Math.floor(Math.random() * availableCases.length)];
+    setCards(cards.filter(card => card !== caseContent));
+    console.log(cards.length);
+    return caseContent;
+  }, [cards, setCards]);
 
-  useEffect(() => {
-    if (hasChangedPosition) {
-      setCurrentCase(getCaseContent(boardCases[position]));
-    }
-  }, [setCurrentCase, hasChangedPosition, position]);
+  const onDiceEnd = useCallback((diceFace) => {
+    let newPosition = position + diceFace;
+    if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
+    setPosition(newPosition);
+    setCurrentCase(getCaseContent(boardCases[newPosition]));
+  }, [setPosition, setCurrentCase, getCaseContent, position]);
+
+  const onCardClose = useCallback(() => {
+    const { score, currentCase } = game;
+    if (!currentCase) return;
+    setGame({
+      ...game,
+      currentCase: undefined,
+      score: {
+        money: score.money + currentCase?.money,
+        followers: score.followers + currentCase?.followers,
+        reputation: score.reputation + currentCase?.reputation
+      }
+    })
+    setCurrentCase(undefined);
+  }, [setCurrentCase, setGame, game]);
 
   return (
     <div className={classes.background}>
-      <Box
-        position="absolute"
-        paddingTop={1}
-        right={0}
-        display="flex"
-        alignItems="flex-end"
-      >
-        <Level value="100" title="Réputation" type="star" />
-        <Level value="100" title="Participation" type="coin" />
-        <Level value="100" title="Followers" type="heart" />
-      </Box>
+      <Levels />
       <img src={Logo} alt="logo" className={classes.logo} />
       <StartModal open={step === GAME_STEPS.START_SCREEN} />
       <ResultModal open={step === GAME_STEPS.RESULT_SCREEN} />
@@ -196,8 +212,8 @@ const Game: React.ComponentType = () => {
         </Box>
       )}
       <Board position={position} />
-      <DiceButton />
-      <CaseModal content={currentCase} onClose={() => setCurrentCase(undefined)} />
+      <DiceButton onDiceEnd={onDiceEnd} />
+      <CaseModal content={currentCase} onClose={onCardClose} />
     </div>
   );
 };

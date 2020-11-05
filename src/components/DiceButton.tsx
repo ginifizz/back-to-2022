@@ -35,20 +35,17 @@ const useStyles = makeStyles((theme) => ({
 
 const wait = (ms:number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const DiceButton: React.ComponentType = () => {
+const DiceButton: React.ComponentType<{onDiceEnd: (diceFace:DiceFaceType) => void}> = ({ onDiceEnd }) => {
   const classes = useStyles();
   const [dice, setDice] = useRecoilState(diceState);
-    const [position, setPosition] = useRecoilState(positionState);
 
     const onRollEnd = useCallback((newDiceFace) => {
       setDice(prevDice => ({
         ...prevDice,
         isRolling: false
       }));
-      let newPosition = position + newDiceFace;
-      if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
-      setPosition(newPosition);
-    }, [setPosition, position, setDice]);
+      onDiceEnd(newDiceFace);
+    }, [setDice, onDiceEnd]);
 
     const rollDice = useCallback(async () => {
       const newDiceFace = getRandomDiceNumber() as DiceFaceType;

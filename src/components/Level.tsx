@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { makeStyles, Box } from "@material-ui/core";
+import { makeStyles, Box, Typography } from "@material-ui/core";
 
 interface LevelType {
     value: string;
@@ -12,19 +12,18 @@ const useStyles = makeStyles((theme) => ({
   level: {
     position: "relative",
     zIndex: 2,
-    //background: `url(${Jauge})`,
-    background: `linear-gradient(to bottom, #05707a, #0e8794)`,
+    background: `linear-gradient(to bottom, #00020245, #01181b38)`,
     borderRadius: "30px",
-    border: "3px solid #05707a",
+    border: "3px solid #00020245",
     boxShadow: "inset 0px 8px 5px 0px rgba(0,0,0,0.3)",
-    //backgroundSize: "100% 100%",
+    minWidth: '90px'
   },
   image: {
     position: "absolute",
     top: "50%",
     left: 0,
-    transform: "translate(-20%,-50%);",
-    height: "120%",
+    transform: "translate(-30%,-50%);",
+    height: "110%",
   },
 }));
 
@@ -42,9 +41,31 @@ const Level:React.ComponentType<LevelType> = ({ value, type, title, imageStep })
   const classes = useStyles();
 
     return (
-      <Box className={classes.level} pl={6} pr={2} py={1} mx={1} color='#fff'>
-          <img alt={title} className={classes.image} src={`${process.env.PUBLIC_URL}/img/levels_${picture}.svg`} />
-          <Box pt={0.5} lineHeight={0.8} fontSize='h5.fontSize' fontWeight='fontWeightBold'>{value}%</Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        className={classes.level}
+        pl={5}
+        pr={2}
+        py={0.5}
+        mx={2}
+        color="#fff"
+      >
+        <img
+          alt={title}
+          className={classes.image}
+          src={`${process.env.PUBLIC_URL}/img/levels_${picture}.svg`}
+        />
+        <Box
+          lineHeight={0.8}
+          fontSize="h5.fontSize"
+          fontWeight="fontWeightBold"
+        >
+          {value}%
+        </Box>
+        <Typography variant="overline">{title}</Typography>
       </Box>
     );}
 

@@ -5,7 +5,7 @@ const cases = [
     "conference",
     "food",
     "old",
-    "vote",
+    "santa",
     "babyfoot",
     "travel",
     "covid",

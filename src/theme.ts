@@ -12,6 +12,17 @@ const theme = createMuiTheme({
     h5: {
       fontWeight: 800,
     },
+    overline: {
+      lineHeight: 1.2,
+      fontWeight: 800,
+      fontSize: "10px",
+    },
+    body1: {
+      fontSize: "1.2rem",
+    },
+    body2: {
+      fontSize: "1rem",
+    },
   },
   shape: {
     borderRadius: 32,
