@@ -4,7 +4,7 @@ import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Catamaran",
+    fontFamily: "Roboto Slab",
     fontWeightBold: 800,
     h4: {
       fontWeight: 800,
@@ -18,10 +18,13 @@ const theme = createMuiTheme({
       fontSize: "10px",
     },
     body1: {
-      fontSize: "1.2rem",
+      fontSize: "1.3rem",
+      fontWeight: 800,
+      lineHeight: '1.2'
     },
     body2: {
-      fontSize: "1rem",
+      fontSize: "1.1rem",
+      fontWeight: 800,
     },
   },
   shape: {
@@ -43,6 +46,7 @@ const theme = createMuiTheme({
         background: `linear-gradient(to bottom, ${amber[300]}, ${amber[800]})`,
         borderRadius: "15px",
         boxShadow: "10px 10px 0px -2px rgba(0,0,0,0.75)",
+        fontWeight: 900,
       },
       label: {
         color: deepOrange[800],

@@ -112,6 +112,7 @@ const useStyles = (color: any) =>
       justifyContent: "center",
       height: "200px",
       overflow: "hidden",
+      boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.5) inset",
     },
     circle: {
       width: "250px",
@@ -237,6 +238,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             lineHeight={1.2}
             textAlign="center"
             pb={2}
+            fontWeight="fontWeightBold"
           >
             {mainText}
           </Box>
