@@ -83,7 +83,7 @@ const DiceButton: React.ComponentType<{onDiceEnd: (diceFace:DiceFaceType) => voi
 
 
   return (
-    <div className={classes.circle}>
+    <div className={classes.circle} onClick={() => dice.canRoll && rollDice()}>
       <div className={classes.dice}>
         <Dice face={dice.face} />
       </div>
