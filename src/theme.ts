@@ -18,9 +18,9 @@ const theme = createMuiTheme({
       fontSize: "10px",
     },
     body1: {
-      fontSize: "1.3rem",
+      fontSize: "1.5rem",
       fontWeight: 800,
-      lineHeight: '1.2'
+      lineHeight: "1.2",
     },
     body2: {
       fontSize: "1.1rem",
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
     },
   },
   shape: {
-    borderRadius: 32,
+    borderRadius: 64,
   },
   palette: {
     primary: {
@@ -44,9 +44,9 @@ const theme = createMuiTheme({
         fontSize: "1rem",
         border: `2px solid ${amber[500]}`,
         background: `linear-gradient(to bottom, ${amber[300]}, ${amber[800]})`,
-        borderRadius: "15px",
-        boxShadow: "10px 10px 0px -2px rgba(0,0,0,0.75)",
+        borderRadius: "64px",
         fontWeight: 900,
+        padding: '10px 20px'
       },
       label: {
         color: deepOrange[800],
@@ -55,6 +55,7 @@ const theme = createMuiTheme({
     MuiDialog: {
       paper: {
         overflowY: "visible",
+        boxShadow: 'none'
       },
     },
   },

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import {
+  Dialog,
   DialogProps,
   Box,
   Typography,
   makeStyles,
   Theme,
+  IconButton,
   darken,
   Grow
 } from "@material-ui/core";
 import Curl from "../assets/curl.svg";
+import CloseIcon from "@material-ui/icons/Close";
 import Level from "./Level";
 import { CaseType } from "../Game";
 import { colors, titles } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan } from "@material-ui/core/colors";
-import GameModal from './GameModal';
 
 interface CaseModalProps extends Omit<DialogProps, "open"> {
   content?: CaseType;
@@ -23,22 +25,23 @@ interface CaseModalProps extends Omit<DialogProps, "open"> {
 
 const useStyles = (color: any) =>
   makeStyles<Theme>((theme) => ({
-    left: {
-      width: "40%",
-      position: "relative",
-      transform: "translateX(-10%)",
-      zIndex: 2,
-    },
-    right: {
-      width: '60%',
+    dialog: {
+      display: "flex",
+      flexDirection: "column",
+      overflowY: "auto",
+      borderRadius: theme.shape.borderRadius,
+      background: color[300],
+      boxShadow: `1px 1px 0px ${color[800]},2px 2px 0px ${color[800]},3px 3px 0px ${color[800]},4px 4px 0px ${color[800]},5px 5px 0px ${color[800]},6px 6px 0px ${color[800]},7px 7px 0px ${color[800]},8px 8px 0px ${color[800]},9px 9px 0px ${color[800]},10px 10px 0px ${color[800]},11px 11px 0px ${color[800]}`,
+      padding: theme.spacing(2),
+      color: theme.palette.getContrastText(color[300]),
     },
     title: {
       position: "absolute",
       zIndex: 2,
-      bottom: 0,
+      top: 0,
       left: "50%",
-      transform: "translateX(-50%)",
-      minWidth: "80%",
+      transform: "translate(-50%, -65%)",
+      minWidth: "50%",
       "&::before": {
         content: '""',
         position: "absolute",
@@ -46,7 +49,7 @@ const useStyles = (color: any) =>
         left: 0,
         border: "25px solid;",
         top: "0",
-        transform: "translate(-70%, -15px)",
+        transform: "translate(-70%, 15px)",
         borderColor: `${color[800]} ${color[800]} ${color[800]} transparent`,
       },
       "&::after": {
@@ -56,7 +59,7 @@ const useStyles = (color: any) =>
         right: "0",
         border: "25px solid;",
         top: "0",
-        transform: "translate(70%, -15px)",
+        transform: "translate(70%, 15px)",
         borderColor: `${color[800]} transparent ${color[800]} ${color[800]}`,
       },
     },
@@ -71,27 +74,27 @@ const useStyles = (color: any) =>
       boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
       "&::before": {
         content: '""',
-        borderColor: `transparent ${darken(
+        borderColor: `${darken(
           color[900],
           0.2
-        )} transparent transparent`,
+        )} transparent transparent transparent`,
         position: "absolute",
         borderStyle: "solid",
-        top: "-15px",
+        bottom: "-15px",
         left: 0,
-        borderWidth: "15px 15px 0 0",
+        borderWidth: "15px 0 0 15px",
       },
       "&::after": {
         content: '""',
-        borderColor: `transparent transparent ${darken(
+        borderColor: `${darken(
           color[900],
           0.2
-        )} transparent`,
+        )} transparent transparent transparent`,
         position: "absolute",
         borderStyle: "solid",
-        top: "-15px",
+        bottom: "-15px",
         right: 0,
-        borderWidth: "0 15px 15px 0",
+        borderWidth: "15px 15px 0 0",
       },
     },
     top: {
@@ -112,34 +115,35 @@ const useStyles = (color: any) =>
       boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.5) inset",
     },
     circle: {
-      width: "100%",
-      height: "0",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      paddingBottom: "100%",
+      width: "250px",
+      height: "250px",
       borderRadius: "50%",
-      border: `15px solid white`,
+      border: `5px solid ${color[900]}`,
       position: "absolute",
-      backgroundImage: `url(${Curl})`,
-      background: color[500],
-      zIndex: -1,
+      background: color[100],
+      overflow: "hidden",
     },
     image: {
-      width: "100%",
-      maxHeight: "100%",
-      borderRadius: "50%",
-    },
-    levels: {
+      height: "100%",
       position: "absolute",
-      borderRadius: theme.shape.borderRadius,
-      padding: 0,
-      background: color[400],
-      top: '100%',
-      right: '50px',
-      transform: 'translateY(-50%)',
-      border: '5px solid white'
-    }
+      left: "50%",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
+    },
+    close: {
+      zIndex: 4,
+      position: "absolute",
+      right: -theme.spacing(2),
+      top: -theme.spacing(2),
+      background: color[800],
+      color: "#fff",
+      transition: "all ease 0.2s",
+      boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.63)",
+      transform: "scale(1.3)",
+      "&:hover": {
+        background: color[900],
+      },
+    },
   }));
 
 const emptyCase = {
@@ -191,75 +195,65 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
   };
 
   return (
-    <GameModal
+    <Dialog
       onClose={handleClose}
       TransitionComponent={Transition}
       {...props}
       keepMounted
       open={open}
       onExited={onClose}
-      color={color}
-      maxWidth="md"
     >
-      <Box
-        p={1}
-        pb={2}
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <div className={classes.left}>
-          {type && (
-            <>
-              <div className={classes.circle} />
+      <Box className={classes.dialog} display="flex" flexDirection="row">
+        <IconButton className={classes.close} onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
+        <div className={classes.title}>
+          <div className={classes.ribbon}>
+            <Typography variant="h5" color="inherit">
+              {type && titles[type]}
+            </Typography>
+          </div>
+        </div>
+        <div className={classes.top}>
+          <div className={classes.circle}>
+            {type && (
               <img
-                src={`${process.env.PUBLIC_URL}/cases/${type}.png`}
                 className={classes.image}
+                src={`${process.env.PUBLIC_URL}/cases/${type}.png`}
                 alt={type}
               />
-              <div className={classes.title}>
-                <div className={classes.ribbon}>
-                  <Typography variant="h5" color="inherit">
-                    {type && titles[type]}
-                  </Typography>
-                </div>
-              </div>
-            </>
-          )}
+            )}
+          </div>
         </div>
         <Box
-          pl={2}
-          pr={8}
-          py={2}
           flex={1}
           display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          fontSize="body1.fontSize"
-          lineHeight={1.2}
-          fontWeight="fontWeightBold"
-          className={classes.right}
+          p={2}
         >
-          <Box pb={2}>
-            <Typography variant="body1" color="inherit">
-              {mainText}
-            </Typography>
+          <Box
+            fontSize="body1.fontSize"
+            lineHeight={1.2}
+            textAlign="center"
+            pb={2}
+            fontWeight="fontWeightBold"
+          >
+            {mainText}
           </Box>
-          <Typography variant="body2" color="textPrimary">
+          <Box
+            fontSize="body2.fontSize"
+            fontWeight="fontWeightBold"
+            textAlign="center"
+            lineHeight={1.2}
+          >
             {secondaryText}
-          </Typography>
+          </Box>
         </Box>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          py={2}
-          className={classes.levels}
-        >
+        <Box display="flex" alignItems="center" justifyContent="center" py={2}>
           {!!money && (
-            <Box py={0.5}>
+            <Box p={0.5}>
               <Level
                 type="coin"
                 value={money > 0 ? `+${money}` : `${money}`}
@@ -269,7 +263,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             </Box>
           )}
           {!!reputation && (
-            <Box py={0.5}>
+            <Box p={0.5}>
               <Level
                 type="star"
                 value={reputation > 0 ? `+${reputation}` : `${reputation}`}
@@ -279,7 +273,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             </Box>
           )}
           {!!followers && (
-            <Box py={0.5}>
+            <Box p={0.5}>
               <Level
                 type="heart"
                 value={followers > 0 ? `+${followers}` : `${followers}`}
@@ -290,7 +284,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
           )}
         </Box>
       </Box>
-    </GameModal>
+    </Dialog>
   );
 };
 

@@ -3,11 +3,9 @@ import {
   Dialog,
   DialogProps,
   Box,
-  Typography,
   makeStyles,
   Theme,
   IconButton,
-  darken,
   Grow,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
@@ -16,90 +14,35 @@ import { cyan } from "@material-ui/core/colors";
 
 interface GameModalProps extends Omit<DialogProps, 'onClose'> {
   color?: any;
-  title: string;
   onClose?: () => void;
 }
 
 const useStyles = (color: any) =>
   makeStyles<Theme>((theme) => ({
+    paper: {
+      backgroundColor: color[500],
+      transform: "translateX(35px) translateY(-2px) rotate(-2deg)",
+    },
     dialog: {
       display: "flex",
       flexDirection: "column",
-      overflowY: "auto",
-      borderRadius: theme.shape.borderRadius,
-      background: color[300],
-      boxShadow: `1px 1px 0px ${color[800]},2px 2px 0px ${color[800]},3px 3px 0px ${color[800]},4px 4px 0px ${color[800]},5px 5px 0px ${color[800]},6px 6px 0px ${color[800]},7px 7px 0px ${color[800]},8px 8px 0px ${color[800]},9px 9px 0px ${color[800]},10px 10px 0px ${color[800]},11px 11px 0px ${color[800]}`,
+      overflow: "visible",
       padding: theme.spacing(2),
-      color: theme.palette.getContrastText(color[300]),
-      minWidth: '500px'
-    },
-    title: {
-      position: "absolute",
-      zIndex: 2,
-      top: 0,
-      left: "50%",
-      transform: "translate(-50%, -40%)",
-      minWidth: "50%",
-      "&::before": {
-        content: '""',
-        position: "absolute",
-        zIndex: "-1",
-        left: 0,
-        border: "25px solid;",
-        top: "0",
-        transform: "translate(-70%, 15px)",
-        borderColor: `${color[900]} ${color[900]} ${color[900]} transparent`,
-      },
-      "&::after": {
-        content: '""',
-        position: "absolute",
-        zIndex: "-1",
-        right: "0",
-        border: "25px solid;",
-        top: "0",
-        transform: "translate(70%, 15px)",
-        borderColor: `${color[900]} transparent ${color[900]} ${color[900]}`,
-      },
-    },
-    ribbon: {
       position: "relative",
-      zIndex: 2,
-      background: color[800],
-      padding: theme.spacing(1),
-      textAlign: "center",
-      color: "white",
-      borderRadius: "5px 5px 0 0",
-      boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
-      "&::before": {
-        content: '""',
-        borderColor: `${darken(
-          color[900],
-          0.5
-        )} transparent transparent transparent`,
-        position: "absolute",
-        borderStyle: "solid",
-        bottom: "-15px",
-        left: 0,
-        borderWidth: "15px 0 0 15px",
-      },
-      "&::after": {
-        content: '""',
-        borderColor: `${darken(
-          color[900],
-          0.5
-        )} transparent transparent transparent`,
-        position: "absolute",
-        borderStyle: "solid",
-        bottom: "-15px",
-        right: 0,
-        borderWidth: "15px 15px 0 0",
-      },
+      borderRadius: theme.shape.borderRadius,
+      zIndex: 1,
+      backgroundColor: "white",
+      width: "100%",
+      height: "100%",
+      transform: "translateX(-50px) translateY(2px) rotate(-2deg)",
+      boxShadow: `0px 0px 20px rgba(0, 0, 0, 0.5)`,
+      color: color[600]
     },
     close: {
       zIndex: 4,
       position: "absolute",
-      right: -theme.spacing(2),
-      top: -theme.spacing(2),
+      right: theme.spacing(3),
+      top: theme.spacing(3),
       background: color[800],
       color: "#fff",
       transition: "all ease 0.2s",
@@ -128,7 +71,6 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
   onClose,
   children,
   color = cyan,
-  title,
   ...props
 }) => {
   const classes = useStyles(color)();
@@ -143,6 +85,7 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
       TransitionComponent={Transition}
       {...props}
       keepMounted
+      classes={{ paper: classes.paper }}
     >
       <Box className={classes.dialog} display="flex" flexDirection="row">
         {onClose && (
@@ -150,13 +93,6 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
             <CloseIcon />
           </IconButton>
         )}
-        <div className={classes.title}>
-          <div className={classes.ribbon}>
-            <Typography variant="h5" color="inherit">
-              {title}
-            </Typography>
-          </div>
-        </div>
         {children}
       </Box>
     </Dialog>

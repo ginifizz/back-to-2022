@@ -14,8 +14,18 @@ import GameModal from './GameModal';
 const useStyles = makeStyles((theme) => ({
   image: {
     width: '40%',
-    maxHeight: '80vh'
+    maxHeight: '100%'
   },
+  button: {
+    position: "absolute",
+    border: '5px solid white',
+    boxShadow: 'none',
+    right: '50px',
+    bottom: '-20px',
+    '&:hover': {
+      boxShadow: 'none'
+    }
+  }
 }));
 
 const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) => {
@@ -27,7 +37,7 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
   const classes = useStyles();
 
   return (
-    <GameModal maxWidth='md' title="Bienvenue !" {...props}>
+    <GameModal maxWidth="sm" {...props}>
       <Box
         p={1}
         display="flex"
@@ -38,7 +48,7 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
         <img src={Trone} className={classes.image} alt="Le trône du gérant" />
         <Box
           pl={2}
-          pt={4}
+          pb={2}
           flex={1}
           display="flex"
           flexDirection="column"
@@ -48,24 +58,22 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
           lineHeight={1.2}
           fontWeight="fontWeightBold"
         >
-          <Box pb={4}>
-          <Typography variant='body1'>
-            Le mandat de gérant de Kévin arrive à son terme... Et il a décidé de
-            raccrocher les gants !
-          </Typography>
+          <Box pb={2}>
+            <Typography variant="body1" color="inherit">
+              Le mandat de gérant de Kévin arrive à son terme... Et il a décidé
+              de raccrocher les gants !
+            </Typography>
           </Box>
-          <Typography variant='body2'>
+          <Typography variant="body2" color="textPrimary">
             Tu penses être capable de prendre sa succession ? Alors teste cette
             simulation et découvre si tu as les épaules pour terminer un mandat
             entier sans plomber les finances et la réputation de la SCOP !
           </Typography>
-          <Box py={4} flex={1}>
-          <Button variant="contained" color="primary" onClick={onStart}>
-            Commencer !
-          </Button>
-          </Box>
         </Box>
       </Box>
+      <Button className={classes.button} variant="contained" color="primary" onClick={onStart}>
+        Commencer !
+      </Button>
     </GameModal>
   );
 };
