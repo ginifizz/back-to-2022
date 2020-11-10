@@ -84,7 +84,7 @@ const DiceButton: React.ComponentType<{onDiceEnd: (diceFace:DiceFaceType) => voi
         <Dice face={dice.face} />
       </div>
       <Button className={classes.button} variant="contained" color="primary" onClick={rollDice}>
-        Lancer le dé
+        Lancer&nbsp;le&nbsp;dé
       </Button>
     </div>
   );

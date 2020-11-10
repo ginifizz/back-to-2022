@@ -3,7 +3,7 @@
     "type": "food",
     "mainText": "Jordy ramène des viennoiseries pour toute la SCOP !",
     "secondaryText": "On travaille mieux avec le ventre plein : la productivité est au top aujourd'hui !",
-    "money": 5,
+    "money": 10,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -48,7 +48,7 @@
     "type": "duo",
     "mainText": "Vincent et Pierre vont chercher des pâtisseries à l'Impertinente.",
     "secondaryText": "Quand l'estomac est bien rempli, la productivité est au max, et ça se ressent sur la participation !",
-    "money": 5,
+    "money": 10,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -111,7 +111,7 @@
     "type": "general",
     "mainText": "Quelqu'un a utilisé les toilettes femmes pendant la pause midi et a laissé la lunette relevée... Jade est furax et met un message incendiaire sur General !",
     "secondaryText": "Le thread part dans tous les sens et la discussion se termine par un gif scato. La productivité de la journée s'en ressent !",
-    "money": -2,
+    "money": -5,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -119,7 +119,7 @@
   {
     "type": "general",
     "mainText": "Tu as écrit un tweet islamophobe le 23 avril 2002... Manque de bol, un de tes collègues l'a retrouvé !",
-    "secondaryText": "Ca se termine par un \"ça va on t'emmerde pas trop ?\" sur Général. Tu plaides l'erreur de jeunesse, mais ça ne convainc pas grand monde...",
+    "secondaryText": "Ca se termine par un “ça va on t'emmerde pas trop ?” sur Général. Tu plaides l'erreur de jeunesse, mais ça ne convainc pas grand monde...",
     "money": 0,
     "followers": 0,
     "reputation": -20,
@@ -138,7 +138,7 @@
     "type": "babyfoot",
     "mainText": "Il y a un workshop dans la salle des meetups: le baby est inaccessible pour 2 jours !",
     "secondaryText": "Margaux et Maxime sont un peu frustrés... mais du coup ils ne prennent pas de pause, et bossent deux fois plus !",
-    "money": 5,
+    "money": 10,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -156,7 +156,7 @@
     "type": "beer",
     "mainText": "Alors que tu es en train de siroter une pinte au Lyautey, tu croises un développeur intéressé par la SCOP. Ni une ni deux, et quelques pintes plus tard, tu lui fais passer un entretien et le recrutes immédiatement à un salaire ridicule !",
     "secondaryText": "Coup de bol : c'est un super profil et il ramène avec lui un portefeuille impressionnant de clients potentiels.",
-    "money": 5,
+    "money": 10,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -181,18 +181,9 @@
   },
   {
     "type": "conference",
-    "mainText": "Kevin doit faire un workshop API Platform... mais il est tombé sur du verre hier soir.",
-    "secondaryText": "Personne ne croit à son excuse, et les participants au workshop ont beaucoup de mal à écouter ses explications...",
-    "money": 0,
-    "followers": 0,
-    "reputation": -5,
-    "asset": ""
-  },
-  {
-    "type": "conference",
     "mainText": "Paris, SFLive, 10h38: dans 7 minutes Kévin est sensé faire une conférence sur Mercure, mais il n'a pas fini ses slides...",
     "secondaryText": "A 10h43 les slides sont terminées, il a même le temps de boire un petit café avant de monter sur scène ! Son talk cartonne, et le stand de la SCOP ne désemplit pas !",
-    "money": 0,
+    "money": 5,
     "followers": 5,
     "reputation": 5,
     "asset": ""
@@ -219,7 +210,7 @@
     "type": "hobbies",
     "mainText": "La nuit dernière, Jéjé a sorti son téléscope et a découvert un truc de fou !",
     "secondaryText": "Tu n'y comprends absolument rien, mais c'est une avancée majeure dans le monde de l'astronomie, on parle de Jéjé dans le monde entier... et de la SCOP par la même occasion !",
-    "money": 0,
+    "money": 5,
     "followers": 10,
     "reputation": 20,
     "asset": ""
@@ -228,7 +219,7 @@
     "type": "hobbies",
     "mainText": "Le weekend dernier, Marion s'est cassé la cheville en courant un marathon.",
     "secondaryText": "Elle est mise en arrêt pour 3 semaines. Le CA mensuel n'a jamais été aussi bas !",
-    "money": -30,
+    "money": -20,
     "followers": 0,
     "reputation": 0,
     "asset": ""
@@ -253,10 +244,10 @@
   },
   {
     "type": "hobbies",
-    "mainText": "Jéjé te force à participer à une vidéo sur l'astronomie sur sa chaîne \"Astro newbie",
+    "mainText": "Jéjé te force à participer à une vidéo sur l'astronomie sur sa chaîne “Astro newbie”.",
     "secondaryText": "Les autres coopérateurs se moquent de toi pendant des mois, un mème à ton effigie circule sur le Chat de la SCOP. Ta crédibilité en prend un sacré coup !",
     "money": 0,
-    "followers": 0,
+    "followers": -5,
     "reputation": -10,
     "asset": ""
   },
@@ -280,7 +271,7 @@
   },
   {
     "type": "music",
-    "mainText": "Pour mettre un peu d'ambiance à la SCOP, Olivier et Quentin se lancent dans une version endiablée de \"Yayannou",
+    "mainText": "Pour mettre un peu d'ambiance à la SCOP, Olivier et Quentin se lancent dans une version endiablée de “Yayannou”",
     "secondaryText": "Quelqu'un filme leur prestation, et la chanson devient un tube viral.",
     "money": 0,
     "followers": 10,
@@ -316,7 +307,7 @@
   },
   {
     "type": "tag",
-    "mainText": "On vient de taguer le bâtiment de la scop : \"DUNGLAS EXTRÊME GAUCHE !",
+    "mainText": "On vient de taguer le bâtiment de la scop : “DUNGLAS EXTRÊME GAUCHE” !",
     "secondaryText": "Avec un message aussi explicite, difficile de prétendre que la SCOP n'était pas visée : tu payes les frais de nettoyage.",
     "money": -5,
     "followers": 0,
@@ -361,7 +352,7 @@
   },
   {
     "type": "vote",
-    "mainText": "Pour la 37ème AG consécutive, le sujet de la grille salariale est abordé. Et comme d'habitude, au bout de 10 minutes, tout le monde hurle dans la salle de réunion : \"On veut plus de primes\", \"Non on veut des plus gros salaires\", \"Comment ça il est pas frais mon poisson???",
+    "mainText": "Pour la 37ème AG consécutive, le sujet de la grille salariale est abordé. Et comme d'habitude, au bout de 10 minutes, tout le monde hurle dans la salle de réunion : “On veut plus de primes”, “Non on veut des plus gros salaires”, “Comment ça il est pas frais mon poisson???”",
     "secondaryText": "Saoulé(e), tu finis par reporter la décision à une prochaine AG. Au final, personne n'est content, vous avez perdu énormément de temps, et comme dirait Olivier, le temps, c'est de l'argent...",
     "money": -5,
     "followers": 0,
@@ -471,7 +462,7 @@
     "type": "travel",
     "mainText": "Mathilde signe LE contrat qui nous permettra d'atteindre notre objectif de CA annuel.",
     "secondaryText": "La mission se passe aux Bahamas : le remote au soleil, c'est le pied !",
-    "money": 20,
+    "money": 30,
     "followers": 0,
     "reputation": 10,
     "asset": ""
@@ -533,8 +524,8 @@
   {
     "type": "general",
     "mainText": "Tu sauves Pascal d'une mauvaise chute dans les escaliers.",
-    "secondaryText": "Tu as sa reconnaissance à vie et la SCOP te désigne responsable des premiers secours.",
-    "money": 0,
+    "secondaryText": "On évite de justesse l'arrêt de travail ! Tu as sa reconnaissance à vie et la SCOP te désigne responsable des premiers secours.",
+    "money": 5,
     "followers": 0,
     "reputation": 5,
     "asset": ""
@@ -579,7 +570,7 @@
     "type": "travel",
     "mainText": "La pandémie mondiale vient de se déclarer, Raoul (alors en voyage) doit se confiner en Chine pendant une durée indéterminée.",
     "secondaryText": "Sa prestation en France est stoppée mais une ESN chinoise travaillant sur API Platform le contacte pour établir un rendez-vous en visio. Notre présence à l'international se développe petit à petit !",
-    "money": 5,
+    "money": 10,
     "followers": 5,
     "reputation": 10,
     "asset": ""
@@ -614,7 +605,7 @@
   {
     "type": "santa",
     "mainText": "C'est l'heure du partage des secret santa et Valentin, notre dernière recrue peine à connaître chaque membre de la SCOP.",
-    "secondaryText": "Alan lui prête son \"Qui-est-ce ?\" fabriqué par Grégory : il sera incollable sur nous par la suite",
+    "secondaryText": "Alan lui prête son “Qui-est-ce ?” fabriqué par Grégory : il sera incollable sur nous par la suite",
     "money": 0,
     "followers": 0,
     "reputation": 5,
@@ -623,7 +614,7 @@
   {
     "type": "tag",
     "mainText": "On vient de taguer le bâtiment de la scop !",
-    "secondaryText": "C'est un candidat qui exprime subtilement sa colère après avoir reçu une réponse négative : \"Votre test est pourri, allez bien vous faire cuire le cul\" ! Le syndic n'est pas content, tu dois régler les frais de nettoyage.",
+    "secondaryText": "C'est un candidat qui exprime subtilement sa colère après avoir reçu une réponse négative : “Votre test est pourri, allez bien vous faire cuire le cul” ! Le syndic n'est pas content, tu dois régler les frais de nettoyage.",
     "money": -5,
     "followers": 0,
     "reputation": -5,
@@ -695,7 +686,7 @@
   {
     "type": "accounting",
     "mainText": "Un·e nouvel·lle arrivant·e démarre son premier jour à la SCOP.",
-    "secondaryText": "Tu as droit à une multitude de messages de bienvenue ainsi qu'à un tweet te mentionnant !",
+    "secondaryText": "Il/elle a droit à une multitude de messages de bienvenue ainsi qu'à un tweet te mentionnant !",
     "money": 0,
     "followers": 5,
     "reputation": 5,
@@ -703,8 +694,8 @@
   },
   {
     "type": "tag",
-    "mainText": "On vient de taguer le bâtiment de la SCOP : \"Arrêtez de tuer nos anciens !",
-    "secondaryText": "Encore un graffeur fou qui a confondu la SCOP avec la maison de retraite \"les Tilleuls\"...  Le syndic n'est pas content, tu dois régler les frais de nettoyage.",
+    "mainText": "On vient de taguer le bâtiment de la SCOP : “Arrêtez de tuer nos anciens !”",
+    "secondaryText": "Encore un graffeur fou qui a confondu la SCOP avec la maison de retraite “les Tilleuls”...  Le syndic n'est pas content, tu dois régler les frais de nettoyage.",
     "money": -5,
     "followers": 0,
     "reputation": -5,
@@ -712,7 +703,7 @@
   },
   {
     "type": "tag",
-    "mainText": "Un énorme tag s'affiche sur le bâtiment de la SCOP : \"Votre logo c'est de la merde ! Et d'abord ce n'est pas un tilleul, c'est un pommier !",
+    "mainText": "Un énorme tag s'affiche sur le bâtiment de la SCOP : “Votre logo c'est de la merde ! Et d'abord ce n'est pas un tilleul, c'est un pommier” !",
     "secondaryText": "L'écriture ressemble étrangement à celle de Grégory... Mais c'est probablement une coïncidence, non ? En tout cas, il va falloir régler les frais de nettoyage !",
     "money": -5,
     "followers": 0,
@@ -730,7 +721,7 @@
   },
   {
     "type": "old",
-    "mainText": "Mathieu Cheddar a sorti un recueil de ses \"meilleurs\" jeux de mots !",
+    "mainText": "Mathieu Cheddar a sorti un recueil de ses “meilleurs” jeux de mots !",
     "secondaryText": "En cette période un peu morose, son livre cartonne et devient un best seller. Il parle de la SCOP en préface, c'est une super publicité pour nous !",
     "money": 0,
     "followers": 5,
@@ -739,7 +730,7 @@
   },
   {
     "type": "food",
-    "mainText": "Pierre découvre que les pigeons morts qu'il retrouve régulièrement sur son balcon sont en fait des restes des \"Douceurs de Phuket\".",
+    "mainText": "Pierre découvre que les pigeons morts qu'il retrouve régulièrement sur son balcon sont en fait des restes des “Douceurs de Phuket”.",
     "secondaryText": "Tu viens justement d'emmener quelques coopérateurs manger là bas ce midi... pas sûr qu'ils te fassent confiance sur le choix du resto la prochaine fois !",
     "money": 0,
     "followers": 0,
@@ -759,18 +750,9 @@
     "type": "travel",
     "mainText": "Les créateurs de Couchsurfing veulent céder leur projet... Vincent Chalamon, un de leurs plus fidèles utilisateurs et développeur, est en lice pour récupérer le code source et la base de données !",
     "secondaryText": "Voilà une belle référence à ajouter sur notre site ! Matthieu Dewet nous confirme que le canapé, c'est the place to lit 🛏",
-    "money": 5,
+    "money": 10,
     "followers": 5,
     "reputation": 10,
-    "asset": ""
-  },
-  {
-    "type": "old",
-    "mainText": "Nous devons valider la periode d'essai de notre dernier·e arrivant et c'est Han son référent...",
-    "secondaryText": "Silence radio de sa part depuis Google Meet (est-ce un problème de connexion ? Il n'a pas l'air de bouger). Si son référent ne se porte pas garant, nous allons devoir nous en séparer et les difficultés à répondre aux demandes entrantes vont ressurgir.",
-    "money": -5,
-    "followers": 0,
-    "reputation": -5,
     "asset": ""
   },
   {
@@ -802,9 +784,9 @@
   },
   {
     "type": "vote",
-    "mainText": "Un très profil a attiré notre attention, mais les débats liés à son salaire et à ses éventuelles missions font que la mise en place du vote s'énernise.",
+    "mainText": "Un très bon profil a attiré notre attention, mais les débats liés à son salaire et à ses éventuelles missions font que la mise en place du vote s'énernise.",
     "secondaryText": "Le candidat, lassé d'attendre, met fin au process de recrutement avant que nous ayons pu lui répondre.",
-    "money": -5,
+    "money": 0,
     "followers": -5,
     "reputation": -10,
     "asset": ""
@@ -820,7 +802,7 @@
   },
   {
     "type": "santa",
-    "mainText": "Olivier est le secret santa de Cécile ! En manque d'inspiration, il lui offre le dernier numéro de \"Voici\".",
+    "mainText": "Olivier est le secret santa de Cécile ! En manque d'inspiration, il lui offre le dernier numéro de Voici.",
     "secondaryText": "Très mauvaise idée d'offrir un cadeau pareil à une professionnelle du social media ! Elle l'affiche partout sur les réseaux en le traitant de sexiste, et en soutien une bonne partie de nos abonnées désertent notre page...",
     "money": 0,
     "followers": -15,
@@ -829,7 +811,7 @@
   },
   {
     "type": "santa",
-    "mainText": "Baptiste a offert \"Secret Hitler\" à Jéjé pour Noël !",
+    "mainText": "Baptiste a offert “Secret Hitler” à Jéjé pour Noël !",
     "secondaryText": "Ravi de ce cadeau, Jéjé l'a affiché partout sur les réseaux... pas terrible pour l'image de la SCOP, taxée de groupuscule nazi par de nombreux followers !",
     "money": 0,
     "followers": -10,
@@ -840,6 +822,69 @@
     "type": "santa",
     "mainText": "Pour la deuxième année consécutive, Fred ne reçoit pas son cadeau de secret santa.",
     "secondaryText": "Excédé, il décide que le secret santa en entreprise, c'est vraiment has been, et lance une pétition sur Internet pour stopper cette tradition. La pétition fait le buzz et est relayée par de nombreux médias, au détriment de la réputation de la SCOP !",
+    "money": 0,
+    "followers": -10,
+    "reputation": -5,
+    "asset": ""
+  },
+  {
+    "type": "covid",
+    "mainText": "Le confinement se prolonge, les petits commerçants sont obligés de trouver de nouveaux moyens de vendre leurs produits...",
+    "secondaryText": "Grâce à toutes les personnes qui ont contribué au projet, la solution Click n' Collect de la SCOP est un franc succès !",
+    "money": 10,
+    "followers": 0,
+    "reputation": 5,
+    "asset": ""
+  },
+  {
+    "type": "santa",
+    "mainText": "C'est le repas de Noël des Tilleuls. Pour apporter du piment à la soirée, Sylvain partage avec ses voisins une bouteille de vodka aromatisée par ses soins.",
+    "secondaryText": "Les serveurs découvrent le pot au rose et dénoncent sur leurs réseaux sociaux que nous ne sommes pas sortables. C'est rapé pour la com' sur notre cohésion...",
+    "money": 0,
+    "followers": -5,
+    "reputation": -5,
+    "asset": ""
+  },
+  {
+    "type": "santa",
+    "mainText": "C'est le repas de Noël des Tilleuls. La soirée est trop arrosée, les tilleuls saccagent le gite où ils passaient la soirée.",
+    "secondaryText": "Bénédicte, la gérante de l'établissement, nous insulte d'ours et réclame des frais de ménage additionnels. La participation va encore baisser...",
+    "money": -5,
+    "followers": 0,
+    "reputation": -5,
+    "asset": ""
+  },
+  {
+    "type": "general",
+    "mainText": "Gros coup de gueule sur General : la vaisselle n'a pas été faite depuis avant le premier confinement, et de la vie s'est créée dans l'évier...",
+    "secondaryText": "Ca fait bien marrer Jewome qui poste une photo sur les réseaux : un bon nombre de followers, dégoûtés, déserte notre page...",
+    "money": 0,
+    "followers": -10,
+    "reputation": 0,
+    "asset": ""
+  },
+  {
+    "type": "accounting",
+    "mainText": "Jeune papa, Thomas s'endort à répétitions au bureau.",
+    "secondaryText": "La distribution des tickets resto et le remplissage des CRA prend du retard, cela provoque la colère des coopérateurs !",
+    "money": 0,
+    "followers": 0,
+    "reputation": -5,
+    "asset": ""
+  },
+  {
+    "type": "conference",
+    "mainText": "Cécile a encore mis du bazar dans le placard à goodies, on ne peut plus y accéder. Jewome, aka Bob le bricoleur, y installe des rangements pour remédier à ce problème.",
+    "secondaryText": "Les t-shirts API Platform, qui doivent être envoyés depuis 2 mois sont retrouvés et enfin expédiés : la communauté est ravie !",
+    "money": 0,
+    "followers": 5,
+    "reputation": 5,
+    "asset": ""
+  },
+  {
+    "type": "general",
+    "mainText": "Justine D. en a gros : elle commence à en avoir vraiment ras le bol des blagues sur les belges et met un message salé sur Général.",
+    "secondaryText": "La SCOP est cataloguée d'entreprise “anti belge”, notre réputation en prend un coup...",
     "money": 0,
     "followers": -10,
     "reputation": -5,
