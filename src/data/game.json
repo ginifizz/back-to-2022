@@ -22,7 +22,7 @@
     "mainText": "Les coopérateurs votent à l'unanimité pour doubler la durée légale du congé paternité.",
     "secondaryText": "C'est une grosse avancée sociale pour la SCOP, on ne parle que de ça sur Twitter et le nombre de candidatures explose.",
     "money": -5,
-    "followers": 5,
+    "followers": 10,
     "reputation": 5,
     "asset": ""
   },
@@ -32,13 +32,13 @@
     "secondaryText": "Les coopérateurs ne sont pas contents, et c'est ta réputation qui en fait les frais !",
     "money": 0,
     "followers": 0,
-    "reputation": -5,
+    "reputation": -10,
     "asset": ""
   },
   {
     "type": "duo",
     "mainText": "Avec l'arrivée des nouveaux stagiaires, Pierre et Vincent se rendent compte qu'ils ne font plus partie des plus jeunes de la SCOP.",
-    "secondaryText": "Ils font la gueule toute la journée et n'avancent pas sur leurs tâches du jour.",
+    "secondaryText": "Ils boudent toute la journée et n'avancent pas sur leurs tâches du jour.",
     "money": -5,
     "followers": 0,
     "reputation": 0,
@@ -166,7 +166,7 @@
     "mainText": "Tu offres une pinte à Laury pendant un afterwork. Mauvaise idée, depuis qu'elle a le permis elle n'a plus l'habitude de boire...",
     "secondaryText": "Elle passe le reste de la soirée à te parler d'Adrien Quatennens. Ses propos font un bad buzz sur Twitter, la SCOP est accusée de racisme anti-roux.",
     "money": 0,
-    "followers": -10,
+    "followers": -20,
     "reputation": 0,
     "asset": ""
   },
@@ -183,7 +183,7 @@
     "type": "conference",
     "mainText": "Paris, SFLive, 10h38: dans 7 minutes Kévin est sensé faire une conférence sur Mercure, mais il n'a pas fini ses slides...",
     "secondaryText": "A 10h43 les slides sont terminées, il a même le temps de boire un petit café avant de monter sur scène ! Son talk cartonne, et le stand de la SCOP ne désemplit pas !",
-    "money": 5,
+    "money": 10,
     "followers": 5,
     "reputation": 5,
     "asset": ""
@@ -193,8 +193,8 @@
     "mainText": "Antoine a tweeté avec le compte des Tilleuls que le COVID était une fake news.",
     "secondaryText": "Gros bad buzz pour la SCOP, qui perd autant de followers que de potentiels clients...",
     "money": -5,
-    "followers": -10,
-    "reputation": -10,
+    "followers": -20,
+    "reputation": -15,
     "asset": ""
   },
   {
@@ -211,7 +211,7 @@
     "mainText": "La nuit dernière, Jéjé a sorti son téléscope et a découvert un truc de fou !",
     "secondaryText": "Tu n'y comprends absolument rien, mais c'est une avancée majeure dans le monde de l'astronomie, on parle de Jéjé dans le monde entier... et de la SCOP par la même occasion !",
     "money": 5,
-    "followers": 10,
+    "followers": 15,
     "reputation": 20,
     "asset": ""
   },
@@ -247,7 +247,7 @@
     "mainText": "Jéjé te force à participer à une vidéo sur l'astronomie sur sa chaîne “Astro newbie”.",
     "secondaryText": "Les autres coopérateurs se moquent de toi pendant des mois, un mème à ton effigie circule sur le Chat de la SCOP. Ta crédibilité en prend un sacré coup !",
     "money": 0,
-    "followers": -5,
+    "followers": -10,
     "reputation": -10,
     "asset": ""
   },
@@ -284,7 +284,7 @@
     "secondaryText": "Au réveil tu découvres que tu as le visage de Johnny tatoué sur la joue. Pour la crédibilité, on repassera...",
     "money": 0,
     "followers": 0,
-    "reputation": -10,
+    "reputation": -15,
     "asset": ""
   },
   {
@@ -482,7 +482,7 @@
     "secondaryText": "La soirée finit tard, ils reviennent de la soirée ivres morts et doivent poser une journée de CP le lendemain.",
     "money": -5,
     "followers": 0,
-    "reputation": -5,
+    "reputation": -10,
     "asset": ""
   },
   {
@@ -652,7 +652,7 @@
     "mainText": "Le mariage de Morgane T. est annulé ! A cause du COVID? Non... Elle a juste enfin décidé d'accepter ses sentiments et d'avouer son amour pour un coopérateur !",
     "secondaryText": "Pas de chance, cet amour n'est pas réciproque... Et l'ex-futur mari de Morgane te fait un très mauvaise publicité sur les réseaux !",
     "money": 0,
-    "followers": -5,
+    "followers": -15,
     "reputation": -5,
     "asset": ""
   },
@@ -725,7 +725,7 @@
     "secondaryText": "En cette période un peu morose, son livre cartonne et devient un best seller. Il parle de la SCOP en préface, c'est une super publicité pour nous !",
     "money": 0,
     "followers": 5,
-    "reputation": 10,
+    "reputation": 5,
     "asset": ""
   },
   {
@@ -758,7 +758,7 @@
   {
     "type": "santa",
     "mainText": "Le cadeau SM offert par Kévin à Olivier pour le secret santa apparaît par mégarde sur les réseaux sociaux et en choque plus d'un.",
-    "secondaryText": "Quelle idée de confier ses projets web à des personnes aux passe-temps obscurs ? Ça ne passe pas auprès de la communauté, un hashtag #ScoopComplique nous montre du doigt.",
+    "secondaryText": "Qui aurait l'idée de confier ses projets web à des personnes aux passe-temps obscurs ? Ça ne passe pas auprès de la communauté, un hashtag #ScoopComplice nous montre du doigt.",
     "money": 0,
     "followers": -10,
     "reputation": -5,
@@ -787,7 +787,7 @@
     "mainText": "Un très bon profil a attiré notre attention, mais les débats liés à son salaire et à ses éventuelles missions font que la mise en place du vote s'énernise.",
     "secondaryText": "Le candidat, lassé d'attendre, met fin au process de recrutement avant que nous ayons pu lui répondre.",
     "money": 0,
-    "followers": -5,
+    "followers": 0,
     "reputation": -10,
     "asset": ""
   },
@@ -814,7 +814,7 @@
     "mainText": "Baptiste a offert “Secret Hitler” à Jéjé pour Noël !",
     "secondaryText": "Ravi de ce cadeau, Jéjé l'a affiché partout sur les réseaux... pas terrible pour l'image de la SCOP, taxée de groupuscule nazi par de nombreux followers !",
     "money": 0,
-    "followers": -10,
+    "followers": -15,
     "reputation": -5,
     "asset": ""
   },
@@ -841,8 +841,8 @@
     "mainText": "C'est le repas de Noël des Tilleuls. Pour apporter du piment à la soirée, Sylvain partage avec ses voisins une bouteille de vodka aromatisée par ses soins.",
     "secondaryText": "Les serveurs découvrent le pot au rose et dénoncent sur leurs réseaux sociaux que nous ne sommes pas sortables. C'est rapé pour la com' sur notre cohésion...",
     "money": 0,
-    "followers": -5,
-    "reputation": -5,
+    "followers": -10,
+    "reputation": -10,
     "asset": ""
   },
   {
@@ -859,7 +859,7 @@
     "mainText": "Gros coup de gueule sur General : la vaisselle n'a pas été faite depuis avant le premier confinement, et de la vie s'est créée dans l'évier...",
     "secondaryText": "Ca fait bien marrer Jewome qui poste une photo sur les réseaux : un bon nombre de followers, dégoûtés, déserte notre page...",
     "money": 0,
-    "followers": -10,
+    "followers": -15,
     "reputation": 0,
     "asset": ""
   },
@@ -875,7 +875,7 @@
   {
     "type": "conference",
     "mainText": "Cécile a encore mis du bazar dans le placard à goodies, on ne peut plus y accéder. Jewome, aka Bob le bricoleur, y installe des rangements pour remédier à ce problème.",
-    "secondaryText": "Les t-shirts API Platform, qui doivent être envoyés depuis 2 mois sont retrouvés et enfin expédiés : la communauté est ravie !",
+    "secondaryText": "Les t-shirts API Platform, qui doivent être envoyés depuis 2 mois sont retrouvés et enfin expédiés : la communauté est ravie&nbsp;",
     "money": 0,
     "followers": 5,
     "reputation": 5,
@@ -887,7 +887,16 @@
     "secondaryText": "La SCOP est cataloguée d'entreprise “anti belge”, notre réputation en prend un coup...",
     "money": 0,
     "followers": -10,
-    "reputation": -5,
+    "reputation": -10,
+    "asset": ""
+  },
+  {
+    "type": "food",
+    "mainText": "Tu as trouvé LE resto idéal pour les fêtes de fin d'année... Mais le logo est une côtelette de porc ! Le lobby vegan de la SCOP intervient, et suite à des débats interminables vous décidez de changer de resto.",
+    "secondaryText": "Vu le timing plus que serré, les coopérateurs finissent par passer le repas de Noël... au mac do. Point positif : le CA n'est pas trop impacté par ce repas !",
+    "money": 5,
+    "followers": 0,
+    "reputation": -10,
     "asset": ""
   }
 ]

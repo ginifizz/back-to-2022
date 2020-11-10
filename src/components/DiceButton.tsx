@@ -48,6 +48,10 @@ const DiceButton: React.ComponentType<{onDiceEnd: (diceFace:DiceFaceType) => voi
     }, [setDice, onDiceEnd]);
 
     const rollDice = useCallback(async () => {
+      setDice(prevDice => ({
+        ...prevDice,
+        canRoll: false
+      }));
       const newDiceFace = getRandomDiceNumber() as DiceFaceType;
       setDice(prevDice => ({
         ...prevDice,
@@ -83,7 +87,7 @@ const DiceButton: React.ComponentType<{onDiceEnd: (diceFace:DiceFaceType) => voi
       <div className={classes.dice}>
         <Dice face={dice.face} />
       </div>
-      <Button className={classes.button} variant="contained" color="primary" onClick={rollDice}>
+      <Button disabled={!dice.canRoll} className={classes.button} variant="contained" color="primary" onClick={rollDice}>
         Lancer&nbsp;le&nbsp;dé
       </Button>
     </div>

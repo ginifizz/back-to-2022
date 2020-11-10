@@ -155,11 +155,14 @@ const useStyles = makeStyles({
   },
 });
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const Game: React.ComponentType = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [position, setPosition] = useRecoilState(positionState);
   const [currentCase, setCurrentCase] = useRecoilState(currentCaseState);
   const [cards, setCards] = useRecoilState(cardsState);
+  const [dice, setDice] = useRecoilState(diceState);
   const [game, setGame] = useRecoilState(gameState);
 
   const onResult = useCallback(() => {
@@ -176,10 +179,18 @@ const Game: React.ComponentType = () => {
     return caseContent;
   }, [cards, setCards]);
 
-  const onDiceEnd = useCallback((diceFace) => {
+  const onDiceEnd = useCallback(async (diceFace) => {
+    let currentPosition = position;
     let newPosition = position + diceFace;
     if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
-    setPosition(newPosition);
+    while (currentPosition !== newPosition) {
+      currentPosition++;
+      if (currentPosition > 15) currentPosition = 0;
+      await wait(300);
+      setPosition(currentPosition);
+    }
+    await wait(300);
+    // setPosition(newPosition);
     setCurrentCase(getCaseContent(boardCases[newPosition]));
   }, [setPosition, setCurrentCase, getCaseContent, position]);
 
@@ -196,7 +207,11 @@ const Game: React.ComponentType = () => {
       }
     })
     setCurrentCase(undefined);
-  }, [setCurrentCase, setGame, game]);
+    setDice(prevDice => ({
+      ...prevDice,
+      canRoll: true
+    }));
+  }, [setDice, setCurrentCase, setGame, game]);
 
   return (
     <div className={classes.background}>
