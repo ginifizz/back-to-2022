@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Box, makeStyles, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Levels from "./components/Levels";
 import { DiceFaceType } from "./components/Dice";
 import Curl from "./assets/curl.svg";
@@ -9,7 +9,6 @@ import StartModal from "./components/StartModal";
 import CaseModal from "./components/CaseModal";
 import Board from "./components/Board";
 import DiceButton from "./components/DiceButton";
-import Logo from "./assets/logo2.svg";
 import boardCases from "./data/board";
 import cards from "./data/game.json";
 
@@ -139,6 +138,15 @@ export const scoreState = selector<{money: number, followers: number, reputation
       : set(gameState, { ...get(gameState), score: newValue }),
 });
 
+export const yearState = selector<number>({
+  key: "year",
+  get: ({ get }) => get(gameState).year,
+  set: ({ set, get }, newValue) =>
+    newValue instanceof DefaultValue
+      ? set(gameState, newValue)
+      : set(gameState, { ...get(gameState), year: newValue }),
+});
+
 const useStyles = makeStyles({
   background: {
     backgroundImage: `url(${Curl}), radial-gradient(#00c4c2, #0383c2);`,
@@ -146,13 +154,7 @@ const useStyles = makeStyles({
     backgroundPosition: "center",
     height: "100vh",
     overflow: "hidden",
-  },
-  logo: {
-    position: "absolute",
-    top: "20px",
-    left: "50px",
-    width: "350px",
-  },
+  }
 });
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -161,6 +163,7 @@ const Game: React.ComponentType = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [position, setPosition] = useRecoilState(positionState);
   const [currentCase, setCurrentCase] = useRecoilState(currentCaseState);
+  const [year, setYear] = useRecoilState(yearState);
   const [cards, setCards] = useRecoilState(cardsState);
   const [dice, setDice] = useRecoilState(diceState);
   const [game, setGame] = useRecoilState(gameState);
@@ -188,11 +191,19 @@ const Game: React.ComponentType = () => {
       if (currentPosition > 15) currentPosition = 0;
       await wait(300);
       setPosition(currentPosition);
+      if (currentPosition === 0) {
+        const newYear = year + 1;
+        setYear(newYear);
+        await wait(300);
+        if (newYear > 4) {
+          onResult();
+          return;
+        }
+      }
     }
     await wait(300);
-    // setPosition(newPosition);
     setCurrentCase(getCaseContent(boardCases[newPosition]));
-  }, [setPosition, setCurrentCase, getCaseContent, position]);
+  }, [onResult, setYear, year, setPosition, setCurrentCase, getCaseContent, position]);
 
   const onCardClose = useCallback(() => {
     const { score, currentCase } = game;
@@ -216,16 +227,8 @@ const Game: React.ComponentType = () => {
   return (
     <div className={classes.background}>
       <Levels />
-      <img src={Logo} alt="logo" className={classes.logo} />
       <StartModal open={step === GAME_STEPS.START_SCREEN} />
       <ResultModal open={step === GAME_STEPS.RESULT_SCREEN} />
-      {step === GAME_STEPS.GAME_SCREEN && (
-        <Box position="absolute" bottom={0} left={0}>
-          <Button variant="contained" color="primary" onClick={onResult}>
-            FINISH GAME
-          </Button>
-        </Box>
-      )}
       <Board position={position} />
       <DiceButton onDiceEnd={onDiceEnd} />
       <CaseModal content={currentCase} onClose={onCardClose} />

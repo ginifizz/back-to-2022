@@ -13,19 +13,25 @@ import GameModal from './GameModal';
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    width: '40%',
-    maxHeight: '100%'
+    width: "40%",
+    maxHeight: "100%",
   },
   button: {
     position: "absolute",
-    border: '5px solid white',
-    boxShadow: 'none',
-    right: '50px',
-    bottom: '-20px',
-    '&:hover': {
-      boxShadow: 'none'
-    }
-  }
+    border: "5px solid white",
+    boxShadow: "none",
+    right: "50px",
+    bottom: "-20px",
+    "&:hover": {
+      boxShadow: "none",
+    },
+  },
+  content: {
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
 }));
 
 const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) => {
@@ -39,9 +45,9 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
   return (
     <GameModal maxWidth="sm" {...props}>
       <Box
+        className={classes.content}
         p={1}
         display="flex"
-        flexDirection="row"
         alignItems="center"
         justifyContent="center"
       >

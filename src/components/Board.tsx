@@ -41,11 +41,15 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "repeat(5, 1fr)",
     gridTemplateRows: "repeat(5, 1fr)",
-    gap: `${theme.spacing(2)}px`,
+    gap: `2%`,
     width: "90vh",
     height: "90vh",
     left: "50%",
     top: "60%",
+    "@media (orientation: portrait)": {
+      width: "60vw",
+      height: "60vw",
+    },
   },
 }));
 

@@ -57,6 +57,9 @@ const theme = createMuiTheme({
         overflowY: "visible",
         boxShadow: 'none'
       },
+      paperFullScreen: {
+        height: '90%'
+      }
     },
   },
 });

@@ -6,11 +6,12 @@ import {
   makeStyles,
   Theme,
   IconButton,
-  Grow,
+  Grow
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan } from "@material-ui/core/colors";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 interface GameModalProps extends Omit<DialogProps, 'onClose'> {
   color?: any;
@@ -22,6 +23,10 @@ const useStyles = (color: any) =>
     paper: {
       backgroundColor: color[500],
       transform: "translateX(35px) translateY(-2px) rotate(-2deg)",
+      [theme.breakpoints.down("sm")]: {
+        background: "none",
+        transform: "translateX(5px) translateY(-2px) rotate(-2deg)",
+      },
     },
     dialog: {
       display: "flex",
@@ -36,7 +41,11 @@ const useStyles = (color: any) =>
       height: "100%",
       transform: "translateX(-50px) translateY(2px) rotate(-2deg)",
       boxShadow: `0px 0px 20px rgba(0, 0, 0, 0.5)`,
-      color: color[600]
+      color: color[600],
+      [theme.breakpoints.down("sm")]: {
+        padding: 0,
+        transform: 'none'
+      },
     },
     close: {
       zIndex: 4,
@@ -67,7 +76,7 @@ const Transition = React.forwardRef(function Transition(
   );
 });
 
-const CaseModal: React.ComponentType<GameModalProps> = ({
+const GameModal: React.ComponentType<GameModalProps> = ({
   onClose,
   children,
   color = cyan,
@@ -79,6 +88,8 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
     onClose && onClose();
   };
 
+  const matches = useMediaQuery((theme:Theme) => theme.breakpoints.down("sm"));
+
   return (
     <Dialog
       onClose={onClose}
@@ -86,6 +97,7 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
       {...props}
       keepMounted
       classes={{ paper: classes.paper }}
+      fullScreen={matches}
     >
       <Box className={classes.dialog} display="flex" flexDirection="row">
         {onClose && (
@@ -99,4 +111,4 @@ const CaseModal: React.ComponentType<GameModalProps> = ({
   );
 };
 
-export default CaseModal;
+export default GameModal;
