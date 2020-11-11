@@ -28,9 +28,9 @@ const useStyles = (color: any) =>
       position: "relative",
       transform: "translateX(-10%)",
       zIndex: 2,
-    },
-    right: {
-      width: '60%',
+      [theme.breakpoints.down("md")]: {
+        width: "35%",
+      },
     },
     title: {
       position: "absolute",
@@ -48,6 +48,10 @@ const useStyles = (color: any) =>
         top: "0",
         transform: "translate(-70%, -15px)",
         borderColor: `${color[800]} ${color[800]} ${color[800]} transparent`,
+        [theme.breakpoints.down("sm")]: {
+          borderWidth: "15px",
+          transform: "translate(-70%, -10px)",
+        },
       },
       "&::after": {
         content: '""',
@@ -58,6 +62,16 @@ const useStyles = (color: any) =>
         top: "0",
         transform: "translate(70%, -15px)",
         borderColor: `${color[800]} transparent ${color[800]} ${color[800]}`,
+        [theme.breakpoints.down("sm")]: {
+          borderWidth: "15px",
+          transform: "translate(70%, -10px)",
+        },
+      },
+    },
+    mainText: {
+      paddingBottom: theme.spacing(2),
+      [theme.breakpoints.down("sm")]: {
+        paddingBottom: theme.spacing(1),
       },
     },
     ribbon: {
@@ -69,6 +83,9 @@ const useStyles = (color: any) =>
       color: "white",
       borderRadius: "5px 5px 0 0",
       boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
+      [theme.breakpoints.down("sm")]: {
+        padding: theme.spacing(0.5),
+      },
       "&::before": {
         content: '""',
         borderColor: `transparent ${darken(
@@ -80,6 +97,10 @@ const useStyles = (color: any) =>
         top: "-15px",
         left: 0,
         borderWidth: "15px 15px 0 0",
+        [theme.breakpoints.down("sm")]: {
+          top: "-10px",
+          borderWidth: "10px 10px 0 0",
+        },
       },
       "&::after": {
         content: '""',
@@ -92,30 +113,17 @@ const useStyles = (color: any) =>
         top: "-15px",
         right: 0,
         borderWidth: "0 15px 15px 0",
+        [theme.breakpoints.down("sm")]: {
+          top: "-10px",
+          borderWidth: "0 10px 10px 0",
+        },
       },
-    },
-    top: {
-      zIndex: 1,
-      backgroundImage: `url(${Curl})`,
-      backgroundSize: "150%, 100%",
-      backgroundPosition: "center",
-      background: color[500],
-      borderRadius: theme.shape.borderRadius,
-      color: "white",
-      display: "flex",
-      flexDirection: "column",
-      position: "relative",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "200px",
-      overflow: "hidden",
-      boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.5) inset",
     },
     circle: {
       width: "100%",
       height: "0",
       top: "50%",
-      left: "50%",
+      left: "45%",
       transform: "translate(-50%, -50%)",
       paddingBottom: "100%",
       borderRadius: "50%",
@@ -124,6 +132,9 @@ const useStyles = (color: any) =>
       backgroundImage: `url(${Curl})`,
       background: color[500],
       zIndex: -1,
+      [theme.breakpoints.down("sm")]: {
+        borderWidth: "5px",
+      },
     },
     image: {
       width: "100%",
@@ -133,13 +144,22 @@ const useStyles = (color: any) =>
     levels: {
       position: "absolute",
       borderRadius: theme.shape.borderRadius,
-      padding: 0,
       background: color[400],
-      top: '100%',
-      right: '50px',
-      transform: 'translateY(-50%)',
-      border: '5px solid white'
-    }
+      top: "100%",
+      right: "50px",
+      transform: "translateY(-50%)",
+      border: "5px solid white",
+      [`${theme.breakpoints.down("md")}`]: {
+        padding: theme.spacing(0.5),
+        transform: "translateY(-50%) scale(0.8)",
+        "& > *": {
+          marginTop: "0!important",
+          marginBottom: "0!important",
+          marginLeft: theme.spacing(1),
+          marginRight: theme.spacing(1),
+        },
+      },
+    },
   }));
 
 const emptyCase = {
@@ -242,7 +262,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
           fontWeight="fontWeightBold"
           className={classes.right}
         >
-          <Box pb={2}>
+          <Box className={classes.mainText}>
             <Typography variant="body1" color="inherit">
               {mainText}
             </Typography>
@@ -255,38 +275,31 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
           display="flex"
           alignItems="center"
           justifyContent="center"
-          py={2}
           className={classes.levels}
         >
           {!!money && (
-            <Box py={0.5}>
               <Level
                 type="coin"
                 value={money > 0 ? `+${money}` : `${money}`}
                 title="Participation"
                 imageStep={100}
               />
-            </Box>
           )}
           {!!reputation && (
-            <Box py={0.5}>
               <Level
                 type="star"
                 value={reputation > 0 ? `+${reputation}` : `${reputation}`}
                 title="Réputation"
                 imageStep={100}
               />
-            </Box>
           )}
           {!!followers && (
-            <Box py={0.5}>
               <Level
                 type="heart"
                 value={followers > 0 ? `+${followers}` : `${followers}`}
                 title="Followers"
                 imageStep={100}
               />
-            </Box>
           )}
         </Box>
       </Box>

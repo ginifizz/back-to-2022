@@ -1,5 +1,12 @@
 import React, { useCallback } from "react";
-import { makeStyles } from "@material-ui/core";
+import {
+  Typography,
+  Theme,
+  makeStyles,
+  Box,
+  Button,
+  useMediaQuery,
+} from "@material-ui/core";
 import Levels from "./components/Levels";
 import { DiceFaceType } from "./components/Dice";
 import Curl from "./assets/curl.svg";
@@ -129,7 +136,11 @@ export const positionState = selector<number>({
       : set(gameState, { ...get(gameState), position: newValue }),
 });
 
-export const scoreState = selector<{money: number, followers: number, reputation: number}>({
+export const scoreState = selector<{
+  money: number;
+  followers: number;
+  reputation: number;
+}>({
   key: "score",
   get: ({ get }) => get(gameState).score,
   set: ({ set, get }, newValue) =>
@@ -152,9 +163,23 @@ const useStyles = makeStyles({
     backgroundImage: `url(${Curl}), radial-gradient(#00c4c2, #0383c2);`,
     backgroundSize: "150%, 100%",
     backgroundPosition: "center",
-    height: "100vh",
+    height: "100%",
     overflow: "hidden",
-  }
+    position: "relative",
+    "@media (orientation: portrait)": {
+      backgroundSize: "200%, 200%",
+    },
+  },
+  game: {
+    "@media (orientation: portrait)": {
+      display: "none",
+    },
+  },
+  button: {
+    "@media (orientation: landscape)": {
+      display: "none",
+    },
+  },
 });
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -165,7 +190,7 @@ const Game: React.ComponentType = () => {
   const [currentCase, setCurrentCase] = useRecoilState(currentCaseState);
   const [year, setYear] = useRecoilState(yearState);
   const [cards, setCards] = useRecoilState(cardsState);
-  const [dice, setDice] = useRecoilState(diceState);
+  const [, setDice] = useRecoilState(diceState);
   const [game, setGame] = useRecoilState(gameState);
 
   const onResult = useCallback(() => {
@@ -173,37 +198,51 @@ const Game: React.ComponentType = () => {
   }, [setStep]);
   const classes = useStyles();
 
-  const getCaseContent = useCallback((category: CASE_CATEGORY) => {
-    const availableCases = cards.filter((card) => card.type === category);
-    const caseContent =
-      availableCases[Math.floor(Math.random() * availableCases.length)];
-    setCards(cards.filter(card => card !== caseContent));
-    console.log(cards.length);
-    return caseContent;
-  }, [cards, setCards]);
+  const getCaseContent = useCallback(
+    (category: CASE_CATEGORY) => {
+      const availableCases = cards.filter((card) => card.type === category);
+      const caseContent =
+        availableCases[Math.floor(Math.random() * availableCases.length)];
+      setCards(cards.filter((card) => card !== caseContent));
+      console.log(cards.length);
+      return caseContent;
+    },
+    [cards, setCards]
+  );
 
-  const onDiceEnd = useCallback(async (diceFace) => {
-    let currentPosition = position;
-    let newPosition = position + diceFace;
-    if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
-    while (currentPosition !== newPosition) {
-      currentPosition++;
-      if (currentPosition > 15) currentPosition = 0;
-      await wait(300);
-      setPosition(currentPosition);
-      if (currentPosition === 0) {
-        const newYear = year + 1;
-        setYear(newYear);
+  const onDiceEnd = useCallback(
+    async (diceFace) => {
+      let currentPosition = position;
+      let newPosition = position + diceFace;
+      if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
+      while (currentPosition !== newPosition) {
+        currentPosition++;
+        if (currentPosition > 15) currentPosition = 0;
         await wait(300);
-        if (newYear > 4) {
-          onResult();
-          return;
+        setPosition(currentPosition);
+        if (currentPosition === 0) {
+          const newYear = year + 1;
+          setYear(newYear);
+          await wait(300);
+          if (newYear > 4) {
+            onResult();
+            return;
+          }
         }
       }
-    }
-    await wait(300);
-    setCurrentCase(getCaseContent(boardCases[newPosition]));
-  }, [onResult, setYear, year, setPosition, setCurrentCase, getCaseContent, position]);
+      await wait(500);
+      setCurrentCase(getCaseContent(boardCases[newPosition]));
+    },
+    [
+      onResult,
+      setYear,
+      year,
+      setPosition,
+      setCurrentCase,
+      getCaseContent,
+      position,
+    ]
+  );
 
   const onCardClose = useCallback(() => {
     const { score, currentCase } = game;
@@ -214,24 +253,58 @@ const Game: React.ComponentType = () => {
       score: {
         money: score.money + currentCase?.money,
         followers: score.followers + currentCase?.followers,
-        reputation: score.reputation + currentCase?.reputation
-      }
-    })
+        reputation: score.reputation + currentCase?.reputation,
+      },
+    });
     setCurrentCase(undefined);
-    setDice(prevDice => ({
+    setDice((prevDice) => ({
       ...prevDice,
-      canRoll: true
+      canRoll: true,
     }));
   }, [setDice, setCurrentCase, setGame, game]);
 
+  // eslint-disable-next-line no-restricted-globals
+  const isPortrait = useMediaQuery(
+    (theme: Theme) =>
+      `${theme.breakpoints.down("xs")} and (orientation:portrait)`
+  );
+
+  const setLandscape = async () => {
+    await document.body.requestFullscreen();
+    // eslint-disable-next-line no-restricted-globals
+    await screen.orientation.lock("landscape");
+  };
+
   return (
     <div className={classes.background}>
-      <Levels />
-      <StartModal open={step === GAME_STEPS.START_SCREEN} />
-      <ResultModal open={step === GAME_STEPS.RESULT_SCREEN} />
-      <Board position={position} />
-      <DiceButton onDiceEnd={onDiceEnd} />
-      <CaseModal content={currentCase} onClose={onCardClose} />
+      {!isPortrait && (
+        <>
+          <Levels />
+          <StartModal open={step === GAME_STEPS.START_SCREEN} />
+          <ResultModal open={step === GAME_STEPS.RESULT_SCREEN} />
+          <Board position={position} />
+          <DiceButton onDiceEnd={onDiceEnd} />
+          <CaseModal content={currentCase} onClose={onCardClose} />
+        </>
+      )}
+      {isPortrait && (
+        <Box
+          p={2}
+          width="100%"
+          height="100%"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Typography variant='h3'>OUPS...</Typography>
+          <Typography align='center' variant="body2" gutterBottom>
+            Ce jeu est optimisé pour un format paysage, désolée&nbsp;!
+          </Typography>
+          <br/>
+          <Button onClick={setLandscape}>Afficher le jeu</Button>
+        </Box>
+      )}
     </div>
   );
 };

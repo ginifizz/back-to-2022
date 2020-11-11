@@ -7,12 +7,22 @@ import Dice, { getRandomDiceNumber, DiceFaceType } from "./Dice";
 const useStyles = (canRoll: boolean) =>
   makeStyles((theme) => ({
     dice: {
+      boxSizing: 'content-box',
       position: "relative",
       left: "50%",
       top: "30%",
       width: "80%",
       height: "80%",
       transform: "translate(-50%, -50%) scale(0.8) ",
+      [theme.breakpoints.down("md")]: {
+        transform: "translate(-50%, -50%) scale(0.65) ",
+      },
+      [theme.breakpoints.down("sm")]: {
+        transform: "translate(-50%, -50%) scale(0.5) ",
+      },
+      "& *": {
+        boxSizing: 'content-box'
+      }
     },
     circle: {
       position: "absolute",
@@ -24,6 +34,21 @@ const useStyles = (canRoll: boolean) =>
       background: `linear-gradient(to bottom, #00020245, #01181b38)`,
       border: "3px solid #00020245",
       boxShadow: "inset 0px 8px 5px 0px rgba(0,0,0,0.3)",
+      "@media (orientation: portrait)": {
+        left: "50%",
+        right: "initial",
+        transform: "translateX(-50%)",
+        bottom: theme.spacing(2),
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "90px",
+        height: "90px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "80px",
+        height: "80px",
+        bottom: theme.spacing(2),
+      },
     },
     button: {
       position: "absolute",
@@ -33,6 +58,15 @@ const useStyles = (canRoll: boolean) =>
       transform: canRoll
         ? "translate(-50%, -50%)"
         : "translate(-50%, -50%) scale(0)",
+      [theme.breakpoints.down("md")]: {
+        top: "100%",
+        padding: `${theme.spacing(0.5)}px ${theme.spacing(1)}px`,
+      },
+      [theme.breakpoints.down("sm")]: {
+        padding: `0 ${theme.spacing(1)}px`,
+        top: "50%",
+        fontSize: "0.8rem",
+      },
     },
   }));
 

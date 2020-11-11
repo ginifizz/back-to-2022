@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, makeStyles, Typography } from "@material-ui/core";
-import { cyan } from "@material-ui/core/colors";
 import { useRecoilState } from "recoil";
 import { scoreState, yearState } from "../Game";
 import Logo from "../assets/logo2.svg";
@@ -51,17 +50,42 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
     alignItems: "flex-start",
     boxSizing: "border-box",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "space-between",
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+    },
+  },
+  levels: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    [`${theme.breakpoints.down("xs")} and (orientation: portrait)`]: {
+      flexDirection: "column",
+    },
   },
   logo: {
     position: "absolute",
     top: "20px",
     left: "20px",
     width: "300px",
+    [theme.breakpoints.down("md")]: {
+      width: "200px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   calendar: {
     width: "90px",
+    minWidth: "90px",
     position: "relative",
     marginLeft: theme.spacing(3),
+    [theme.breakpoints.down("sm")]: {
+      width: "80px",
+      minWidth: "80px",
+      marginLeft: 0,
+    },
     "&::before": {
       content: '""',
       width: "120%",
@@ -95,6 +119,7 @@ const Levels: React.ComponentType = () => {
   return (
     <Box className={classes.menu}>
       <img src={Logo} alt="logo" className={classes.logo} />
+      <Box className={classes.levels}>
       <Level
         value={score.reputation.toString()}
         title="Réputation"
@@ -106,6 +131,7 @@ const Levels: React.ComponentType = () => {
         title="Followers"
         type="heart"
       />
+      </Box>
       <Box className={classes.calendar}>
         <img src={CalendarBack} alt="Calendrier" />
         <Typography className={classes.calendarTitle} variant="body2">

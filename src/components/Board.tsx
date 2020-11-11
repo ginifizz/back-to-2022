@@ -29,32 +29,34 @@ const positions: string[] = [
   " 4 / 5 / 5 / 6",
 ];
 
-const useStyles = makeStyles((theme) => ({
-  perspective: {
-    backgroundColor: "#012531",
-    border: "5px solid #fff",
-    padding: theme.spacing(2),
-    position: "absolute",
-    transform:
-      "translate(-50%, -50%) rotateX(60deg) rotateY(0deg) rotateZ(-45deg)",
-    transformStyle: "preserve-3d",
-    display: "grid",
-    gridTemplateColumns: "repeat(5, 1fr)",
-    gridTemplateRows: "repeat(5, 1fr)",
-    gap: `2%`,
-    width: "90vh",
-    height: "90vh",
-    left: "50%",
-    top: "60%",
-    "@media (orientation: portrait)": {
-      width: "60vw",
-      height: "60vw",
+const useStyles = (position: number) =>
+  makeStyles((theme) => ({
+    perspective: {
+      backgroundColor: "#012531",
+      border: "5px solid #fff",
+      padding: "1%",
+      position: "absolute",
+      transform:
+        "translate(-50%, -50%) rotateX(60deg) rotateY(0deg) rotateZ(-45deg)",
+      transformStyle: "preserve-3d",
+      display: "grid",
+      gridTemplateColumns: "repeat(5, 1fr)",
+      gridTemplateRows: "repeat(5, 1fr)",
+      gap: `2%`,
+      width: "90vh",
+      height: "90vh",
+      left: "50%",
+      top: "60%",
+      "@media (orientation: portrait)": {
+        width: "60vh",
+        height: "60vh",
+        top: "50%"
+      },
     },
-  },
-}));
+  }));
 
 const Board: React.ComponentType<{position: number}> = ({ position }) => {
-  const classes = useStyles();
+  const classes = useStyles(position)();
 
   return (
     <div className={classes.perspective}>

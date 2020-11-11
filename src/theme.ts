@@ -3,6 +3,15 @@ import amber from "@material-ui/core/colors/amber";
 import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 700,
+      md: 900,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   typography: {
     fontFamily: "Roboto Slab",
     fontWeightBold: 800,
@@ -11,20 +20,34 @@ const theme = createMuiTheme({
     },
     h5: {
       fontWeight: 800,
+      lineHeight: 0.8,
+      "@media (max-width:900px)": {
+        fontSize: "1rem",
+        lineHeight: 1,
+      },
     },
     overline: {
       lineHeight: 1.2,
       fontWeight: 800,
-      fontSize: "10px",
+      fontSize: "0.7rem",
+      "@media (max-width:900px)": {
+        fontSize: "0.5rem",
+      },
     },
     body1: {
       fontSize: "1.5rem",
       fontWeight: 800,
       lineHeight: "1.2",
+      "@media (max-width:900px)": {
+        fontSize: "1rem",
+      },
     },
     body2: {
       fontSize: "1.1rem",
       fontWeight: 800,
+      "@media (max-width:900px)": {
+        fontSize: "0.8rem",
+      },
     },
   },
   shape: {
@@ -39,6 +62,13 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiIconButton: {
+      root: {
+        "@media (max-width:900px)": {
+          padding: "4px",
+        },
+      },
+    },
     MuiButton: {
       root: {
         fontSize: "1rem",
@@ -46,7 +76,10 @@ const theme = createMuiTheme({
         background: `linear-gradient(to bottom, ${amber[300]}, ${amber[800]})`,
         borderRadius: "64px",
         fontWeight: 900,
-        padding: '10px 20px'
+        padding: "10px 20px",
+        "@media (max-width:900px)": {
+          padding: "4px 10px",
+        },
       },
       label: {
         color: deepOrange[800],
@@ -55,10 +88,13 @@ const theme = createMuiTheme({
     MuiDialog: {
       paper: {
         overflowY: "visible",
-        boxShadow: 'none'
+        boxShadow: "none",
       },
       paperFullScreen: {
-        height: '90%'
+        height: "90%",
+      },
+      paperWidthMd: {
+        maxWidth: '800px'
       }
     },
   },

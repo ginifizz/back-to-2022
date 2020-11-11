@@ -19,7 +19,12 @@ const useStyles = makeStyles<Theme, PawnType>((theme) => ({
     position: "relative",
     transform: "translate3d(-50%, -50%, 40px)",
     transformStyle: "preserve-3d",
-    transition: 'all ease 0.3s',
+    transition: "all ease 0.3s",
+    [`${theme.breakpoints.down("sm")}`]: {
+      height: "20px",
+      width: "20px",
+      transform: "translate3d(-50%, -50%, 20px)",
+    },
     "&::before": {
       position: "absolute",
       boxShadow: "inset 0 0 0 .25em hsla(0,0%,0%,.1)",

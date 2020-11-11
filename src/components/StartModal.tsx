@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "40%",
     maxHeight: "100%",
+    [theme.breakpoints.down("md")]: {
+      width: "35%",
+      maxHeight: "70vh",
+    },
   },
   button: {
     position: "absolute",
@@ -29,7 +33,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexDirection: "row",
     [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
+      "@media (orientation: portrait)": {
+        flexDirection: "column",
+        paddingBottom: theme.spacing(3),
+      },
     },
   },
 }));
@@ -67,13 +74,13 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
           <Box pb={2}>
             <Typography variant="body1" color="inherit">
               Le mandat de gérant de Kévin arrive à son terme... Et il a décidé
-              de raccrocher les gants !
+              de raccrocher les gants&nbsp;!
             </Typography>
           </Box>
           <Typography variant="body2" color="textPrimary">
             Tu penses être capable de prendre sa succession ? Alors teste cette
             simulation et découvre si tu as les épaules pour terminer un mandat
-            entier sans plomber les finances et la réputation de la SCOP !
+            entier sans plomber les finances et la réputation de la SCOP&nbsp;!
           </Typography>
         </Box>
       </Box>

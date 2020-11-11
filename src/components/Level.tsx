@@ -16,7 +16,22 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "30px",
     border: "3px solid #00020245",
     boxShadow: "inset 0px 8px 5px 0px rgba(0,0,0,0.3)",
-    minWidth: '90px'
+    minWidth: "90px",
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(5),
+    paddingBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    margin: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "0px",
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(4),
+      paddingBottom: theme.spacing(0.5),
+      paddingTop: theme.spacing(0.5),
+    },
+    [`${theme.breakpoints.down("sm")} and (orientation: portrait)`]: {
+      minWidth: "70px",
+    },
   },
   image: {
     position: "absolute",
@@ -47,10 +62,6 @@ const Level:React.ComponentType<LevelType> = ({ value, type, title, imageStep })
         alignItems="center"
         justifyContent="center"
         className={classes.level}
-        pl={5}
-        pr={2}
-        py={0.5}
-        mx={2}
         color="#fff"
       >
         <img
@@ -58,13 +69,7 @@ const Level:React.ComponentType<LevelType> = ({ value, type, title, imageStep })
           className={classes.image}
           src={`${process.env.PUBLIC_URL}/img/levels_${picture}.svg`}
         />
-        <Box
-          lineHeight={0.8}
-          fontSize="h5.fontSize"
-          fontWeight="fontWeightBold"
-        >
-          {value}%
-        </Box>
+        <Typography variant="h5">{value}%</Typography>
         <Typography variant="overline">{title}</Typography>
       </Box>
     );}
