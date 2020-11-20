@@ -10,7 +10,12 @@ import {
 import Levels from "./components/Levels";
 import { DiceFaceType } from "./components/Dice";
 import Curl from "./assets/curl.svg";
-import { useRecoilState, atom, selector, DefaultValue } from "recoil";
+import {
+  useRecoilState,
+  atom,
+  selector,
+  DefaultValue,
+} from "recoil";
 import ResultModal from "./components/ResultModal";
 import StartModal from "./components/StartModal";
 import CaseModal from "./components/CaseModal";
@@ -50,7 +55,7 @@ export type CaseType = {
   followers: number;
   mainText: string;
   secondaryText: string;
-  asset?: string;
+  ref?: string;
 };
 
 type GameStateType = {
@@ -204,7 +209,6 @@ const Game: React.ComponentType = () => {
       const caseContent =
         availableCases[Math.floor(Math.random() * availableCases.length)];
       setCards(cards.filter((card) => card !== caseContent));
-      console.log(cards.length);
       return caseContent;
     },
     [cards, setCards]
@@ -275,6 +279,112 @@ const Game: React.ComponentType = () => {
     await screen.orientation.lock("landscape");
   };
 
+  /*
+    const reset = useResetRecoilState(gameState);
+
+  const testGame = useCallback(() => {
+    let position = 0;
+    let year = 1;
+    let score = {
+      reputation: 100,
+      followers: 100,
+      money: 100,
+    };
+    while (year < 5) {
+      const dice = getRandomDiceNumber();
+      position += dice;
+      if (position > 15) {
+        year++;
+        if (year > 4) {
+          reset();
+          return score;
+        }
+        position = position - 15 - 1;
+      }
+      const content = getCaseContent(boardCases[position]);
+      score.reputation += content.reputation;
+      score.followers += content.followers;
+      score.money += content.money;
+    }
+    reset();
+    return score;
+  }, [reset, getCaseContent]);
+
+  const launchGames = useCallback(
+    (count) => {
+      const scores: any[] = [];
+      for (let i = 0; i < count; i++) {
+        scores.push(testGame());
+      }
+      console.log("REPUTATION");
+      console.log(
+        "<30",
+        scores.filter((score) => score.reputation <= 30).length
+      );
+      console.log(
+        "<60",
+        scores.filter(
+          (score) => score.reputation > 30 && score.reputation <= 60
+        ).length
+      );
+      console.log(
+        "<90",
+        scores.filter(
+          (score) => score.reputation > 60 && score.reputation <= 90
+        ).length
+      );
+      console.log(
+        "<120",
+        scores.filter(
+          (score) => score.reputation > 90 && score.reputation <= 120
+        ).length
+      );
+      console.log(
+        ">120",
+        scores.filter((score) => score.reputation > 120).length
+      );
+      console.log("MONEY");
+      console.log("<30", scores.filter((score) => score.money <= 30).length);
+      console.log(
+        "<60",
+        scores.filter((score) => score.money > 30 && score.money <= 60).length
+      );
+      console.log(
+        "<90",
+        scores.filter((score) => score.money > 60 && score.money <= 90).length
+      );
+      console.log(
+        "<120",
+        scores.filter((score) => score.money > 90 && score.money <= 120).length
+      );
+      console.log(">120", scores.filter((score) => score.money > 120).length);
+      console.log("FOLLOWERS");
+ console.log("<60", scores.filter((score) => score.followers <= 60).length);
+ console.log(
+   "<90",
+   scores.filter((score) => score.followers > 60 && score.followers <= 90)
+     .length
+ );
+ console.log(
+   "<120",
+   scores.filter((score) => score.followers > 90 && score.followers <= 120)
+     .length
+ );
+  console.log(
+    "<150",
+    scores.filter((score) => score.followers > 120 && score.followers <= 150)
+      .length
+  );
+ console.log(">150", scores.filter((score) => score.followers > 150).length);
+    },
+    [testGame]
+  );
+
+  useEffect(() => {
+    launchGames(1000);
+  }, [launchGames]);
+  */
+
   return (
     <div className={classes.background}>
       {!isPortrait && (
@@ -297,11 +407,11 @@ const Game: React.ComponentType = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Typography variant='h3'>OUPS...</Typography>
-          <Typography align='center' variant="body2" gutterBottom>
+          <Typography variant="h3">OUPS...</Typography>
+          <Typography align="center" variant="body2" gutterBottom>
             Ce jeu est optimisé pour un format paysage, désolée&nbsp;!
           </Typography>
-          <br/>
+          <br />
           <Button onClick={setLandscape}>Afficher le jeu</Button>
         </Box>
       )}

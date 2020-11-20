@@ -7,7 +7,7 @@ import Level from "./Level";
 import CalendarBack from "../assets/calendar.svg";
 import Paper from "../assets/paper.svg";
 
-const usePaperStyles = (past: boolean) =>
+const usePaperStyles = (gameYear: number, year: number) =>
   makeStyles((theme) => ({
     paper: {
       position: "absolute",
@@ -17,14 +17,14 @@ const usePaperStyles = (past: boolean) =>
       height: "62%",
       background: `left 0 bottom 0 no-repeat url(${Paper})`,
       transition: "all ease 1s",
-      opacity: past ? 0 : 1,
-      transform: !past ? "none" : "translate(100px, 100px) rotate(-45deg);",
+      opacity: (year !== gameYear) ? 0 : 1,
+      transform: (year >= gameYear) ? "none" : "translate(100px, 100px) rotate(-45deg);",
     },
   }));
 
 const PaperYear: React.ComponentType<{ year: number }> = ({ year }) => {
   const [gameYear] = useRecoilState(yearState);
-  const classes = usePaperStyles(gameYear > year)();
+  const classes = usePaperStyles(gameYear, year)();
 
   return (
     <Box
@@ -62,6 +62,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "flex-start",
     [`${theme.breakpoints.down("xs")} and (orientation: portrait)`]: {
       flexDirection: "column",
+    },
+  },
+  level: {
+    margin: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      margin: theme.spacing(1),
     },
   },
   logo: {
@@ -120,17 +126,27 @@ const Levels: React.ComponentType = () => {
     <Box className={classes.menu}>
       <img src={Logo} alt="logo" className={classes.logo} />
       <Box className={classes.levels}>
-      <Level
-        value={score.reputation.toString()}
-        title="Réputation"
-        type="star"
-      />
-      <Level value={score.money.toString()} title="Participation" type="coin" />
-      <Level
-        value={score.followers.toString()}
-        title="Followers"
-        type="heart"
-      />
+        <div className={classes.level}>
+          <Level
+            value={score.reputation.toString()}
+            title="Réputation"
+            type="star"
+          />
+        </div>
+        <div className={classes.level}>
+          <Level
+            value={score.money.toString()}
+            title="Participation"
+            type="coin"
+          />
+        </div>
+        <div className={classes.level}>
+          <Level
+            value={score.followers.toString()}
+            title="Followers"
+            type="heart"
+          />
+        </div>
       </Box>
       <Box className={classes.calendar}>
         <img src={CalendarBack} alt="Calendrier" />

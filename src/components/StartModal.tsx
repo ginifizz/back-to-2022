@@ -78,13 +78,18 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
             </Typography>
           </Box>
           <Typography variant="body2" color="textPrimary">
-            Tu penses être capable de prendre sa succession ? Alors teste cette
+            Tu penses être capable de prendre sa succession&nbsp;? Alors teste cette
             simulation et découvre si tu as les épaules pour terminer un mandat
             entier sans plomber les finances et la réputation de la SCOP&nbsp;!
           </Typography>
         </Box>
       </Box>
-      <Button className={classes.button} variant="contained" color="primary" onClick={onStart}>
+      <Button
+        className={classes.button}
+        variant="contained"
+        color="primary"
+        onClick={onStart}
+      >
         Commencer !
       </Button>
     </GameModal>

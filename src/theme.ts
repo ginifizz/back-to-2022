@@ -39,14 +39,16 @@ const theme = createMuiTheme({
       fontWeight: 800,
       lineHeight: "1.2",
       "@media (max-width:900px)": {
-        fontSize: "1rem",
+        fontSize: "0.95rem",
+        lineHeight: "1.1",
       },
     },
     body2: {
       fontSize: "1.1rem",
       fontWeight: 800,
       "@media (max-width:900px)": {
-        fontSize: "0.8rem",
+        fontSize: "0.75rem",
+        lineHeight: "1.2",
       },
     },
   },
@@ -70,7 +72,7 @@ const theme = createMuiTheme({
       },
     },
     MuiButton: {
-      root: {
+      contained: {
         fontSize: "1rem",
         border: `2px solid ${amber[500]}`,
         background: `linear-gradient(to bottom, ${amber[300]}, ${amber[800]})`,
@@ -80,9 +82,12 @@ const theme = createMuiTheme({
         "@media (max-width:900px)": {
           padding: "4px 10px",
         },
+        "& .MuiButton-label": {
+          color: deepOrange[800],
+        },
       },
-      label: {
-        color: deepOrange[800],
+      text: {
+        padding: 0,
       },
     },
     MuiDialog: {
@@ -94,8 +99,23 @@ const theme = createMuiTheme({
         height: "90%",
       },
       paperWidthMd: {
-        maxWidth: '800px'
-      }
+        maxWidth: "800px",
+      },
+    },
+    MuiTooltip: {
+      tooltip: {
+        transform: "rotate(-3deg)!important",
+        backgroundColor: "white",
+        color: "#000",
+        borderRadius: "10px",
+        fontSize: "0.8rem",
+        padding: "10px",
+        boxShadow:
+          "0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)",
+      },
+      arrow: {
+        color: "white",
+      },
     },
   },
 });

@@ -6,7 +6,10 @@ import {
   makeStyles,
   Theme,
   darken,
-  Grow
+  Grow,
+  Tooltip,
+  Button,
+  ClickAwayListener,
 } from "@material-ui/core";
 import Curl from "../assets/curl.svg";
 import Level from "./Level";
@@ -14,6 +17,7 @@ import { CaseType } from "../Game";
 import { colors, titles } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan } from "@material-ui/core/colors";
+import Help from "@material-ui/icons/HelpOutline";
 import GameModal from './GameModal';
 
 interface CaseModalProps extends Omit<DialogProps, "open"> {
@@ -21,7 +25,7 @@ interface CaseModalProps extends Omit<DialogProps, "open"> {
   onClose: () => void;
 }
 
-const useStyles = (color: any) =>
+const useStyles = (color: any, withTooltip: boolean = false) =>
   makeStyles<Theme>((theme) => ({
     left: {
       width: "40%",
@@ -36,7 +40,7 @@ const useStyles = (color: any) =>
       position: "absolute",
       zIndex: 2,
       bottom: 0,
-      left: "50%",
+      left: "45%",
       transform: "translateX(-50%)",
       minWidth: "80%",
       "&::before": {
@@ -79,12 +83,17 @@ const useStyles = (color: any) =>
       zIndex: 2,
       background: color[700],
       padding: theme.spacing(1),
+      minHeight: "50px",
       textAlign: "center",
       color: "white",
       borderRadius: "5px 5px 0 0",
       boxShadow: "0px 10px 15px 0px rgba(0,0,0,0.3)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       [theme.breakpoints.down("sm")]: {
         padding: theme.spacing(0.5),
+        minHeight: "30px",
       },
       "&::before": {
         content: '""',
@@ -146,19 +155,25 @@ const useStyles = (color: any) =>
       borderRadius: theme.shape.borderRadius,
       background: color[400],
       top: "100%",
-      right: "50px",
-      transform: "translateY(-50%)",
+      right: "30px",
+      transform: "translateY(-50%) scale(0.8)",
       border: "5px solid white",
-      [`${theme.breakpoints.down("md")}`]: {
-        padding: theme.spacing(0.5),
-        transform: "translateY(-50%) scale(0.8)",
-        "& > *": {
-          marginTop: "0!important",
-          marginBottom: "0!important",
-          marginLeft: theme.spacing(1),
-          marginRight: theme.spacing(1),
-        },
-      },
+    },
+    tooltipButton: {
+      color: color[800],
+    },
+    toolTipLayer: {
+      position: "fixed",
+      opacity: withTooltip ? 1 : 0,
+      transition: "opacity ease 0.3s",
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      width: "100%",
+      height: "100%",
+      left: 0,
+      top: 0,
+      zIndex: 1400,
+      pointerEvents: withTooltip ? 'initial' : 'none',
+      transform: `scale(${withTooltip ? 1 : 0})`
     },
   }));
 
@@ -169,6 +184,7 @@ const emptyCase = {
   reputation: 0,
   money: 0,
   followers: 0,
+  ref: null
 };
 
 const Transition = React.forwardRef(function Transition(
@@ -196,11 +212,13 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
     money,
     followers,
     reputation,
+    ref
   } = content;
 
   const [open, setOpen] = useState(false);
+  const [openRef, setOpenRef] = useState(false);
   const color = type ? colors[type] : cyan;
-  const classes = useStyles(color)();
+  const classes = useStyles(color, openRef)();
 
   useEffect(() => {
     if (type) setOpen(true);
@@ -210,100 +228,140 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
     setOpen(false);
   };
 
+   const handleTooltipClose = () => {
+     setOpenRef(false);
+   };
+
+   const handleTooltipOpen = () => {
+     setOpenRef(true);
+   };
+
   return (
-    <GameModal
-      onClose={handleClose}
-      TransitionComponent={Transition}
-      {...props}
-      keepMounted
-      open={open}
-      onExited={onClose}
-      color={color}
-      maxWidth="md"
-    >
-      <Box
-        p={1}
-        pb={2}
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
+    <>
+      <GameModal
+        onClose={handleClose}
+        TransitionComponent={Transition}
+        {...props}
+        keepMounted
+        open={open}
+        onExited={onClose}
+        color={color}
+        maxWidth="md"
       >
-        <div className={classes.left}>
-          {type && (
-            <>
-              <div className={classes.circle} />
-              <img
-                src={`${process.env.PUBLIC_URL}/cases/${type}.png`}
-                className={classes.image}
-                alt={type}
-              />
-              <div className={classes.title}>
-                <div className={classes.ribbon}>
-                  <Typography variant="h5" color="inherit">
-                    {type && titles[type]}
-                  </Typography>
+        <Box
+          p={1}
+          pb={3}
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <div className={classes.left}>
+            {type && (
+              <>
+                <div className={classes.circle} />
+                <img
+                  src={`${process.env.PUBLIC_URL}/cases/${type}.png`}
+                  className={classes.image}
+                  alt={type}
+                />
+                <div className={classes.title}>
+                  <div className={classes.ribbon}>
+                    <Typography variant="h5" color="inherit">
+                      {type && titles[type]}
+                    </Typography>
+                  </div>
                 </div>
-              </div>
-            </>
-          )}
-        </div>
-        <Box
-          pl={2}
-          pr={8}
-          py={2}
-          flex={1}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          fontSize="body1.fontSize"
-          lineHeight={1.2}
-          fontWeight="fontWeightBold"
-          className={classes.right}
-        >
-          <Box className={classes.mainText}>
-            <Typography variant="body1" color="inherit">
-              {mainText}
+              </>
+            )}
+          </div>
+          <Box
+            pr={8}
+            py={0.5}
+            flex={1}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            fontSize="body1.fontSize"
+            lineHeight={1.2}
+            fontWeight="fontWeightBold"
+            className={classes.right}
+          >
+            <Box className={classes.mainText}>
+              <Typography variant="body1" color="inherit">
+                {mainText}
+              </Typography>
+            </Box>
+            <Typography variant="body2" color="textPrimary" gutterBottom>
+              {secondaryText}
             </Typography>
+            {ref && (
+              <ClickAwayListener onClickAway={handleTooltipClose}>
+                <Box position="relative">
+                  <Tooltip
+                    arrow
+                    onClose={handleTooltipClose}
+                    open={openRef}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                    placement="top"
+                    title={ref || "Y'a pas de ref"}
+                  >
+                    <Button className={classes.tooltipButton} variant="text" onClick={handleTooltipOpen}>
+                      <Help />
+                      <Box pl={0.5}>
+                        <Typography variant="caption" component="p">
+                          C'est quoi la ref ?
+                        </Typography>
+                      </Box>
+                    </Button>
+                  </Tooltip>
+                </Box>
+              </ClickAwayListener>
+            )}
           </Box>
-          <Typography variant="body2" color="textPrimary">
-            {secondaryText}
-          </Typography>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            className={classes.levels}
+          >
+            {!!money && (
+              <Box my={0.5} mx={1.5}>
+                <Level
+                  type="coin"
+                  value={money > 0 ? `+${money}` : `${money}`}
+                  title="Participation"
+                  imageStep={100}
+                />
+              </Box>
+            )}
+            {!!reputation && (
+              <Box my={0.5} mx={1.5}>
+                <Level
+                  type="star"
+                  value={reputation > 0 ? `+${reputation}` : `${reputation}`}
+                  title="Réputation"
+                  imageStep={100}
+                />
+              </Box>
+            )}
+            {!!followers && (
+              <Box my={0.5} mx={1.5}>
+                <Level
+                  type="heart"
+                  value={followers > 0 ? `+${followers}` : `${followers}`}
+                  title="Followers"
+                  imageStep={100}
+                />
+              </Box>
+            )}
+          </Box>
         </Box>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          className={classes.levels}
-        >
-          {!!money && (
-              <Level
-                type="coin"
-                value={money > 0 ? `+${money}` : `${money}`}
-                title="Participation"
-                imageStep={100}
-              />
-          )}
-          {!!reputation && (
-              <Level
-                type="star"
-                value={reputation > 0 ? `+${reputation}` : `${reputation}`}
-                title="Réputation"
-                imageStep={100}
-              />
-          )}
-          {!!followers && (
-              <Level
-                type="heart"
-                value={followers > 0 ? `+${followers}` : `${followers}`}
-                title="Followers"
-                imageStep={100}
-              />
-          )}
-        </Box>
-      </Box>
-    </GameModal>
+      </GameModal>
+      <div className={classes.toolTipLayer} />
+    </>
   );
 };
 

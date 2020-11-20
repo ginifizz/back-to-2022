@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(5),
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1),
-    margin: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
       minWidth: "0px",
       paddingRight: theme.spacing(2),
