@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   DialogProps,
   Box,
@@ -18,7 +18,7 @@ import { colors, titles } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan } from "@material-ui/core/colors";
 import Help from "@material-ui/icons/HelpOutline";
-import GameModal from './GameModal';
+import GameModal from "./GameModal";
 
 interface CaseModalProps extends Omit<DialogProps, "open"> {
   content?: CaseType;
@@ -172,8 +172,8 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
       left: 0,
       top: 0,
       zIndex: 1400,
-      pointerEvents: withTooltip ? 'initial' : 'none',
-      transform: `scale(${withTooltip ? 1 : 0})`
+      pointerEvents: withTooltip ? "initial" : "none",
+      transform: `scale(${withTooltip ? 1 : 0})`,
     },
   }));
 
@@ -184,7 +184,7 @@ const emptyCase = {
   reputation: 0,
   money: 0,
   followers: 0,
-  ref: null
+  ref: null,
 };
 
 const Transition = React.forwardRef(function Transition(
@@ -212,7 +212,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
     money,
     followers,
     reputation,
-    ref
+    ref,
   } = content;
 
   const [open, setOpen] = useState(false);
@@ -228,13 +228,33 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
     setOpen(false);
   };
 
-   const handleTooltipClose = () => {
-     setOpenRef(false);
-   };
+  const handleTooltipClose = () => {
+    setOpenRef(false);
+  };
 
-   const handleTooltipOpen = () => {
-     setOpenRef(true);
-   };
+  const handleTooltipOpen = () => {
+    setOpenRef(true);
+  };
+
+  const formattedMainText = useMemo(
+    () =>
+      mainText &&
+      mainText
+        .replace(/\s\!/gi, "&nbsp;!")
+        .replace(/\s\:/gi, "&nbsp;!")
+        .replace(/\s\?/gi, "&nbsp;!"),
+    [mainText]
+  );
+
+  const formattedSecondaryText = useMemo(
+    () =>
+      secondaryText &&
+      secondaryText
+        .replace(/\s\!/gi, "&nbsp;!")
+        .replace(/\s\:/gi, "&nbsp;!")
+        .replace(/\s\?/gi, "&nbsp;!"),
+    [secondaryText]
+  );
 
   return (
     <>
@@ -288,12 +308,17 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             className={classes.right}
           >
             <Box className={classes.mainText}>
-              <Typography variant="body1" color="inherit">
-                {mainText}
+              <Typography variant="body1" color="inherit" component="div">
+                <span dangerouslySetInnerHTML={{ __html: formattedMainText }} />
               </Typography>
             </Box>
-            <Typography variant="body2" color="textPrimary" gutterBottom>
-              {secondaryText}
+            <Typography
+              variant="body2"
+              color="textPrimary"
+              gutterBottom
+              component="div"
+            >
+              <span dangerouslySetInnerHTML={{ __html: formattedSecondaryText }} />
             </Typography>
             {ref && (
               <ClickAwayListener onClickAway={handleTooltipClose}>
@@ -306,9 +331,16 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
                     disableHoverListener
                     disableTouchListener
                     placement="top"
-                    title={ref || "Y'a pas de ref"}
+                    title={
+                      <div dangerouslySetInnerHTML={{ __html: ref }} /> ||
+                      "Y'a pas de ref"
+                    }
                   >
-                    <Button className={classes.tooltipButton} variant="text" onClick={handleTooltipOpen}>
+                    <Button
+                      className={classes.tooltipButton}
+                      variant="text"
+                      onClick={handleTooltipOpen}
+                    >
                       <Help />
                       <Box pl={0.5}>
                         <Typography variant="caption" component="p">

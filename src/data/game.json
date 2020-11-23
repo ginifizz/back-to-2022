@@ -65,7 +65,7 @@
   {
     "type": "duo",
     "mainText": "Jusqu'au bout tout le monde a cru que c'était une blague, mais cette fois ça y est : Yann est parti au Canada !",
-    "secondaryText": "On se rend compte de la valeur d'une personne quand elle n'est plus là : Grégory a perdu son souffre douleur préféré, et il est inconsolable. Ca se ressent sur son travail, et donc aussi sur le CA !",
+    "secondaryText": "On se rend compte de la valeur d'une personne quand elle n'est plus là : Grégory a perdu son souffre douleur préféré, et il est inconsolable. Ça se ressent sur son travail, et donc aussi sur le CA !",
     "money": -10,
     "followers": 0,
     "reputation": 0,
@@ -119,7 +119,7 @@
   {
     "type": "general",
     "mainText": "Tu as écrit un tweet islamophobe le 23 avril 2002... Manque de bol, un de tes collègues l'a retrouvé !",
-    "secondaryText": "Ca se termine par un “ça va on t'emmerde pas trop ?” sur Général. Tu plaides l'erreur de jeunesse, mais ça ne convainc pas grand monde...",
+    "secondaryText": "Ça se termine par un “ça va on t'emmerde pas trop ?” sur Général. Tu plaides l'erreur de jeunesse, mais ça ne convainc pas grand monde...",
     "money": 0,
     "followers": 0,
     "reputation": -20,
@@ -155,7 +155,7 @@
   {
     "type": "beer",
     "mainText": "Alors que tu es en train de siroter une pinte au Lyautey, tu croises un développeur intéressé par la SCOP.",
-    "secondaryText": " Ni une ni deux, tu lui fais passer un entretien et le recrutes immédiatement à un salaire ridicule. Coup de bol : c'est un super profil et il ramène avec lui un portefeuille impressionnant de clients potentiels.",
+    "secondaryText": "Ni une ni deux, tu lui fais passer un entretien et le recrutes immédiatement à un salaire ridicule. Coup de bol : c'est un super profil et il ramène avec lui un portefeuille impressionnant de clients potentiels.",
     "money": 10,
     "followers": 0,
     "reputation": 0,
@@ -181,7 +181,7 @@
   },
   {
     "type": "conference",
-    "mainText": "Paris, SFLive, 10h38: dans 7 minutes Kévin est sensé faire une conférence sur Mercure, mais il n'a pas fini ses slides...",
+    "mainText": "Paris, SFLive, 10h38: dans 7 minutes Kévin est censé faire une conférence sur Mercure, mais il n'a pas fini ses slides...",
     "secondaryText": "A 10h43 les slides sont terminées, il a même le temps de boire un petit café avant de monter sur scène ! Son talk cartonne, et le stand de la SCOP ne désemplit pas !",
     "money": 10,
     "followers": 10,
@@ -204,7 +204,7 @@
     "money": 0,
     "followers": 10,
     "reputation": 0,
-    "ref": "True story : invité au mariage de Cécile, Jéjé a voulu faire un test PRC par précaution, et son résultat était vraiment “ininterprétable”."
+    "ref": "True story : invité au mariage de Cécile, Jéjé a voulu faire un test PCR par précaution, et son résultat était vraiment “ininterprétable”."
   },
   {
     "type": "hobbies",
@@ -249,7 +249,7 @@
     "money": 0,
     "followers": -10,
     "reputation": -10,
-    "ref": "Cette anecdote est vraie, Jéjé a vraiment publié sur Youtube des vidéos sous ce thème.<br/><a href='https://www.youtube.com/playlist?list=PL83SGZOWLUD8sEVXoAIWnTQiYSU-biegl'>Voir sa chaîne Youtube</a>"
+    "ref": "Cette anecdote est vraie, Jéjé a vraiment publié sur Youtube des vidéos sous ce thème.<br/><a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/playlist?list=PL83SGZOWLUD8sEVXoAIWnTQiYSU-biegl'>Voir sa chaîne Youtube</a>"
   },
   {
     "type": "music",
@@ -303,7 +303,7 @@
     "money": 0,
     "followers": 0,
     "reputation": 0,
-    "ref": "Lorsqu'un coopérateur part en vacances, il est vivement encouragé à immortaliser son séjour avec une carte de visite. Les clichés sont disponibles <a href='https://www.instagram.com/cooptilleuls/?hl=fr'>ici</a>"
+    "ref": "Lorsqu'un coopérateur part en vacances, il est vivement encouragé à immortaliser son séjour avec une carte de visite. Les clichés sont disponibles <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/cooptilleuls/?hl=fr'>ici</a>"
   },
   {
     "type": "tag",
@@ -456,7 +456,7 @@
     "money": -10,
     "followers": 0,
     "reputation": 10,
-    "ref": ""
+    "ref": "L'IPA Platform est une bière brassée par le père de Grégoire, réalisée à l'occasion de l'inauguration des bureaux parisiens."
   },
   {
     "type": "travel",
@@ -510,7 +510,7 @@
     "money": 0,
     "followers": 10,
     "reputation": 10,
-    "ref": "Cette anecdote est vraie, des coloriages API Platform sont disponibles en ligne : <a href='https://api-platform.com/resources/colouring-webby'>voir le lien</a>"
+    "ref": "Cette anecdote est vraie, des coloriages API Platform sont disponibles en ligne : <a target='_blank' rel='noopener noreferrer' href='https://api-platform.com/resources/colouring-webby'>voir le lien</a>"
   },
   {
     "type": "conference",
@@ -587,7 +587,7 @@
   {
     "type": "conference",
     "mainText": "Thomas Colin vient à Lille animer un workshop React. Manque de bol, son train retour est annulé, il doit rester à Lille encore quelques temps.",
-    "secondaryText": "Ces dépenses en Airbnb, on s'en serait bien passé : on perd de la participation !",
+    "secondaryText": "Vu le timing serré, la SCOP est obligée de réserver un Airbnb de luxe : tant pis la participation !",
     "money": -10,
     "followers": 0,
     "reputation": 0,
@@ -627,7 +627,7 @@
     "money": -10,
     "followers": 0,
     "reputation": -10,
-    "ref": ""
+    "ref": "Il existe bel et bien un bar à Lille qui s'appelle Les Tillleuls où les co-fondateurs avaient leurs habitudes ! Le nom de la coopérative, qui devait être temporaire, a été inspiré par ce bar."
   },
   {
     "type": "babyfoot",
@@ -816,7 +816,7 @@
     "money": 0,
     "followers": -15,
     "reputation": -10,
-    "ref": "Cette anecdote est vraie, Baptiste a réellement offert ce jeu à Jéjé au secret santa de 2019 : <a href='https://fra.grandado.com/products/hitlers-secrets-sth-jeux-de-societe-roles-caches-jeu-a-carte-sociale-jeu-de-societe-jouer-avec-des-amis-et-la-famille-jouet-divertissement-2?variant=36541604724889'>voir le lien</a>"
+    "ref": "Cette anecdote est vraie, Baptiste a réellement offert ce jeu à Jéjé au secret santa de 2019 : <a target='_blank' rel='noopener noreferrer' href='https://fra.grandado.com/products/hitlers-secrets-sth-jeux-de-societe-roles-caches-jeu-a-carte-sociale-jeu-de-societe-jouer-avec-des-amis-et-la-famille-jouet-divertissement-2?variant=36541604724889'>voir le lien</a>"
   },
   {
     "type": "santa",
@@ -897,7 +897,7 @@
     "money": 10,
     "followers": 0,
     "reputation": -10,
-    "ref": ""
+    "ref": "L'année dernière, le restaurant choisi pour le repas de Noël a réellement failli être boycotté à cause de son logo en forme de côtelette !"
   },
   {
     "type": "covid",
@@ -906,6 +906,15 @@
     "money": 0,
     "followers": 10,
     "reputation": 10,
+    "ref": ""
+  },
+  {
+    "type": "general",
+    "mainText": "Nouveau prospect pour la SCOP : la marque Solognac, spécialisée en vêtements et matériel de chasse, a une mission d'architecture pour nous.",
+    "secondaryText": "Après des échanges houleux sur General ( “C'est quoi ce client vous êtes sérieux ?”, “Arrêtez avec vos pudeurs de gazelle c'est vendu chez Decathlon !”), tu finis par avouer que c'était une blague pour le 1er avril. Les coopérateurs n'apprécient pas tellement !",
+    "money": 0,
+    "followers": 0,
+    "reputation": -10,
     "ref": ""
   }
 ]
