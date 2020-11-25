@@ -391,7 +391,7 @@ const Game: React.ComponentType = () => {
         <>
           <Levels />
           <StartModal open={step === GAME_STEPS.START_SCREEN} />
-          <ResultModal open={step === GAME_STEPS.RESULT_SCREEN} />
+          <ResultModal />
           <Board position={position} />
           <DiceButton onDiceEnd={onDiceEnd} />
           <CaseModal content={currentCase} onClose={onCardClose} />
