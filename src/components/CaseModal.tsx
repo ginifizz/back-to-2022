@@ -241,8 +241,8 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
       mainText &&
       mainText
         .replace(/\s\!/gi, "&nbsp;!")
-        .replace(/\s\:/gi, "&nbsp;!")
-        .replace(/\s\?/gi, "&nbsp;!"),
+        .replace(/\s\:/gi, "&nbsp;:")
+        .replace(/\s\?/gi, "&nbsp;?"),
     [mainText]
   );
 
@@ -251,8 +251,8 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
       secondaryText &&
       secondaryText
         .replace(/\s\!/gi, "&nbsp;!")
-        .replace(/\s\:/gi, "&nbsp;!")
-        .replace(/\s\?/gi, "&nbsp;!"),
+        .replace(/\s\:/gi, "&nbsp;:")
+        .replace(/\s\?/gi, "&nbsp;?"),
     [secondaryText]
   );
 
