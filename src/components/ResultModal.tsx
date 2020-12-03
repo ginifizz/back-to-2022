@@ -24,13 +24,38 @@ import {
 } from "../data/results";
 
 const useStyles = makeStyles((theme) => ({
+  content: {
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      "@media (orientation: portrait)": {
+        flexDirection: "column",
+        paddingBottom: theme.spacing(3),
+      },
+    },
+  },
+  left: {
+    width: '40%'
+  },
+  right: {
+    width: '60%',
+    display: "flex",
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingLeft: '5%'
+  },
   text: {
     color: theme.palette.text.secondary,
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     marginBottom: theme.spacing(2),
   },
   mainText: {
     color: theme.palette.text.primary,
+    fontSize: "1rem",
+    padding: `${theme.spacing(2)}px`
+  },
+  img: {
+    width: '100%',
+    maxWidth: '250px',
   },
   button: {
     position: "absolute",
@@ -81,41 +106,54 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (
 
   return (
     <GameModal
-      maxWidth="lg"
+      maxWidth="md"
       {...props}
       onClose={handleClose}
       open={open}
       onExited={onReStart}
       keepMounted
     >
-      <Box px={3}>
-        <Rating rate={reputationRating} title="Réputation" />
-        <Typography className={classes.text} variant="body2" gutterBottom>
-          {resultTexts.reputation[reputationRating]}
-        </Typography>
-        <Rating rate={moneyRating} title="Participation" />
-        <Typography className={classes.text} variant="body2" gutterBottom>
-          {resultTexts.money[moneyRating]}
-        </Typography>
-        <Rating rate={followersRating} title="Followers" />
-        <Typography className={classes.text} variant="body2" gutterBottom>
-          {resultTexts.followers[followersRating]}
-        </Typography>
-      </Box>
-      <Box py={4}>
-        <Rating big rate={fullRating} title="Ton score :" />
-        <Typography className={classes.mainText} variant="body2" gutterBottom>
-          {resultTexts.score[fullRating]}
-        </Typography>
-      </Box>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        onClick={handleClose}
+      <Box
+        className={classes.content}
+        p={1}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        REFAIRE UNE PARTIE
-      </Button>
+        <div className={classes.left}>
+          <Rating rate={reputationRating} title="Réputation" />
+          <Typography className={classes.text} gutterBottom>
+            {resultTexts.reputation[reputationRating]}
+          </Typography>
+          <Rating rate={moneyRating} title="Participation" />
+          <Typography className={classes.text} gutterBottom>
+            {resultTexts.money[moneyRating]}
+          </Typography>
+          <Rating rate={followersRating} title="Followers" />
+          <Typography className={classes.text} gutterBottom>
+            {resultTexts.followers[followersRating]}
+          </Typography>
+        </div>
+        <div className={classes.right}>
+          <img
+            className={classes.img}
+            src={`${process.env.PUBLIC_URL}/score${fullRating}.png`}
+            alt='score'
+          />
+          <Rating big rate={fullRating} title="Ton score :" />
+          <Typography className={classes.mainText} variant="body2" gutterBottom>
+            {resultTexts.score[fullRating]}
+          </Typography>
+        </div>
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          onClick={handleClose}
+        >
+          REFAIRE UNE PARTIE
+        </Button>
+      </Box>
     </GameModal>
   );
 };
