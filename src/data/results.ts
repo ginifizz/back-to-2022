@@ -36,25 +36,25 @@ export const resultTexts = {
 };
 
 export const getReputationRating = (reputation: number) => {
-  if (reputation < 30) return 0;
-  if (reputation < 60) return 1;
+  if (reputation < 40) return 0;
+  if (reputation < 65) return 1;
   if (reputation < 90) return 2;
   if (reputation < 120) return 3;
   return 4;
 }
 
 export const getMoneyRating = (money: number) => {
-  if (money < 30) return 0;
-  if (money < 60) return 1;
-  if (money < 90) return 2;
-  if (money < 120) return 3;
+  if (money < 40) return 0;
+  if (money < 65) return 1;
+  if (money < 85) return 2;
+  if (money < 110) return 3;
   return 4;
 };
 
 export const getFollowersRating = (followers: number) => {
-  if (followers < 60) return 0;
-  if (followers < 90) return 1;
+  if (followers < 65) return 0;
+  if (followers < 95) return 1;
   if (followers < 120) return 2;
-  if (followers < 150) return 3;
+  if (followers < 140) return 3;
   return 4;
 };

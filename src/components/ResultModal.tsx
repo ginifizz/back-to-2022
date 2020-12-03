@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   left: {
-    width: '40%'
+    width: "40%",
   },
   right: {
-    width: '60%',
+    width: "60%",
     display: "flex",
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingLeft: '5%'
+    flexDirection: "column",
+    alignItems: "center",
+    paddingLeft: "3%",
   },
   text: {
     color: theme.palette.text.secondary,
@@ -51,11 +51,12 @@ const useStyles = makeStyles((theme) => ({
   mainText: {
     color: theme.palette.text.primary,
     fontSize: "1rem",
-    padding: `${theme.spacing(2)}px`
+    padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px ${theme.spacing(3)}px`,
   },
   img: {
-    width: '100%',
-    maxWidth: '250px',
+    width: "100%",
+    maxWidth: "250px",
+    marginBottom: theme.spacing(1)
   },
   button: {
     position: "absolute",
@@ -69,9 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (
-  props
-) => {
+const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useRecoilState(stepState);
   const [score] = useRecoilState(scoreState);
@@ -92,17 +91,19 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (
   const reputationRating = getReputationRating(score.reputation);
   const followersRating = getFollowersRating(score.followers);
   const moneyRating = getMoneyRating(score.money);
-  const fullRating = Math.round((reputationRating + followersRating + moneyRating) / 3);
+  const fullRating = Math.round(
+    (reputationRating + followersRating + moneyRating) / 3
+  );
 
   const classes = useStyles();
 
-    useEffect(() => {
-      if (step === GAME_STEPS.RESULT_SCREEN) setOpen(true);
-    }, [setOpen, step]);
+  useEffect(() => {
+    if (step === GAME_STEPS.RESULT_SCREEN) setOpen(true);
+  }, [setOpen, step]);
 
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <GameModal
@@ -138,10 +139,10 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (
           <img
             className={classes.img}
             src={`${process.env.PUBLIC_URL}/score${fullRating}.png`}
-            alt='score'
+            alt="score"
           />
           <Rating big rate={fullRating} title="Ton score :" />
-          <Typography className={classes.mainText} variant="body2" gutterBottom>
+          <Typography className={classes.mainText} variant="body2" align='center' gutterBottom >
             {resultTexts.score[fullRating]}
           </Typography>
         </div>

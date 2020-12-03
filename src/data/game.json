@@ -541,10 +541,10 @@
   },
   {
     "type": "food",
-    "mainText": "Yann arrive au bureau avec un gâteau préparé avec amour par sa femme.",
-    "secondaryText": "On aime le taquiner mais on apprécie surtout de découvrir toutes les différentes pâtisseries qu'il ramène. Le ventre est rempli, la journée va pouvoir démarrer sous les meilleures auspices !",
-    "money": 5,
-    "followers": 0,
+    "mainText": "Yann ramène au bureau un magnifique moka pour 12 personnes préparé avec amour par sa femme...",
+    "secondaryText": "La photo fait le buzz sur Twitter mais l'envers du décor fait moins rêver : seuls 4 tilleuls étaient présents, ils ont tout dévoré et ont eu un coup de barre monumental le restant de la journée !",
+    "money": -5,
+    "followers": 10,
     "reputation": 0,
     "ref": ""
   },
@@ -916,5 +916,14 @@
     "followers": 0,
     "reputation": -10,
     "ref": ""
+  },
+  {
+    "type": "general",
+    "mainText": "ALERTE ! Quelqu'un a déréglé la chaise de Baptiste ! Il envoie un message assassin ponctué de “TG FDP” sur General.",
+    "secondaryText": "Baptiste se met en grève pendant une semaine, ça ne sent pas bon pour la participation...",
+    "money": -10,
+    "followers": 0,
+    "reputation": 0,
+    "ref": "Baptiste a horreur que l'on touche à sa chaise de bureau. Certains en ont fait les frais, n'est-ce pas, Yann ?"
   }
 ]

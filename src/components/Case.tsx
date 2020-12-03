@@ -40,22 +40,6 @@ const useStyles = makeStyles<Theme, CaseProps>((theme) => ({
       opacity: 0.4,
     },
     background: props => `radial-gradient(circle, ${colors[props.type][500]} 46%, ${colors[props.type][800]} 100%)`,
-    /*background: (props) => {
-      switch (props.type) {
-        case "babyfoot":
-          return "radial-gradient(circle, rgba(189,206,91,1) 46%, rgba(160,206,91,1) 100%);";
-        case "old":
-        case "covid":
-        case "music":
-          return "radial-gradient(circle, rgba(48,78,120,1) 46%, rgba(59,98,129,1) 100%);";
-        case "conference":
-        case "tag":
-        case "hobbies":
-          return "radial-gradient(circle, rgba(78,158,169,1) 46%, rgba(53,129,139,1) 100%);";
-        default:
-          return "radial-gradient(circle, rgba(92,174,197,1) 46%, rgba(67,154,191,1) 100%);";
-      }
-    },*/
   },
 }));
 

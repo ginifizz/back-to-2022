@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   Typography,
   Theme,
@@ -8,10 +8,11 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import Levels from "./components/Levels";
-import { DiceFaceType } from "./components/Dice";
+import { DiceFaceType, getRandomDiceNumber } from "./components/Dice";
 import Curl from "./assets/curl.svg";
 import {
   useRecoilState,
+  useResetRecoilState,
   atom,
   selector,
   DefaultValue,
@@ -23,6 +24,13 @@ import Board from "./components/Board";
 import DiceButton from "./components/DiceButton";
 import boardCases from "./data/board";
 import cards from "./data/game.json";
+import {
+  getReputationRating,
+  getFollowersRating,
+  getMoneyRating,
+} from "./data/results";
+
+const TEST_MODE = false;
 
 export enum GAME_STEPS {
   START_SCREEN = 0,
@@ -279,8 +287,7 @@ const Game: React.ComponentType = () => {
     await screen.orientation.lock("landscape");
   };
 
-  /*
-    const reset = useResetRecoilState(gameState);
+  const reset = useResetRecoilState(gameState);
 
   const testGame = useCallback(() => {
     let position = 0;
@@ -312,78 +319,103 @@ const Game: React.ComponentType = () => {
 
   const launchGames = useCallback(
     (count) => {
+      if (!TEST_MODE) return;
       const scores: any[] = [];
       for (let i = 0; i < count; i++) {
         scores.push(testGame());
       }
-      console.log("REPUTATION");
+      const reputationRatings = scores.map((score) =>
+        getReputationRating(score.reputation)
+      );
+      const moneyRatings = scores.map((score) => getMoneyRating(score.money));
+      const followersRatings = scores.map((score) =>
+        getFollowersRating(score.followers)
+      );
+      const totals = scores.map((score) => {
+        const reputationRating = getReputationRating(score.reputation);
+        const followersRating = getFollowersRating(score.followers);
+        const moneyRating = getMoneyRating(score.money);
+        const fullRating = Math.round(
+          (reputationRating + followersRating + moneyRating) / 3
+        );
+        return fullRating;
+      });
+      console.log("//// REPUTATION //////");
       console.log(
-        "<30",
-        scores.filter((score) => score.reputation <= 30).length
+        "0 STARS : ",
+        reputationRatings.filter((score) => score === 0).length
       );
       console.log(
-        "<60",
-        scores.filter(
-          (score) => score.reputation > 30 && score.reputation <= 60
-        ).length
+        "1 STARS : ",
+        reputationRatings.filter((score) => score === 1).length
       );
       console.log(
-        "<90",
-        scores.filter(
-          (score) => score.reputation > 60 && score.reputation <= 90
-        ).length
+        "2 STARS : ",
+        reputationRatings.filter((score) => score === 2).length
       );
       console.log(
-        "<120",
-        scores.filter(
-          (score) => score.reputation > 90 && score.reputation <= 120
-        ).length
+        "3 STARS : ",
+        reputationRatings.filter((score) => score === 3).length
       );
       console.log(
-        ">120",
-        scores.filter((score) => score.reputation > 120).length
+        "4 STARS : ",
+        reputationRatings.filter((score) => score === 4).length
       );
-      console.log("MONEY");
-      console.log("<30", scores.filter((score) => score.money <= 30).length);
+      console.log("//// MONEY //////");
       console.log(
-        "<60",
-        scores.filter((score) => score.money > 30 && score.money <= 60).length
-      );
-      console.log(
-        "<90",
-        scores.filter((score) => score.money > 60 && score.money <= 90).length
+        "0 STARS : ",
+        moneyRatings.filter((score) => score === 0).length
       );
       console.log(
-        "<120",
-        scores.filter((score) => score.money > 90 && score.money <= 120).length
+        "1 STARS : ",
+        moneyRatings.filter((score) => score === 1).length
       );
-      console.log(">120", scores.filter((score) => score.money > 120).length);
-      console.log("FOLLOWERS");
- console.log("<60", scores.filter((score) => score.followers <= 60).length);
- console.log(
-   "<90",
-   scores.filter((score) => score.followers > 60 && score.followers <= 90)
-     .length
- );
- console.log(
-   "<120",
-   scores.filter((score) => score.followers > 90 && score.followers <= 120)
-     .length
- );
-  console.log(
-    "<150",
-    scores.filter((score) => score.followers > 120 && score.followers <= 150)
-      .length
-  );
- console.log(">150", scores.filter((score) => score.followers > 150).length);
+      console.log(
+        "2 STARS : ",
+        moneyRatings.filter((score) => score === 2).length
+      );
+      console.log(
+        "3 STARS : ",
+        moneyRatings.filter((score) => score === 3).length
+      );
+      console.log(
+        "4 STARS : ",
+        moneyRatings.filter((score) => score === 4).length
+      );
+      console.log("//// FOLLOWERS //////");
+      console.log(
+        "0 STARS : ",
+        followersRatings.filter((score) => score === 0).length
+      );
+      console.log(
+        "1 STARS : ",
+        followersRatings.filter((score) => score === 1).length
+      );
+      console.log(
+        "2 STARS : ",
+        followersRatings.filter((score) => score === 2).length
+      );
+      console.log(
+        "3 STARS : ",
+        followersRatings.filter((score) => score === 3).length
+      );
+      console.log(
+        "4 STARS : ",
+        followersRatings.filter((score) => score === 4).length
+      );
+      console.log("//// TOTAL //////");
+      console.log("0 STARS : ", totals.filter((score) => score === 0).length);
+      console.log("1 STARS : ", totals.filter((score) => score === 1).length);
+      console.log("2 STARS : ", totals.filter((score) => score === 2).length);
+      console.log("3 STARS : ", totals.filter((score) => score === 3).length);
+      console.log("4 STARS : ", totals.filter((score) => score === 4).length);
     },
     [testGame]
   );
 
   useEffect(() => {
-    launchGames(1000);
+    launchGames(100);
   }, [launchGames]);
-  */
 
   return (
     <div className={classes.background}>

@@ -6,8 +6,8 @@ import StarEmpty from "../assets/star_empty.svg";
 const useStyles = (big: boolean) =>
   makeStyles((theme) => ({
     img: {
-      width: big ? "30px" : "20px",
-      margin: "0 5px",
+      width: big ? "26px" : "20px",
+      margin: big ? "0 5px" : "0 3px",
     },
   }));
 
@@ -25,10 +25,10 @@ const Rating: React.ComponentType<{
       justifyContent="center"
       flexDirection={big ? 'column' : 'row'}
     >
-      <Box px={1}>
-        <Typography variant={big ? "h4" : "h6"}>{title}</Typography>
+      <Box px={1} py={big ? 0.5 : 0}>
+        <Typography variant={big ? "h5" : "h6"}>{title}</Typography>
       </Box>
-      <Box display="flex">
+      <Box>
         <img className={classes.img} src={getStarImg(0)} alt="star" />
         <img className={classes.img} src={getStarImg(1)} alt="star" />
         <img className={classes.img} src={getStarImg(2)} alt="star" />
