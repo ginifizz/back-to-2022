@@ -1,6 +1,6 @@
 {
-  "short_name": "TLMVPLPDK",
-  "name": "Tout le monde veut prendre la place (de Kévin)",
+  "short_name": "Objectif gérance",
+  "name": "Objectif gérance",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,6 +21,6 @@
   "start_url": ".",
   "display":"standalone",
   "orientation":"landscape",
-  "theme_color": "#000000",
+  "theme_color": "#459ebe",
   "background_color": "#ffffff"
 }

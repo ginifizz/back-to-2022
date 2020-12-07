@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     width: "40%",
     [theme.breakpoints.down("md")]: {
       width: "50%",
+      paddingLeft: theme.spacing(2)
     },
   },
   right: {
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.8rem",
     marginBottom: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
-      fontSize: "0.7rem",
+      fontSize: "0.6rem",
       marginBottom: theme.spacing(1),
     },
   },
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px ${theme.spacing(3)}px`,
     [theme.breakpoints.down("md")]: {
-      fontSize: "0.8rem",
+      fontSize: "0.7rem",
     },
   },
   img: {
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "250px",
     marginBottom: theme.spacing(1),
     [theme.breakpoints.down("md")]: {
-      maxWidth: "200px",
+      maxWidth: "150px",
     },
   },
   button: {
