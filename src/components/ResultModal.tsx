@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
   left: {
     width: "40%",
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+    },
   },
   right: {
     width: "60%",
@@ -42,21 +45,34 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     paddingLeft: "3%",
+    [theme.breakpoints.down("md")]: {
+      width: "50%",
+    },
   },
   text: {
     color: theme.palette.text.secondary,
     fontSize: "0.8rem",
     marginBottom: theme.spacing(2),
+    [theme.breakpoints.down("md")]: {
+      fontSize: "0.7rem",
+      marginBottom: theme.spacing(1),
+    },
   },
   mainText: {
     color: theme.palette.text.primary,
     fontSize: "1rem",
     padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px ${theme.spacing(3)}px`,
+    [theme.breakpoints.down("md")]: {
+      fontSize: "0.8rem",
+    },
   },
   img: {
     width: "100%",
     maxWidth: "250px",
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "200px",
+    },
   },
   button: {
     position: "absolute",

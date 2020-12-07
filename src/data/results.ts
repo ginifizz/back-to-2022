@@ -52,8 +52,8 @@ export const getMoneyRating = (money: number) => {
 };
 
 export const getFollowersRating = (followers: number) => {
-  if (followers < 65) return 0;
-  if (followers < 95) return 1;
+  if (followers < 70) return 0;
+  if (followers < 90) return 1;
   if (followers < 120) return 2;
   if (followers < 140) return 3;
   return 4;

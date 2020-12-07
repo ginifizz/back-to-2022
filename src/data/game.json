@@ -925,5 +925,13 @@
     "followers": 0,
     "reputation": 0,
     "ref": "Baptiste a horreur que l'on touche à sa chaise de bureau. Certains en ont fait les frais, n'est-ce pas, Yann ?"
+  },
+  {
+    "type": "conference",
+    "mainText": "Tu as écrit “API Plateforme“ dans une de tes slides !",
+    "secondaryText": "Aïe aïe aïe, tu avais déjà évoqué notre expertise en “symphonies“... Cette fois-ci, la communauté ne te le pardonne pas, tu perds en popularité.",
+    "money": 0,
+    "followers": -10,
+    "reputation": -10
   }
 ]
