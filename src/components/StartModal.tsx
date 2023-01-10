@@ -36,13 +36,14 @@ const useStyles = makeStyles((theme) => ({
   },
   intro: {
     [theme.breakpoints.down("sm")]: {
-      fontSize: "1.5rem",
+      fontSize: "1.3rem",
     },
   },
   content: {
     flexDirection: "row",
     padding: theme.spacing(3),
     [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(1),
       "@media (orientation: portrait)": {
         flexDirection: "column",
         paddingBottom: theme.spacing(3),
@@ -71,10 +72,10 @@ const StartModal: React.ComponentType<StartModalProps> = ({onClose, ...props}) =
         <img
           src={`${process.env.PUBLIC_URL}/endYear.png`}
           className={classes.image}
-          alt="Le trône du gérant"
+          alt=""
         />
         <Box
-          pl={2}
+          px={1}
           pb={2}
           flex={1}
           display="flex"
@@ -86,11 +87,11 @@ const StartModal: React.ComponentType<StartModalProps> = ({onClose, ...props}) =
           fontWeight="fontWeightBold"
         >
           <Box pb={2}>
-            <Typography variant="h4" color="inherit" className={classes.intro}>
+            <Typography align="center" variant="h4" component="h1" color="inherit" className={classes.intro}>
               L'année 2022 vient de se terminer&nbsp;!
             </Typography>
           </Box>
-          <Typography variant="body1" color="textPrimary">
+          <Typography align="center" variant="body1" color="textPrimary">
             Nostalgique de l'année écoulée&nbsp;? Ou au contraire, déçu par
             cette cuvée 2022 en demi-teinte&nbsp;? On vous propose de remonter
             le temps et de revivre votre année mois par mois&nbsp;! Prenez les

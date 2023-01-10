@@ -106,7 +106,7 @@
       },
       {
         "title": "En bon développeur paresseux, vous décidez de créer un programme pour faire le travail à votre place.",
-        "result": "Vous entraînez une intelligence artificielle qui vole le travail de milliers d'artistes et crée les visuels à votre place : vous l'appelez MidJourney. Accusé de plagiat, votre catalogue ne sera jamais publié, et vous recevrez un blâme de votre direction. Il ne vous reste plus qu'à espérer que votre IA devienne célèbre...",
+        "result": "Vous entraînez une intelligence artificielle qui vole le travail de milliers d'artistes et crée les visuels à votre place. Accusé de plagiat, votre catalogue ne sera jamais publié, et vous recevrez un blâme de votre direction. Il ne vous reste plus qu'à espérer que votre IA devienne célèbre...",
         "score": -10
       }
     ]
@@ -161,7 +161,7 @@
   },
   {
     "type": "april",
-    "mainText": "Nous sommes le 1er avril, et en revenant de votre pause café vous vous rendez compte que quelqu'un s'est servi de votre ordi et a commencé à écrire un mail annonçant à vos collègues que vous ramèneriez le petit déjeuner le lendemain matin. Il n'a visiblement pas eu le temps de finir son méfait. Comment réagissez-vous ?",
+    "mainText": "1er avril : en revenant de votre pause café vous vous rendez compte que quelqu'un s'est servi de votre ordi et a commencé à écrire un mail annonçant que vous ramèneriez le petit déjeuner le lendemain matin. Comment réagissez-vous ?",
     "answers": [
       {
         "title": "Vous sautez sur le Slack de votre entreprise pour exiger que celui ou celle qui a touché à votre ordinateur se dénonce.",

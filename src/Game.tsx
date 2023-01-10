@@ -1,19 +1,7 @@
 import React, { useCallback } from "react";
-import {
-  Typography,
-  Theme,
-  makeStyles,
-  Box,
-  Button,
-  useMediaQuery,
-} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Levels from "./components/Levels";
-import {
-  useRecoilState,
-  atom,
-  selector,
-  DefaultValue,
-} from "recoil";
+import { useRecoilState, atom, selector, DefaultValue } from "recoil";
 import ResultModal from "./components/ResultModal";
 import StartModal from "./components/StartModal";
 import CaseModal from "./components/CaseModal";
@@ -68,21 +56,6 @@ const initialGameState: GameStateType = {
   position: 0,
   cards: cards as CaseType[],
 };
-
-interface DiceStateType {
-  isRolling: boolean;
-  canRoll: boolean;
-}
-
-const initialDiceState: DiceStateType = {
-  isRolling: false,
-  canRoll: true,
-};
-
-export const diceState = atom({
-  key: "diceState",
-  default: initialDiceState,
-});
 
 export const gameState = atom({
   key: "gameState",
@@ -162,11 +135,6 @@ const useStyles = makeStyles({
       display: "none",
     },
   },
-  button: {
-    "@media (orientation: landscape)": {
-      display: "none",
-    },
-  },
 });
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -212,13 +180,7 @@ const Game: React.ComponentType = () => {
       await wait(500);
       setCurrentCase(getCaseContent(boardCases[newPosition]));
     },
-    [
-      onResult,
-      setPosition,
-      setCurrentCase,
-      getCaseContent,
-      position,
-    ]
+    [onResult, setPosition, setCurrentCase, getCaseContent, position]
   );
 
   const onCardClose = useCallback(() => {
@@ -234,18 +196,6 @@ const Game: React.ComponentType = () => {
     onNextTurn(1);
   }, [onNextTurn, setCurrentCase, setCurrentAnswer, setGame, game]);
 
-  // eslint-disable-next-line no-restricted-globals
-  const isPortrait = useMediaQuery(
-    (theme: Theme) =>
-      `${theme.breakpoints.down("xs")} and (orientation:portrait)`
-  );
-
-  const setLandscape = async () => {
-    await document.body.requestFullscreen();
-    // eslint-disable-next-line no-restricted-globals
-    await screen.orientation.lock("landscape");
-  };
-
   const startGame = useCallback(() => {
     setStep(GAME_STEPS.GAME_SCREEN);
     onNextTurn(0);
@@ -253,45 +203,12 @@ const Game: React.ComponentType = () => {
 
   return (
     <div className={classes.background}>
-      {!isPortrait && (
-        <>
-          <Levels />
-          <StartModal
-            open={step === GAME_STEPS.START_SCREEN}
-            onClose={startGame}
-          />
-          <ResultModal />
-          <Board position={position} />
-          <CaseModal content={currentCase} onClose={onCardClose} />
-        </>
-      )}
-      {isPortrait && (
-        <Box
-          p={2}
-          width="100%"
-          height="100%"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Typography variant="h3" color="textPrimary">
-            OUPS...
-          </Typography>
-          <Typography
-            align="center"
-            variant="body2"
-            color="textPrimary"
-            gutterBottom
-          >
-            Ce jeu est optimisé pour un format paysage&nbsp;!
-          </Typography>
-          <br />
-          <Button variant="contained" onClick={setLandscape}>
-            Afficher le jeu
-          </Button>
-        </Box>
-      )}
+      <Levels />
+      <StartModal open={step === GAME_STEPS.START_SCREEN} onClose={startGame} />
+      <ResultModal />
+      <Board position={position} />
+      <CaseModal content={currentCase} onClose={onCardClose} />
+
     </div>
   );
 };

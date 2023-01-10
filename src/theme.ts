@@ -18,6 +18,7 @@ const theme = createMuiTheme({
     fontWeightBold: 800,
     h4: {
       fontWeight: 800,
+      fontSize: "2rem",
     },
     h5: {
       fontWeight: 800,
@@ -30,9 +31,9 @@ const theme = createMuiTheme({
     overline: {
       lineHeight: 1.2,
       fontWeight: 800,
-      fontSize: "0.7rem",
+      fontSize: "1rem",
       "@media (max-width:900px)": {
-        fontSize: "0.5rem",
+        fontSize: "0.8rem",
       },
     },
     body2: {
@@ -48,7 +49,7 @@ const theme = createMuiTheme({
       fontSize: "1.1rem",
       fontWeight: 800,
       "@media (max-width:900px)": {
-        fontSize: "1rem",
+        fontSize: "0.9rem",
         lineHeight: "1.2",
       },
     },
@@ -88,6 +89,9 @@ const theme = createMuiTheme({
         },
         "& .MuiButton-label": {
           color: purple[900],
+        },
+        "&:hover": {
+          background: `linear-gradient(to bottom, ${cyan[500]}, ${cyan[200]})`,
         },
       },
       text: {

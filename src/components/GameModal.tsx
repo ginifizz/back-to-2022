@@ -27,6 +27,10 @@ const useStyles = (color: any) =>
       [theme.breakpoints.down("sm")]: {
         background: "none",
         transform: "translateX(5px) translateY(-2px) rotate(-2deg)",
+        "@media (orientation: portrait)": {
+          marginLeft: "16px",
+          marginRight: "16px",
+        },
       },
       perspective: "40rem",
     },

@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import {
-  diceState,
   gameState,
   stepState,
   scoreState,
@@ -14,11 +13,20 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
+import facebookIcon from "../assets/facebook.svg";
+import twitterIcon from "../assets/twitter.svg";
+import linkedinIcon from "../assets/linkedin.svg";
+import mastodonIcon from "../assets/mastodon.svg";
 import GameModal from "./GameModal";
-import {
-  resultTexts,
-} from "../data/results";
+import { resultTexts } from "../data/results";
 import Level from "./Level";
+import { cyan } from "@material-ui/core/colors";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+} from "react-share";
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -37,6 +45,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "20px 50px",
+    [theme.breakpoints.down("sm")]: {
+      padding: "20px",
+      "@media (orientation: portrait)": {
+        padding: "10px",
+        paddingBottom: 0,
+      },
+    },
   },
   right: {
     position: "relative",
@@ -48,29 +63,28 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "100px",
       height: "200px",
-    },
-  },
-  text: {
-    color: theme.palette.text.secondary,
-    fontSize: "0.8rem",
-    marginBottom: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
-      fontSize: "0.6rem",
-      marginBottom: theme.spacing(1),
+      "@media (orientation: portrait)": {
+        width: "75px",
+        height: "150px",
+        transform: "rotate(90deg)",
+        marginTop: "-20px",
+        marginBottom: "-20px"
+      },
     },
   },
   mainText: {
     color: theme.palette.text.primary,
+    marginBottom: theme.spacing(3),
+    fontSize: "2rem",
     [theme.breakpoints.down("md")]: {
-      fontSize: "1.5rem",
-      marginBottom: theme.spacing(1),
+      fontSize: "1.3rem",
     },
   },
   intro: {
     color: theme.palette.primary.main,
+    marginBottom: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       fontSize: "1rem",
-      marginBottom: theme.spacing(1),
     },
   },
   levels: {
@@ -83,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "200px",
       height: "200px",
+      "@media (orientation: portrait)": {
+        width: "150px",
+        height: "150px",
+      },
     },
   },
   button: {
@@ -94,6 +112,47 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "none",
     },
   },
+  shareButton: {
+    width: "50px",
+    padding: theme.spacing(1),
+    borderRadius: "50%",
+    transition: "all ease 0.3s",
+    "&:hover": {
+      background: cyan[500],
+      transform: "scale(0.9)",
+    },
+    "@media (max-width: 800px)": {
+      width: "40px",
+    },
+  },
+  socialText: {
+    margin: "0 10px",
+    textTransform: "uppercase",
+  },
+  mastodonContainer: {
+    width: "50px",
+    height: "50px",
+    overflow: "hidden",
+    position: "relative",
+    cursor: "pointer",
+    borderRadius: "50%",
+    "&:hover img": {
+      background: cyan[500],
+      transform: "scale(0.9)",
+    },
+    "@media (max-width: 800px)": {
+      width: "40px",
+      height: "40px",
+    },
+  },
+  mastodonButton: {
+    position: "absolute",
+    transform: "scale(2)",
+    zIndex: 10,
+    left: "0",
+    top: "0",
+    opacity: "0",
+  },
 }));
 
 const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
@@ -102,7 +161,6 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
   const [score] = useRecoilState(scoreState);
 
   const resetGame = useResetRecoilState(gameState);
-  const resetDice = useResetRecoilState(diceState);
 
   const rating = useMemo(() => {
     if (score > 80) return 4;
@@ -113,9 +171,8 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
   }, [score]);
 
   const reset = useCallback(() => {
-    resetDice();
     resetGame();
-  }, [resetGame, resetDice]);
+  }, [resetGame]);
 
   const onReStart = useCallback(() => {
     reset();
@@ -132,12 +189,14 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
     setOpen(false);
   };
 
-  const formatText = (text:string) =>
+  const formatText = (text: string) =>
     text &&
     text
       .replace(/\s!/gi, "&nbsp;!")
       .replace(/\s:/gi, "&nbsp;:")
       .replace(/\s\?/gi, "&nbsp;?");
+
+  const URL = "https://back-to-2022.vercel.app";
 
   return (
     <GameModal
@@ -177,6 +236,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
           <Typography
             className={classes.mainText}
             variant="h4"
+            component="p"
             align="center"
             gutterBottom
           >
@@ -186,6 +246,74 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
               }}
             />
           </Typography>
+          <Typography
+            className={classes.socialText}
+            variant="overline"
+            align="center"
+            gutterBottom
+          >
+            Vous avez aimé ce voyage dans le temps&nbsp;?<br/>Partagez-le à vos amis&nbsp;!
+          </Typography>
+          <Box display="flex" flexDirection="row" alignItems="center">
+            <FacebookShareButton
+              url={URL}
+              quote="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
+            le temps et de revivre votre année mois par mois ! Prenez les
+            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
+            de fin d'année positif."
+            >
+              <img
+                className={classes.shareButton}
+                src={facebookIcon}
+                alt="Partager sur Facebook"
+              />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={URL}
+              title="Nostalgique de l'année écoulée ? @coopTilleuls vous propose de remonter
+            le temps et de revivre votre année mois par mois ! Prenez les
+            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
+            de fin d'année positif."
+            >
+              <img
+                className={classes.shareButton}
+                src={twitterIcon}
+                alt="Partager sur Twitter"
+              />
+            </TwitterShareButton>
+            <LinkedinShareButton
+              url={URL}
+              title="Back to 2022"
+              summary="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
+            le temps et de revivre votre année mois par mois ! Prenez les
+            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
+            de fin d'année positif."
+            >
+              <img
+                className={classes.shareButton}
+                src={linkedinIcon}
+                alt="Partager sur Linkedin"
+              />
+            </LinkedinShareButton>
+            <div className={classes.mastodonContainer}>
+              <div
+                className={classes.mastodonButton}
+                dangerouslySetInnerHTML={{
+                  __html: `<share-on-mastodon share_title="Back to 2022"
+                   share_description="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
+            le temps et de revivre votre année mois par mois ! Prenez les
+            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
+            de fin d'année positif." modal_heading="Veuillez renseigner votre instance" modal_text="Comme Mastodon possède de nombreux serveurs, nous devons savoir sur laquelle vous souhaitez envoyer votre message." share_text="Partager"
+</share-on-mastodon>`,
+                }}
+              />
+              <img
+                className={classes.shareButton}
+                src={mastodonIcon}
+                alt="Partager sur Mastodon"
+              />
+            </div>
+          </Box>
         </div>
         <Button
           className={classes.button}

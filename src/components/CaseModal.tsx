@@ -42,9 +42,18 @@ const useStyles = (color: any) =>
       width: "40%",
       position: "relative",
       transform: "translateX(-10%)",
+      margin: "0 auto",
       zIndex: 2,
       [theme.breakpoints.down("md")]: {
         width: "35%",
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "25%",
+        "@media (orientation: portrait)": {
+          width: "80%",
+          maxWidth: "300px",
+          transform: "translateY(-10%)",
+        },
       },
     },
     title: {
@@ -163,9 +172,23 @@ const useStyles = (color: any) =>
     },
     radioLine: {
       "&:first-child": {
-        marginBottom: "30px"
+        marginBottom: "20px",
       },
     },
+    content: {
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "row",
+        "@media (orientation: portrait)": {
+          flexDirection: "column",
+          width: "100%"
+        },
+      },
+    },
+    answer: {
+      width: "80%",
+      margin: "auto",
+      padding: "20px 0px"
+    }
   }));
 
 const emptyCase = {
@@ -241,8 +264,7 @@ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         flipChildren={
           newCurrentAnswer && (
             <Box
-              p={4}
-              pb={6}
+              className={classes.answer}
               display="flex"
               flex={1}
               flexDirection="column"
@@ -275,7 +297,7 @@ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
           p={1}
           pb={3}
           display="flex"
-          flexDirection="row"
+          className={classes.content}
           alignItems="center"
           justifyContent="center"
         >
@@ -311,7 +333,9 @@ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
           >
             <Box className={classes.mainText}>
               <Typography variant="body1" color="inherit" component="div">
-                <div dangerouslySetInnerHTML={{ __html: formatText(mainText) }} />
+                <div
+                  dangerouslySetInnerHTML={{ __html: formatText(mainText) }}
+                />
               </Typography>
             </Box>
             <Typography
