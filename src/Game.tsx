@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import {
   Typography,
   Theme,
@@ -8,11 +8,8 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import Levels from "./components/Levels";
-import { DiceFaceType, getRandomDiceNumber } from "./components/Dice";
-import Curl from "./assets/curl.svg";
 import {
   useRecoilState,
-  useResetRecoilState,
   atom,
   selector,
   DefaultValue,
@@ -21,16 +18,8 @@ import ResultModal from "./components/ResultModal";
 import StartModal from "./components/StartModal";
 import CaseModal from "./components/CaseModal";
 import Board from "./components/Board";
-import DiceButton from "./components/DiceButton";
 import boardCases from "./data/board";
 import cards from "./data/game.json";
-import {
-  getReputationRating,
-  getFollowersRating,
-  getMoneyRating,
-} from "./data/results";
-
-const TEST_MODE = false;
 
 export enum GAME_STEPS {
   START_SCREEN = 0,
@@ -39,67 +28,54 @@ export enum GAME_STEPS {
 }
 
 export type CASE_CATEGORY =
-  | "food"
-  | "general"
-  | "accounting"
-  | "baby"
-  | "babyfoot"
-  | "beer"
-  | "conference"
-  | "covid"
-  | "duo"
-  | "hobbies"
-  | "music"
-  | "old"
-  | "tag"
-  | "travel"
-  | "santa"
-  | "vote";
+  | "january"
+  | "february"
+  | "march"
+  | "april"
+  | "may"
+  | "june"
+  | "july"
+  | "august"
+  | "september"
+  | "october"
+  | "november"
+  | "december";
+
+export type AnswerType = {
+  title: string;
+  score: number;
+  result: string;
+};
 
 export type CaseType = {
   type: CASE_CATEGORY;
-  money: number;
-  reputation: number;
-  followers: number;
   mainText: string;
-  secondaryText: string;
-  ref?: string;
+  answers: AnswerType[];
 };
 
 type GameStateType = {
   step: GAME_STEPS;
-  year: number;
-  score: {
-    money: number;
-    reputation: number;
-    followers: number;
-  };
+  score: number;
   position: number;
   currentCase?: CaseType;
   cards: CaseType[];
+  currentAnswer?: AnswerType;
 };
 
 const initialGameState: GameStateType = {
   step: GAME_STEPS.START_SCREEN,
-  year: 1,
-  score: {
-    money: 100,
-    reputation: 100,
-    followers: 100,
-  },
+  score: 0,
   position: 0,
   cards: cards as CaseType[],
 };
 
 interface DiceStateType {
   isRolling: boolean;
-  face: DiceFaceType;
   canRoll: boolean;
 }
 
 const initialDiceState: DiceStateType = {
   isRolling: false,
-  face: 6,
   canRoll: true,
 };
 
@@ -131,6 +107,15 @@ export const currentCaseState = selector<CaseType | undefined>({
       : set(gameState, { ...get(gameState), currentCase: newValue }),
 });
 
+export const currentAnswerState = selector<AnswerType | undefined>({
+  key: "currentAnswer",
+  get: ({ get }) => get(gameState).currentAnswer,
+  set: ({ set, get }, newValue) =>
+    newValue instanceof DefaultValue
+      ? set(gameState, newValue)
+      : set(gameState, { ...get(gameState), currentAnswer: newValue }),
+});
+
 export const cardsState = selector<CaseType[]>({
   key: "cards",
   get: ({ get }) => get(gameState).cards,
@@ -149,11 +134,7 @@ export const positionState = selector<number>({
       : set(gameState, { ...get(gameState), position: newValue }),
 });
 
-export const scoreState = selector<{
-  money: number;
-  followers: number;
-  reputation: number;
-}>({
+export const scoreState = selector<number>({
   key: "score",
   get: ({ get }) => get(gameState).score,
   set: ({ set, get }, newValue) =>
@@ -162,20 +143,13 @@ export const scoreState = selector<{
       : set(gameState, { ...get(gameState), score: newValue }),
 });
 
-export const yearState = selector<number>({
-  key: "year",
-  get: ({ get }) => get(gameState).year,
-  set: ({ set, get }, newValue) =>
-    newValue instanceof DefaultValue
-      ? set(gameState, newValue)
-      : set(gameState, { ...get(gameState), year: newValue }),
-});
-
 const useStyles = makeStyles({
   background: {
-    backgroundImage: `url(${Curl}), radial-gradient(#00c4c2, #0383c2);`,
-    backgroundSize: "150%, 100%",
+    backgroundColor: "#0d293f",
+    backgroundImage: `url("${process.env.PUBLIC_URL}/bg5.png"), radial-gradient(#4c067c, #120623);`,
     backgroundPosition: "center",
+    backgroundSize: "cover, auto, auto",
+    backgroundRepeat: "no-repeat, repeat",
     height: "100%",
     overflow: "hidden",
     position: "relative",
@@ -201,9 +175,8 @@ const Game: React.ComponentType = () => {
   const [step, setStep] = useRecoilState(stepState);
   const [position, setPosition] = useRecoilState(positionState);
   const [currentCase, setCurrentCase] = useRecoilState(currentCaseState);
-  const [year, setYear] = useRecoilState(yearState);
+  const [, setCurrentAnswer] = useRecoilState(currentAnswerState);
   const [cards, setCards] = useRecoilState(cardsState);
-  const [, setDice] = useRecoilState(diceState);
   const [game, setGame] = useRecoilState(gameState);
 
   const onResult = useCallback(() => {
@@ -222,24 +195,18 @@ const Game: React.ComponentType = () => {
     [cards, setCards]
   );
 
-  const onDiceEnd = useCallback(
-    async (diceFace) => {
+  const onNextTurn = useCallback(
+    async (step) => {
       let currentPosition = position;
-      let newPosition = position + diceFace;
-      if (newPosition > 15) newPosition = Math.abs(15 - newPosition + 1);
+      let newPosition = position + step;
       while (currentPosition !== newPosition) {
         currentPosition++;
-        if (currentPosition > 15) currentPosition = 0;
+        if (currentPosition > 11) currentPosition = 0;
         await wait(300);
         setPosition(currentPosition);
         if (currentPosition === 0) {
-          const newYear = year + 1;
-          setYear(newYear);
-          await wait(300);
-          if (newYear > 4) {
-            onResult();
-            return;
-          }
+          onResult();
+          return;
         }
       }
       await wait(500);
@@ -247,8 +214,6 @@ const Game: React.ComponentType = () => {
     },
     [
       onResult,
-      setYear,
-      year,
       setPosition,
       setCurrentCase,
       getCaseContent,
@@ -257,23 +222,17 @@ const Game: React.ComponentType = () => {
   );
 
   const onCardClose = useCallback(() => {
-    const { score, currentCase } = game;
+    const { score, currentCase, currentAnswer } = game;
     if (!currentCase) return;
     setGame({
       ...game,
       currentCase: undefined,
-      score: {
-        money: score.money + currentCase?.money,
-        followers: score.followers + currentCase?.followers,
-        reputation: score.reputation + currentCase?.reputation,
-      },
+      score: currentAnswer ? score + currentAnswer.score : score,
     });
     setCurrentCase(undefined);
-    setDice((prevDice) => ({
-      ...prevDice,
-      canRoll: true,
-    }));
-  }, [setDice, setCurrentCase, setGame, game]);
+    setCurrentAnswer(undefined);
+    onNextTurn(1);
+  }, [onNextTurn, setCurrentCase, setCurrentAnswer, setGame, game]);
 
   // eslint-disable-next-line no-restricted-globals
   const isPortrait = useMediaQuery(
@@ -287,145 +246,22 @@ const Game: React.ComponentType = () => {
     await screen.orientation.lock("landscape");
   };
 
-  const reset = useResetRecoilState(gameState);
-
-  const testGame = useCallback(() => {
-    let position = 0;
-    let year = 1;
-    let score = {
-      reputation: 100,
-      followers: 100,
-      money: 100,
-    };
-    while (year < 5) {
-      const dice = getRandomDiceNumber();
-      position += dice;
-      if (position > 15) {
-        year++;
-        if (year > 4) {
-          reset();
-          return score;
-        }
-        position = position - 15 - 1;
-      }
-      const content = getCaseContent(boardCases[position]);
-      score.reputation += content.reputation;
-      score.followers += content.followers;
-      score.money += content.money;
-    }
-    reset();
-    return score;
-  }, [reset, getCaseContent]);
-
-  const launchGames = useCallback(
-    (count) => {
-      if (!TEST_MODE) return;
-      const scores: any[] = [];
-      for (let i = 0; i < count; i++) {
-        scores.push(testGame());
-      }
-      const reputationRatings = scores.map((score) =>
-        getReputationRating(score.reputation)
-      );
-      const moneyRatings = scores.map((score) => getMoneyRating(score.money));
-      const followersRatings = scores.map((score) =>
-        getFollowersRating(score.followers)
-      );
-      const totals = scores.map((score) => {
-        const reputationRating = getReputationRating(score.reputation);
-        const followersRating = getFollowersRating(score.followers);
-        const moneyRating = getMoneyRating(score.money);
-        const fullRating = Math.round(
-          (reputationRating + followersRating + moneyRating) / 3
-        );
-        return fullRating;
-      });
-      console.log("//// REPUTATION //////");
-      console.log(
-        "0 STARS : ",
-        reputationRatings.filter((score) => score === 0).length
-      );
-      console.log(
-        "1 STARS : ",
-        reputationRatings.filter((score) => score === 1).length
-      );
-      console.log(
-        "2 STARS : ",
-        reputationRatings.filter((score) => score === 2).length
-      );
-      console.log(
-        "3 STARS : ",
-        reputationRatings.filter((score) => score === 3).length
-      );
-      console.log(
-        "4 STARS : ",
-        reputationRatings.filter((score) => score === 4).length
-      );
-      console.log("//// MONEY //////");
-      console.log(
-        "0 STARS : ",
-        moneyRatings.filter((score) => score === 0).length
-      );
-      console.log(
-        "1 STARS : ",
-        moneyRatings.filter((score) => score === 1).length
-      );
-      console.log(
-        "2 STARS : ",
-        moneyRatings.filter((score) => score === 2).length
-      );
-      console.log(
-        "3 STARS : ",
-        moneyRatings.filter((score) => score === 3).length
-      );
-      console.log(
-        "4 STARS : ",
-        moneyRatings.filter((score) => score === 4).length
-      );
-      console.log("//// FOLLOWERS //////");
-      console.log(
-        "0 STARS : ",
-        followersRatings.filter((score) => score === 0).length
-      );
-      console.log(
-        "1 STARS : ",
-        followersRatings.filter((score) => score === 1).length
-      );
-      console.log(
-        "2 STARS : ",
-        followersRatings.filter((score) => score === 2).length
-      );
-      console.log(
-        "3 STARS : ",
-        followersRatings.filter((score) => score === 3).length
-      );
-      console.log(
-        "4 STARS : ",
-        followersRatings.filter((score) => score === 4).length
-      );
-      console.log("//// TOTAL //////");
-      console.log("0 STARS : ", totals.filter((score) => score === 0).length);
-      console.log("1 STARS : ", totals.filter((score) => score === 1).length);
-      console.log("2 STARS : ", totals.filter((score) => score === 2).length);
-      console.log("3 STARS : ", totals.filter((score) => score === 3).length);
-      console.log("4 STARS : ", totals.filter((score) => score === 4).length);
-    },
-    [testGame]
-  );
-
-  useEffect(() => {
-    launchGames(100);
-  }, [launchGames]);
+  const startGame = useCallback(() => {
+    setStep(GAME_STEPS.GAME_SCREEN);
+    onNextTurn(0);
+  }, [setStep, onNextTurn]);
 
   return (
     <div className={classes.background}>
       {!isPortrait && (
         <>
           <Levels />
-          <StartModal open={step === GAME_STEPS.START_SCREEN} />
+          <StartModal
+            open={step === GAME_STEPS.START_SCREEN}
+            onClose={startGame}
+          />
           <ResultModal />
           <Board position={position} />
-          <DiceButton onDiceEnd={onDiceEnd} />
           <CaseModal content={currentCase} onClose={onCardClose} />
         </>
       )}
@@ -439,12 +275,21 @@ const Game: React.ComponentType = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Typography variant="h3">OUPS...</Typography>
-          <Typography align="center" variant="body2" gutterBottom>
-            Ce jeu est optimisé pour un format paysage, désolée&nbsp;!
+          <Typography variant="h3" color="textPrimary">
+            OUPS...
+          </Typography>
+          <Typography
+            align="center"
+            variant="body2"
+            color="textPrimary"
+            gutterBottom
+          >
+            Ce jeu est optimisé pour un format paysage&nbsp;!
           </Typography>
           <br />
-          <Button onClick={setLandscape}>Afficher le jeu</Button>
+          <Button variant="contained" onClick={setLandscape}>
+            Afficher le jeu
+          </Button>
         </Box>
       )}
     </div>

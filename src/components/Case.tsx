@@ -19,10 +19,8 @@ const useStyles = makeStyles<Theme, CaseProps>((theme) => ({
     position: "relative",
     "& > img": {
       position: "absolute",
-      width: (props) =>
-        props.type === "duo" || props.type === "general" ? "100%" : "90%",
-      height: (props) =>
-        props.type === "duo" || props.type === "general" ? "100%" : "90%",
+      width: "90%",
+      height: "90%",
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",

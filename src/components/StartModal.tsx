@@ -1,6 +1,4 @@
-import React, { useCallback } from "react";
-import { stepState, GAME_STEPS } from "../Game";
-import { useRecoilState } from "recoil";
+import React from "react";
 import {
   DialogProps,
   Box,
@@ -8,21 +6,27 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import Trone from '../assets/trone.svg';
 import GameModal from './GameModal';
 
 const useStyles = makeStyles((theme) => ({
   image: {
-    width: "40%",
+    width: "45%",
     maxHeight: "100%",
+    transform: "scale(1.4) rotate(-15deg) translateX(-20px)",
+    marginRight: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       width: "35%",
       maxHeight: "70vh",
     },
+    [theme.breakpoints.down("sm")]: {
+      "@media (orientation: portrait)": {
+        transform: "scale(1.6) rotate(-15deg) translateY(-20px)",
+        marginRight: 0,
+      },
+    },
   },
   button: {
     position: "absolute",
-    border: "5px solid white",
     boxShadow: "none",
     right: "50px",
     bottom: "-20px",
@@ -30,8 +34,14 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "none",
     },
   },
+  intro: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
+  },
   content: {
     flexDirection: "row",
+    padding: theme.spacing(3),
     [theme.breakpoints.down("sm")]: {
       "@media (orientation: portrait)": {
         flexDirection: "column",
@@ -41,16 +51,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) => {
-  const [, setStep] = useRecoilState(stepState);
-  const onStart = useCallback(() => {
-    setStep(GAME_STEPS.GAME_SCREEN);
-  }, [setStep]);
+interface StartModalProps extends Omit<DialogProps, "onClose"> {
+  onClose?: () => void;
+}
+
+const StartModal: React.ComponentType<StartModalProps> = ({onClose, ...props}) => {
 
   const classes = useStyles();
 
   return (
-    <GameModal maxWidth="sm" {...props}>
+    <GameModal maxWidth="md" {...props}>
       <Box
         className={classes.content}
         p={1}
@@ -58,7 +68,11 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
         alignItems="center"
         justifyContent="center"
       >
-        <img src={Trone} className={classes.image} alt="Le trône du gérant" />
+        <img
+          src={`${process.env.PUBLIC_URL}/endYear.png`}
+          className={classes.image}
+          alt="Le trône du gérant"
+        />
         <Box
           pl={2}
           pb={2}
@@ -72,15 +86,16 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
           fontWeight="fontWeightBold"
         >
           <Box pb={2}>
-            <Typography variant="body1" color="inherit">
-              Le mandat de gérant de Kévin arrive à son terme... Et il a décidé
-              de raccrocher les gants&nbsp;!
+            <Typography variant="h4" color="inherit" className={classes.intro}>
+              L'année 2022 vient de se terminer&nbsp;!
             </Typography>
           </Box>
-          <Typography variant="body2" color="textPrimary">
-            Tu penses être capable de prendre sa succession&nbsp;? Alors teste cette
-            simulation et découvre si tu as les épaules pour terminer un mandat
-            entier sans plomber les finances et la réputation de la SCOP&nbsp;!
+          <Typography variant="body1" color="textPrimary">
+            Nostalgique de l'année écoulée&nbsp;? Ou au contraire, déçu par
+            cette cuvée 2022 en demi-teinte&nbsp;? On vous propose de remonter
+            le temps et de revivre votre année mois par mois&nbsp;! Prenez les
+            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
+            de fin d'année positif&nbsp;!
           </Typography>
         </Box>
       </Box>
@@ -88,7 +103,7 @@ const StartModal: React.ComponentType<Omit<DialogProps, 'onClose'>> = (props) =>
         className={classes.button}
         variant="contained"
         color="primary"
-        onClick={onStart}
+        onClick={onClose}
       >
         Commencer !
       </Button>

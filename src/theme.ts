@@ -1,5 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import amber from "@material-ui/core/colors/amber";
+import purple from "@material-ui/core/colors/purple";
+import cyan from "@material-ui/core/colors/cyan";
 import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const theme = createMuiTheme({
@@ -13,7 +14,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: "Roboto Slab",
+    fontFamily: "Share Tech Mono",
     fontWeightBold: 800,
     h4: {
       fontWeight: 800,
@@ -34,20 +35,20 @@ const theme = createMuiTheme({
         fontSize: "0.5rem",
       },
     },
-    body1: {
+    body2: {
       fontSize: "1.5rem",
       fontWeight: 800,
       lineHeight: "1.2",
       "@media (max-width:900px)": {
-        fontSize: "0.95rem",
+        fontSize: "1.3rem",
         lineHeight: "1.1",
       },
     },
-    body2: {
+    body1: {
       fontSize: "1.1rem",
       fontWeight: 800,
       "@media (max-width:900px)": {
-        fontSize: "0.75rem",
+        fontSize: "1rem",
         lineHeight: "1.2",
       },
     },
@@ -57,10 +58,13 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: amber[500],
+      main: cyan[500],
     },
     secondary: {
       main: deepOrange[500],
+    },
+    text: {
+      primary: "#fff",
     },
   },
   overrides: {
@@ -74,8 +78,8 @@ const theme = createMuiTheme({
     MuiButton: {
       contained: {
         fontSize: "1rem",
-        border: `2px solid ${amber[500]}`,
-        background: `linear-gradient(to bottom, ${amber[300]}, ${amber[800]})`,
+        border: `2px solid ${cyan[400]}`,
+        background: `linear-gradient(to bottom, ${cyan[700]}, ${cyan[400]})`,
         borderRadius: "64px",
         fontWeight: 900,
         padding: "10px 20px",
@@ -83,7 +87,7 @@ const theme = createMuiTheme({
           padding: "4px 10px",
         },
         "& .MuiButton-label": {
-          color: deepOrange[800],
+          color: purple[900],
         },
       },
       text: {
@@ -114,7 +118,7 @@ const theme = createMuiTheme({
           "0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)",
       },
       popper: {
-        pointerEvents: 'initial'
+        pointerEvents: "initial",
       },
       arrow: {
         color: "white",

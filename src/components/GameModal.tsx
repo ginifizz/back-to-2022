@@ -10,41 +10,71 @@ import {
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { TransitionProps } from "@material-ui/core/transitions";
+import { purple } from "@material-ui/core/colors";
 import { cyan } from "@material-ui/core/colors";
 
-interface GameModalProps extends Omit<DialogProps, 'onClose'> {
+export interface GameModalProps extends Omit<DialogProps, 'onClose'> {
   color?: any;
   onClose?: () => void;
+  flipChildren?: any;
 }
 
 const useStyles = (color: any) =>
   makeStyles<Theme>((theme) => ({
     paper: {
-      backgroundColor: color[500],
+      backgroundColor: "#000",
       transform: "translateX(5px) translateY(-2px) rotate(-2deg)",
       [theme.breakpoints.down("sm")]: {
         background: "none",
         transform: "translateX(5px) translateY(-2px) rotate(-2deg)",
       },
+      perspective: "40rem",
+    },
+    border: {
+      position: "absolute",
+      width: "calc(100% - 16px)",
+      height: "calc(100% - 16px)",
+      left: "8px",
+      top: "8px",
+      border: "2px dashed #8300a3",
+      pointerEvents: "none",
+      borderRadius: theme.shape.borderRadius,
     },
     dialog: {
-      display: "flex",
-      flexDirection: "column",
       overflow: "visible",
       padding: theme.spacing(2),
       position: "relative",
-      borderRadius: theme.shape.borderRadius,
       zIndex: 1,
-      backgroundColor: "white",
       width: "100%",
       height: "100%",
       transform: "translateX(-10px) translateY(2px) rotate(-2deg)",
-      boxShadow: `0px 0px 20px rgba(0, 0, 0, 0.5)`,
-      color: color[600],
+      color: cyan[300],
       [theme.breakpoints.down("sm")]: {
-        padding: 0,
-        transform: 'none'
+        transform: "none",
       },
+      borderRadius: theme.shape.borderRadius,
+      border: "3px solid #4cd8ed",
+      background: "radial-gradient(#37065c, #130624)",
+      boxShadow: "rgb(64 221 255) 0px 0px 12px",
+      transformStyle: "preserve-3d",
+      flex: 1,
+      transition: "all ease 0.3s",
+    },
+    flip: {
+      transform:
+        "translateX(-10px) translateY(2px) rotate(-2deg) rotateX(-180deg)",
+    },
+    eventsNone: {
+      pointerEvents: "none",
+    },
+    front: {
+      backfaceVisibility: "hidden",
+      minWidth: "100%",
+    },
+    back: {
+      transform: "rotateX(-180deg) translate(-100%, 0)",
+      backfaceVisibility: "hidden",
+      minWidth: "100%",
     },
     close: {
       zIndex: 4,
@@ -78,7 +108,8 @@ const Transition = React.forwardRef(function Transition(
 const GameModal: React.ComponentType<GameModalProps> = ({
   onClose,
   children,
-  color = cyan,
+  flipChildren,
+  color = purple,
   ...props
 }) => {
   const classes = useStyles(color)();
@@ -95,14 +126,20 @@ const GameModal: React.ComponentType<GameModalProps> = ({
       keepMounted
       classes={{ paper: classes.paper }}
     >
-      <Box className={classes.dialog} display="flex" flexDirection="row">
-        {onClose && (
-          <IconButton className={classes.close} onClick={handleClose}>
-            <CloseIcon />
-          </IconButton>
-        )}
-        {children}
-      </Box>
+      <Box className={`${classes.dialog} ${flipChildren ? classes.flip : null}`} display="flex" flexDirection="row">
+        <div className={classes.border} />
+          <div className={`${classes.front} ${flipChildren && classes.eventsNone}`}>
+            {onClose && (
+              <IconButton className={classes.close} onClick={handleClose}>
+                <CloseIcon />
+              </IconButton>
+            )}
+            {children}
+          </div>
+          {flipChildren && <div className={classes.back}>
+            {flipChildren}
+          </div>}
+        </Box>
     </Dialog>
   );
 };

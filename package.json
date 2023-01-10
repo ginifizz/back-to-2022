@@ -18,6 +18,9 @@
     "recoil": "^0.0.13",
     "typescript": "~3.7.2"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

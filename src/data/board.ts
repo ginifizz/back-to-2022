@@ -1,22 +1,18 @@
 import { CASE_CATEGORY } from '../Game';
 
 const cases = [
-    "accounting",
-    "conference",
-    "food",
-    "old",
-    "santa",
-    "babyfoot",
-    "travel",
-    "covid",
-    "general",
-    "beer",
-    "tag",
-    "duo",
-    "vote",
-    "hobbies",
-    "baby",
-    "music"
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
   ]
 
   export default cases as CASE_CATEGORY[];

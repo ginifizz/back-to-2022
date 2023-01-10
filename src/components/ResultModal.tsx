@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useMemo } from "react";
 import {
   diceState,
   gameState,
@@ -15,17 +15,15 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import GameModal from "./GameModal";
-import Rating from "./Rating";
 import {
   resultTexts,
-  getReputationRating,
-  getFollowersRating,
-  getMoneyRating,
 } from "../data/results";
+import Level from "./Level";
 
 const useStyles = makeStyles((theme) => ({
   content: {
     flexDirection: "row",
+    height: "100%",
     [theme.breakpoints.down("sm")]: {
       "@media (orientation: portrait)": {
         flexDirection: "column",
@@ -34,20 +32,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   left: {
-    width: "40%",
-    [theme.breakpoints.down("md")]: {
-      width: "50%",
-      paddingLeft: theme.spacing(2)
-    },
-  },
-  right: {
-    width: "60%",
     display: "flex",
+    flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    paddingLeft: "3%",
-    [theme.breakpoints.down("md")]: {
-      width: "50%",
+    padding: "20px 50px",
+  },
+  right: {
+    position: "relative",
+    overflow: "hidden",
+    width: "150px",
+    height: "300px",
+    borderRight: "1px solid",
+    borderColor: theme.palette.primary.main,
+    [theme.breakpoints.down("sm")]: {
+      width: "100px",
+      height: "200px",
     },
   },
   text: {
@@ -61,25 +61,34 @@ const useStyles = makeStyles((theme) => ({
   },
   mainText: {
     color: theme.palette.text.primary,
-    fontSize: "1rem",
-    padding: `${theme.spacing(0.5)}px ${theme.spacing(2)}px ${theme.spacing(3)}px`,
     [theme.breakpoints.down("md")]: {
-      fontSize: "0.7rem",
+      fontSize: "1.5rem",
+      marginBottom: theme.spacing(1),
     },
   },
-  img: {
-    width: "100%",
-    maxWidth: "250px",
-    marginBottom: theme.spacing(1),
+  intro: {
+    color: theme.palette.primary.main,
     [theme.breakpoints.down("md")]: {
-      maxWidth: "150px",
+      fontSize: "1rem",
+      marginBottom: theme.spacing(1),
+    },
+  },
+  levels: {
+    position: "absolute",
+    right: 0,
+    top: "50%",
+    width: "300px",
+    height: "300px",
+    transform: "translateX(50%) translateY(-50%)",
+    [theme.breakpoints.down("sm")]: {
+      width: "200px",
+      height: "200px",
     },
   },
   button: {
     position: "absolute",
-    border: "5px solid white",
     boxShadow: "none",
-    right: "70px",
+    right: "50px",
     bottom: "-20px",
     "&:hover": {
       boxShadow: "none",
@@ -95,6 +104,14 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
   const resetGame = useResetRecoilState(gameState);
   const resetDice = useResetRecoilState(diceState);
 
+  const rating = useMemo(() => {
+    if (score > 80) return 4;
+    else if (score > 30) return 3;
+    else if (score > -30) return 2;
+    else if (score > -80) return 1;
+    return 0;
+  }, [score]);
+
   const reset = useCallback(() => {
     resetDice();
     resetGame();
@@ -102,15 +119,8 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
 
   const onReStart = useCallback(() => {
     reset();
-    setStep(GAME_STEPS.GAME_SCREEN);
+    setStep(GAME_STEPS.START_SCREEN);
   }, [setStep, reset]);
-
-  const reputationRating = getReputationRating(score.reputation);
-  const followersRating = getFollowersRating(score.followers);
-  const moneyRating = getMoneyRating(score.money);
-  const fullRating = Math.round(
-    (reputationRating + followersRating + moneyRating) / 3
-  );
 
   const classes = useStyles();
 
@@ -122,11 +132,18 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
     setOpen(false);
   };
 
+  const formatText = (text:string) =>
+    text &&
+    text
+      .replace(/\s!/gi, "&nbsp;!")
+      .replace(/\s:/gi, "&nbsp;:")
+      .replace(/\s\?/gi, "&nbsp;?");
+
   return (
     <GameModal
       maxWidth="md"
       {...props}
-      onClose={handleClose}
+      onClose={undefined}
       open={open}
       onExited={onReStart}
       keepMounted
@@ -138,29 +155,36 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
         alignItems="center"
         justifyContent="center"
       >
-        <div className={classes.left}>
-          <Rating rate={reputationRating} title="Réputation" />
-          <Typography className={classes.text} gutterBottom>
-            {resultTexts.reputation[reputationRating]}
-          </Typography>
-          <Rating rate={moneyRating} title="Participation" />
-          <Typography className={classes.text} gutterBottom>
-            {resultTexts.money[moneyRating]}
-          </Typography>
-          <Rating rate={followersRating} title="Followers" />
-          <Typography className={classes.text} gutterBottom>
-            {resultTexts.followers[followersRating]}
-          </Typography>
-        </div>
         <div className={classes.right}>
-          <img
-            className={classes.img}
-            src={`${process.env.PUBLIC_URL}/score${fullRating}.png`}
-            alt="score"
-          />
-          <Rating big rate={fullRating} title="Ton score :" />
-          <Typography className={classes.mainText} variant="body2" align='center' gutterBottom >
-            {resultTexts.score[fullRating]}
+          <Box className={classes.levels}>
+            <Level />
+          </Box>
+        </div>
+        <div className={classes.left}>
+          <Typography
+            className={classes.intro}
+            variant="body2"
+            color="primary"
+            align="center"
+            gutterBottom
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: formatText(resultTexts.score[rating].intro),
+              }}
+            />
+          </Typography>
+          <Typography
+            className={classes.mainText}
+            variant="h4"
+            align="center"
+            gutterBottom
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: formatText(resultTexts.score[rating].result),
+              }}
+            />
           </Typography>
         </div>
         <Button

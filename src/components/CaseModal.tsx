@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import {
   DialogProps,
   Box,
@@ -7,25 +7,36 @@ import {
   Theme,
   darken,
   Grow,
-  Tooltip,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
   Button,
-  ClickAwayListener,
+  withStyles,
 } from "@material-ui/core";
 import Curl from "../assets/curl.svg";
-import Level from "./Level";
-import { CaseType } from "../Game";
+import { CaseType, currentAnswerState } from "../Game";
 import { colors, titles } from "../data/cases";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { cyan } from "@material-ui/core/colors";
-import Help from "@material-ui/icons/HelpOutline";
+import { cyan, purple } from "@material-ui/core/colors";
 import GameModal from "./GameModal";
+import { useRecoilState } from "recoil";
 
 interface CaseModalProps extends Omit<DialogProps, "open"> {
   content?: CaseType;
   onClose: () => void;
 }
 
-const useStyles = (color: any, withTooltip: boolean = false) =>
+const CyanRadio = withStyles({
+  root: {
+    color: cyan[400],
+    "&$checked": {
+      color: cyan[600],
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
+
+const useStyles = (color: any) =>
   makeStyles<Theme>((theme) => ({
     left: {
       width: "40%",
@@ -51,7 +62,7 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
         border: "25px solid;",
         top: "0",
         transform: "translate(-70%, -15px)",
-        borderColor: `${color[800]} ${color[800]} ${color[800]} transparent`,
+        borderColor: `${purple[800]} ${purple[800]} ${purple[800]} transparent`,
         [theme.breakpoints.down("sm")]: {
           borderWidth: "15px",
           transform: "translate(-70%, -10px)",
@@ -65,7 +76,7 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
         border: "25px solid;",
         top: "0",
         transform: "translate(70%, -15px)",
-        borderColor: `${color[800]} transparent ${color[800]} ${color[800]}`,
+        borderColor: `${purple[800]} transparent ${purple[800]} ${purple[800]}`,
         [theme.breakpoints.down("sm")]: {
           borderWidth: "15px",
           transform: "translate(70%, -10px)",
@@ -81,7 +92,7 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
     ribbon: {
       position: "relative",
       zIndex: 2,
-      background: color[700],
+      background: purple[700],
       padding: theme.spacing(1),
       minHeight: "50px",
       textAlign: "center",
@@ -98,7 +109,7 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
       "&::before": {
         content: '""',
         borderColor: `transparent ${darken(
-          color[900],
+          purple[900],
           0.2
         )} transparent transparent`,
         position: "absolute",
@@ -114,7 +125,7 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
       "&::after": {
         content: '""',
         borderColor: `transparent transparent ${darken(
-          color[900],
+          purple[900],
           0.2
         )} transparent`,
         position: "absolute",
@@ -130,16 +141,16 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
     },
     circle: {
       width: "100%",
-      height: "0",
+      aspectRatio: "1 / 1",
       top: "50%",
       left: "45%",
       transform: "translate(-50%, -50%)",
-      paddingBottom: "100%",
       borderRadius: "50%",
-      border: `15px solid white`,
+      border: `15px solid`,
+      borderColor: cyan[200],
       position: "absolute",
       backgroundImage: `url(${Curl})`,
-      background: color[500],
+      background: cyan[500],
       zIndex: -1,
       [theme.breakpoints.down("sm")]: {
         borderWidth: "5px",
@@ -150,41 +161,20 @@ const useStyles = (color: any, withTooltip: boolean = false) =>
       maxHeight: "100%",
       borderRadius: "50%",
     },
-    levels: {
-      position: "absolute",
-      borderRadius: theme.shape.borderRadius,
-      background: color[400],
-      top: "100%",
-      right: "30px",
-      transform: "translateY(-50%) scale(0.8)",
-      border: "5px solid white",
-    },
-    tooltipButton: {
-      color: color[800],
-    },
-    toolTipLayer: {
-      position: "fixed",
-      opacity: withTooltip ? 1 : 0,
-      transition: "opacity ease 0.3s",
-      backgroundColor: "rgba(0, 0, 0, 0.3)",
-      width: "100%",
-      height: "100%",
-      left: 0,
-      top: 0,
-      zIndex: 1400,
-      pointerEvents: withTooltip ? "initial" : "none",
-      transform: `scale(${withTooltip ? 1 : 0})`,
+    radioLine: {
+      "&:first-child": {
+        marginBottom: "30px"
+      },
     },
   }));
 
 const emptyCase = {
   type: undefined,
   mainText: "",
-  secondaryText: "",
-  reputation: 0,
-  money: 0,
-  followers: 0,
-  ref: null,
+  answers: [
+    { title: "", score: 0, result: "" },
+    { title: "", score: 0, result: "" },
+  ],
 };
 
 const Transition = React.forwardRef(function Transition(
@@ -200,6 +190,13 @@ const Transition = React.forwardRef(function Transition(
   );
 });
 
+  const formatText = (text: string) =>
+    text &&
+    text
+      .replace(/\s!/gi, "&nbsp;!")
+      .replace(/\s:/gi, "&nbsp;:")
+      .replace(/\s\?/gi, "&nbsp;?");
+
 const CaseModal: React.ComponentType<CaseModalProps> = ({
   content = emptyCase,
   onClose,
@@ -208,17 +205,15 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
   const {
     type,
     mainText,
-    secondaryText,
-    money,
-    followers,
-    reputation,
-    ref,
+    answers,
   } = content;
 
+  const [newCurrentAnswer, setNewCurrentAnswer] =
+    useRecoilState(currentAnswerState);
+
   const [open, setOpen] = useState(false);
-  const [openRef, setOpenRef] = useState(false);
   const color = type ? colors[type] : cyan;
-  const classes = useStyles(color, openRef)();
+  const classes = useStyles(color)();
 
   useEffect(() => {
     if (type) setOpen(true);
@@ -228,45 +223,53 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
     setOpen(false);
   };
 
-  const handleTooltipClose = () => {
-    setOpenRef(false);
-  };
-
-  const handleTooltipOpen = () => {
-    setOpenRef(true);
-  };
-
-  const formattedMainText = useMemo(
-    () =>
-      mainText &&
-      mainText
-        .replace(/\s\!/gi, "&nbsp;!")
-        .replace(/\s\:/gi, "&nbsp;:")
-        .replace(/\s\?/gi, "&nbsp;?"),
-    [mainText]
-  );
-
-  const formattedSecondaryText = useMemo(
-    () =>
-      secondaryText &&
-      secondaryText
-        .replace(/\s\!/gi, "&nbsp;!")
-        .replace(/\s\:/gi, "&nbsp;:")
-        .replace(/\s\?/gi, "&nbsp;?"),
-    [secondaryText]
-  );
+const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  setNewCurrentAnswer(answers[parseInt(event.target.value, 10)]);
+};
 
   return (
     <>
       <GameModal
-        onClose={handleClose}
+        onClose={newCurrentAnswer ? handleClose : undefined}
         TransitionComponent={Transition}
         {...props}
         keepMounted
         open={open}
-        onExited={onClose}
+        onExited={newCurrentAnswer ? onClose : undefined}
         color={color}
         maxWidth="md"
+        flipChildren={
+          newCurrentAnswer && (
+            <Box
+              p={4}
+              pb={6}
+              display="flex"
+              flex={1}
+              flexDirection="column"
+              alignItems="center"
+              height="100%"
+              justifyContent="center"
+            >
+              <Box pb={4}>
+                <Typography variant="body1" color="inherit">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: formatText(newCurrentAnswer.result),
+                    }}
+                  />
+                </Typography>
+              </Box>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                onClick={handleClose}
+              >
+                CONTINUER
+              </Button>
+            </Box>
+          )
+        }
       >
         <Box
           p={1}
@@ -296,7 +299,7 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             )}
           </div>
           <Box
-            pr={8}
+            pr={0.5}
             py={0.5}
             flex={1}
             display="flex"
@@ -305,91 +308,41 @@ const CaseModal: React.ComponentType<CaseModalProps> = ({
             fontSize="body1.fontSize"
             lineHeight={1.2}
             fontWeight="fontWeightBold"
-            className={classes.right}
           >
             <Box className={classes.mainText}>
               <Typography variant="body1" color="inherit" component="div">
-                <span dangerouslySetInnerHTML={{ __html: formattedMainText }} />
+                <div dangerouslySetInnerHTML={{ __html: formatText(mainText) }} />
               </Typography>
             </Box>
             <Typography
-              variant="body2"
+              variant="body1"
               color="textPrimary"
               gutterBottom
               component="div"
             >
-              <span dangerouslySetInnerHTML={{ __html: formattedSecondaryText }} />
+              <RadioGroup
+                aria-label="answer"
+                name="answer"
+                onChange={handleChange}
+                color="primary"
+              >
+                {answers.map((answer, index) => (
+                  <FormControlLabel
+                    value={index}
+                    control={<CyanRadio />}
+                    label={answer.title}
+                    className={classes.radioLine}
+                  />
+                ))}
+              </RadioGroup>
             </Typography>
-            {ref && (
-              <ClickAwayListener onClickAway={handleTooltipClose}>
-                <Box position="relative">
-                  <Tooltip
-                    arrow
-                    onClose={handleTooltipClose}
-                    open={openRef}
-                    disableFocusListener
-                    disableHoverListener
-                    disableTouchListener
-                    placement="top"
-                    title={
-                      <div dangerouslySetInnerHTML={{ __html: ref }} /> ||
-                      "Y'a pas de ref"
-                    }
-                  >
-                    <Button
-                      className={classes.tooltipButton}
-                      variant="text"
-                      onClick={handleTooltipOpen}
-                    >
-                      <Help />
-                      <Box pl={0.5}>
-                        <Typography variant="caption" component="p">
-                          C'est quoi la ref ?
-                        </Typography>
-                      </Box>
-                    </Button>
-                  </Tooltip>
-                </Box>
-              </ClickAwayListener>
-            )}
           </Box>
           <Box
             display="flex"
             alignItems="center"
             justifyContent="center"
             className={classes.levels}
-          >
-            {!!money && (
-              <Box my={0.5} mx={1.5}>
-                <Level
-                  type="coin"
-                  value={money > 0 ? `+${money}` : `${money}`}
-                  title="Participation"
-                  imageStep={100}
-                />
-              </Box>
-            )}
-            {!!reputation && (
-              <Box my={0.5} mx={1.5}>
-                <Level
-                  type="star"
-                  value={reputation > 0 ? `+${reputation}` : `${reputation}`}
-                  title="Réputation"
-                  imageStep={100}
-                />
-              </Box>
-            )}
-            {!!followers && (
-              <Box my={0.5} mx={1.5}>
-                <Level
-                  type="heart"
-                  value={followers > 0 ? `+${followers}` : `${followers}`}
-                  title="Followers"
-                  imageStep={100}
-                />
-              </Box>
-            )}
-          </Box>
+          ></Box>
         </Box>
       </GameModal>
       <div className={classes.toolTipLayer} />

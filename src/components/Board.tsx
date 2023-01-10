@@ -4,44 +4,34 @@ import Case from "./Case";
 import Pawn from "./Pawn";
 import boardCases from "../data/board";
 
-interface LevelType {
-  value: number;
-  type: string;
-  title: string;
-}
-
 const positions: string[] = [
-  "5 / 5 / 6 / 6",
-  "5 / 4 / 6 / 5",
-  "5 / 3 / 6 / 4",
-  "5 / 2 / 6 / 3",
-  "5 / 1 / 6 / 2",
+  "4 / 4 / 5 / 5",
+  "4 / 3 / 5 / 4",
+  "4 / 2 / 5 / 3",
   "4 / 1 / 5 / 2",
   "3 / 1 / 4 / 2",
   "2 / 1 / 3 / 2",
   "1 / 1 / 2 / 2",
   " 1 / 2 / 2 / 3",
   " 1 / 3 / 2 / 4",
-  " 1 / 4 / 2 / 5",
-  " 1 / 5 / 2 / 6",
-  " 2 / 5 / 3 / 6",
-  " 3 / 5 / 4 / 6",
-  " 4 / 5 / 5 / 6",
+  "1 / 4 / 2 / 5",
+  " 2 / 4 / 3 / 5",
+  " 3 / 4 / 4 / 5",
 ];
 
 const useStyles = (position: number) =>
   makeStyles((theme) => ({
     perspective: {
       backgroundColor: "#012531",
-      border: "5px solid #fff",
+      border: "5px solid #2e3892",
       padding: "1%",
       position: "absolute",
       transform:
         "translate(-50%, -50%) rotateX(60deg) rotateY(0deg) rotateZ(-45deg)",
       transformStyle: "preserve-3d",
       display: "grid",
-      gridTemplateColumns: "repeat(5, 1fr)",
-      gridTemplateRows: "repeat(5, 1fr)",
+      gridTemplateColumns: "repeat(4, 1fr)",
+      gridTemplateRows: "repeat(4, 1fr)",
       gap: `2%`,
       width: "90vh",
       height: "90vh",
@@ -50,7 +40,7 @@ const useStyles = (position: number) =>
       "@media (orientation: portrait)": {
         width: "60vh",
         height: "60vh",
-        top: "50%"
+        top: "50%",
       },
     },
   }));
