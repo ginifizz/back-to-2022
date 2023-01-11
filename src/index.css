@@ -1,11 +1,17 @@
 body {
   margin: 0;
-  font-family: "Share Tech Mono", monospace, monospace;
+  font-family: "Spline Sans Mono", monospace, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a, a:any-link {
+  color: #fff!important;
+  font-weight: bold;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

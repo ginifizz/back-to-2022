@@ -14,42 +14,42 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: "Share Tech Mono",
+    fontFamily: "Spline Sans Mono",
     fontWeightBold: 800,
     h4: {
       fontWeight: 800,
-      fontSize: "2rem",
+      fontSize: "1.8rem",
     },
     h5: {
       fontWeight: 800,
       lineHeight: 0.8,
       "@media (max-width:900px)": {
-        fontSize: "1rem",
+        fontSize: "0.9rem",
         lineHeight: 1,
       },
     },
     overline: {
       lineHeight: 1.2,
       fontWeight: 800,
-      fontSize: "1rem",
+      fontSize: "0.9rem",
       "@media (max-width:900px)": {
         fontSize: "0.8rem",
       },
     },
     body2: {
-      fontSize: "1.5rem",
+      fontSize: "1.4rem",
       fontWeight: 800,
       lineHeight: "1.2",
       "@media (max-width:900px)": {
-        fontSize: "1.3rem",
+        fontSize: "1.2rem",
         lineHeight: "1.1",
       },
     },
     body1: {
-      fontSize: "1.1rem",
+      fontSize: "1rem",
       fontWeight: 800,
       "@media (max-width:900px)": {
-        fontSize: "0.9rem",
+        fontSize: "0.8rem",
         lineHeight: "1.2",
       },
     },

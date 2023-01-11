@@ -1,0 +1,14 @@
+{
+  "theme_color": "#40c1da",
+  "background_color": "#17092c",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Back to 2022",
+  "short_name": "Back to 2022",
+  "description": "Prenez les bonnes décisions et faites les bons choix pour revivre une bonne année 2022 !",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

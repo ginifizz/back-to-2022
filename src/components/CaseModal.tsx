@@ -6,7 +6,6 @@ import {
   makeStyles,
   Theme,
   darken,
-  Grow,
   FormControlLabel,
   RadioGroup,
   Radio,
@@ -16,7 +15,6 @@ import {
 import Curl from "../assets/curl.svg";
 import { CaseType, currentAnswerState } from "../Game";
 import { colors, titles } from "../data/cases";
-import { TransitionProps } from "@material-ui/core/transitions";
 import { cyan, purple } from "@material-ui/core/colors";
 import GameModal from "./GameModal";
 import { useRecoilState } from "recoil";
@@ -168,7 +166,6 @@ const useStyles = (color: any) =>
     image: {
       width: "100%",
       maxHeight: "100%",
-      borderRadius: "50%",
     },
     radioLine: {
       "&:first-child": {
@@ -185,7 +182,8 @@ const useStyles = (color: any) =>
       },
     },
     answer: {
-      width: "80%",
+      textAlign: "center",
+      maxWidth: "80%",
       margin: "auto",
       padding: "20px 0px"
     }
@@ -199,19 +197,6 @@ const emptyCase = {
     { title: "", score: 0, result: "" },
   ],
 };
-
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & { children?: React.ReactElement<any, any> },
-  ref: React.Ref<unknown>
-) {
-  return (
-    <Grow
-      ref={ref}
-      {...props}
-      timeout={{ appear: 10000, enter: 500, exit: 300 }}
-    />
-  );
-});
 
   const formatText = (text: string) =>
     text &&
@@ -254,7 +239,6 @@ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     <>
       <GameModal
         onClose={newCurrentAnswer ? handleClose : undefined}
-        TransitionComponent={Transition}
         {...props}
         keepMounted
         open={open}
