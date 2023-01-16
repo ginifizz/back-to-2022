@@ -40,7 +40,6 @@ const useStyles = (position: number) =>
       "@media (orientation: portrait)": {
         width: "60vh",
         height: "60vh",
-        top: "50%",
       },
     },
   }));

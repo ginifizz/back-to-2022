@@ -87,14 +87,20 @@ const StartModal: React.ComponentType<StartModalProps> = ({onClose, ...props}) =
           fontWeight="fontWeightBold"
         >
           <Box pb={2}>
-            <Typography align="center" variant="h4" component="h1" color="inherit" className={classes.intro}>
+            <Typography
+              align="center"
+              variant="h4"
+              component="h1"
+              color="inherit"
+              className={classes.intro}
+            >
               L'année 2022 vient de se terminer&nbsp;!
             </Typography>
           </Box>
           <Typography align="center" variant="body1" color="textPrimary">
-            Nostalgique de l'année écoulée&nbsp;? Ou au contraire, déçu par
-            cette cuvée 2022 en demi-teinte&nbsp;? On vous propose de remonter
-            le temps et de revivre votre année mois par mois&nbsp;! Prenez les
+            Nostalgique de l'année écoulée ou au contraire, cette cuvée 2022 a
+            pour vous un goût amer&nbsp;? On vous propose de remonter le temps et de
+            revivre l'année qui vient de s'écouler mois par mois&nbsp;! Prenez les
             bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
             de fin d'année positif&nbsp;!
           </Typography>

@@ -196,7 +196,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
       .replace(/\s:/gi, "&nbsp;:")
       .replace(/\s\?/gi, "&nbsp;?");
 
-  const URL = "https://back-to-2022.vercel.app";
+  const URL = "https://back-to-2022.les-tilleuls.coop";
 
   return (
     <GameModal
@@ -259,10 +259,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
           <Box display="flex" flexDirection="row" alignItems="center">
             <FacebookShareButton
               url={URL}
-              quote="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
-            le temps et de revivre votre année mois par mois ! Prenez les
-            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
-            de fin d'année positif."
+              quote="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter le temps et de revivre l'année qui vient de s'écouler ! Prenez les bonnes décisions et tentez d'obtenir un bilan de fin d'année positif !"
             >
               <img
                 className={classes.shareButton}
@@ -272,10 +269,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
             </FacebookShareButton>
             <TwitterShareButton
               url={URL}
-              title="Nostalgique de l'année écoulée ? @coopTilleuls vous propose de remonter
-            le temps et de revivre votre année mois par mois ! Prenez les
-            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
-            de fin d'année positif."
+              title="Nostalgique de l'année écoulée ? @coopTilleuls vous propose de remonter le temps et de revivre l'année qui vient de s'écouler ! Prenez les bonnes décisions et tentez d'obtenir un bilan de fin d'année positif !"
             >
               <img
                 className={classes.shareButton}
@@ -286,10 +280,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
             <LinkedinShareButton
               url={URL}
               title="Back to 2022"
-              summary="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
-            le temps et de revivre votre année mois par mois ! Prenez les
-            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
-            de fin d'année positif."
+              summary="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter le temps et de revivre l'année qui vient de s'écouler ! Prenez les bonnes décisions et tentez d'obtenir un bilan de fin d'année positif !"
             >
               <img
                 className={classes.shareButton}
@@ -302,10 +293,7 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
                 className={classes.mastodonButton}
                 dangerouslySetInnerHTML={{
                   __html: `<share-on-mastodon share_title="Back to 2022"
-                   share_description="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter
-            le temps et de revivre votre année mois par mois ! Prenez les
-            bonnes décisions, faites les bons choix et tentez d'obtenir un bilan
-            de fin d'année positif." modal_heading="Veuillez renseigner votre instance" modal_text="Comme Mastodon possède de nombreux serveurs, nous devons savoir sur laquelle vous souhaitez envoyer votre message." share_text="Partager"
+                   share_description="Nostalgique de l'année écoulée ? Les-Tilleuls.coop vous propose de remonter le temps et de revivre l'année qui vient de s'écouler ! Prenez les bonnes décisions et tentez d'obtenir un bilan de fin d'année positif !" modal_heading="Veuillez renseigner votre instance" modal_text="Comme Mastodon possède de nombreux serveurs, nous devons savoir sur laquelle vous souhaitez envoyer votre message." share_text="Partager"
 </share-on-mastodon>`,
                 }}
               />

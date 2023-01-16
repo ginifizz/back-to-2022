@@ -61,6 +61,9 @@ const useStyles = (color: any) =>
       left: "45%",
       transform: "translateX(-50%)",
       minWidth: "80%",
+      [theme.breakpoints.down("sm")]: {
+        left: "50%",
+      },
       "&::before": {
         content: '""',
         position: "absolute",
@@ -161,6 +164,7 @@ const useStyles = (color: any) =>
       zIndex: -1,
       [theme.breakpoints.down("sm")]: {
         borderWidth: "5px",
+        left: "50%",
       },
     },
     image: {
@@ -177,7 +181,7 @@ const useStyles = (color: any) =>
         flexDirection: "row",
         "@media (orientation: portrait)": {
           flexDirection: "column",
-          width: "100%"
+          width: "100%",
         },
       },
     },
@@ -185,8 +189,8 @@ const useStyles = (color: any) =>
       textAlign: "center",
       maxWidth: "80%",
       margin: "auto",
-      padding: "20px 0px"
-    }
+      padding: "20px 0px",
+    },
   }));
 
 const emptyCase = {

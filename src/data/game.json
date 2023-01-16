@@ -325,7 +325,7 @@
     "answers": [
       {
         "title": "Une petite boîte en bois, un peu abîmée mais jolie, que le vendeur n’arrive plus à ouvrir.",
-        "result": "En rentrant chez vous, vous forcez un peu la serrure et découvrez une collection impressionnante de cartes Pokemon très rares : vous allez pouvoir les revendre à prix d’or !",
+        "result": "En rentrant chez vous, vous forcez un peu la serrure et découvrez une collection impressionnante de cartes Pokémon très rares : vous allez pouvoir les revendre à prix d’or !",
         "score": 10
       },
       {
@@ -436,14 +436,14 @@
     "mainText": "Pour vos tenues, vous aimez plutôt :",
     "answers": [
       {
-        "title": "Le bleu, c'est bien le bleu.",
-        "result": "Aïe ! Ce week-end, c'est l'ouverture de la chasse et le bleu est sans doute trop proche de la couleur des sangliers...",
-        "score": -10
-      },
-      {
         "title": "L'orange fluo, c’est discret l’orange fluo.",
         "result": "Ce week-end, c'est l'ouverture de la chasse. Vous prenant pour l'un deux, un groupe de chasseurs vous offre une 8.6 et un bout de saucisson. Vous vous prendrez peut-être la balle d'un confrère, mais au moins vous aurez l'estomac rempli.",
         "score": 10
+      },
+      {
+        "title": "Le bleu, c'est bien le bleu.",
+        "result": "Aïe ! Ce week-end, c'est l'ouverture de la chasse et le bleu est sans doute trop proche de la couleur des sangliers...",
+        "score": -10
       }
     ]
   },
@@ -452,14 +452,14 @@
     "mainText": "Après un énième clic sur le bouton “Tweeter“ à l'instant où vous veniez de détecter une faute dans le message que vous rédigiez pour la troisième fois, vous décidez, excédé•e, de :",
     "answers": [
       {
+        "title": "Racheter Twitter.",
+        "result": "Vous en profitez pour y inclure toutes les fonctionnalités dont ses utilisateurs ont toujours rêvé (édition, système anti-bot, réactions en emoji...). Finalement, les gens se rendent compte que tout ce qu’ils voulaient, c’était revenir sur Facebook. Ils migrent et Twitter ferme à cause de vous.",
+        "score": -10
+      },
+      {
         "title": "Interpeller Elon Musk.",
         "result": "Le milliardaire décide de racheter Twitter pour 44 milliards de dollars. Il vire les deux tiers de ses employés, essaie d'implémenter toutes les fonctionnalités qui lui passent par la tête. Twitter ferme, Elon finit sous les ponts et toutes les instances de Mastodon voient leur nombre d'utilisateurs exploser.",
         "score": 10
-      },
-      {
-        "title": "Vous décidez de racheter Twitter.",
-        "result": "Vous en profitez pour y inclure toutes les fonctionnalités dont ses utilisateurs ont toujours rêvé (édition, système anti-bot, réactions en emoji...). Finalement, les gens se rendent compte que tout ce qu’ils voulaient, c’était revenir sur Facebook. Ils migrent et Twitter ferme à cause de vous.",
-        "score": -10
       }
     ]
   },
@@ -474,7 +474,7 @@
       },
       {
         "title": "Vous l'interpellez.",
-        "result": "Vous la remerciez sincèrement parce qu’elle balaye d’un revers de main, tous les clichés liés à la vieillesse. Eh ouais, tous les vieux ne sont pas réac, égoïstes et asexuels. Mais vous ne voyez pas le temps passer, et vous arrivez très en retard à une réunion de travail importante où votre patron n’accorde aucun crédit à votre excuse.",
+        "result": "Vous la remerciez sincèrement parce qu’elle balaye d’un revers de main tous les clichés liés à la vieillesse. Eh ouais, tous les vieux ne sont pas réac, égoïstes et asexuels. Mais vous ne voyez pas le temps passer, et vous arrivez très en retard à une réunion de travail importante où votre patron n’accorde aucun crédit à votre excuse.",
         "score": -10
       }
     ]
@@ -490,7 +490,7 @@
       },
       {
         "title": "Vous essayez le mot de passe “1234”.",
-        "result": "Incroyable, ça fonctionne, et vous retrouvez un vieux portefeuille de 10 bitcoins que vous aviez créé en 2011 et qui équivaut aujourd’hui à presque 30.000€.",
+        "result": "Incroyable, ça fonctionne, et vous retrouvez un vieux portefeuille de 10 bitcoins que vous aviez créé en 2011 et qui équivaut aujourd’hui à presque 200.000€.",
         "score": 10
       }
     ]
@@ -521,7 +521,7 @@
         "score": 10
       },
       {
-        "title": "Vous lui envoyez un montage de Nabila tenant avec le texte “Allo? C’est ton anniversaire et t’as pas de shampoing?",
+        "title": "Vous lui envoyez un montage de Nabila avec le texte “Allo? C’est ton anniversaire et t’as pas de shampoing?",
         "result": "Votre ami pense que vous vous moquez de son début de calvitie et le prend extrêmement mal, vous ramez pendant des mois pour qu’il vous pardonne.",
         "score": -10
       }
