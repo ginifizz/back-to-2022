@@ -338,7 +338,13 @@ const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
                   <FormControlLabel
                     value={index}
                     control={<CyanRadio />}
-                    label={answer.title}
+                    label={
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: formatText(answer.title),
+                        }}
+                      />
+                    }
                     className={classes.radioLine}
                   />
                 ))}
