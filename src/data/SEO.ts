@@ -1,5 +1,5 @@
 export const DESCRIPTION =
-  "Prenez les bonnes décisions et faites les bons choix pour revivre une bonne année 2022 !";
+  "Revivez l'année 2022 avec Les-Tilleuls.coop et prenez les bonnes décisions pour démarrer 2023 sous les meilleurs auspices !";
 
 export const TITLE = "Back to 2022";
 

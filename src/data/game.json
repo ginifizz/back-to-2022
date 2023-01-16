@@ -1,16 +1,16 @@
 [
   {
     "type": "january",
-    "mainText": "Après un séjour en Belgique et une panne de réveil imprévue, vous arrivez enfin à l’aéroport où votre avion vous attend. Il y a un énorme mouvement de foule, vous êtes curieux mais risquez de rater le départ si vous vous approchez. Que décidez-vous ?",
+    "mainText": "Après un séjour en Belgique et une panne de réveil imprévue, vous arrivez enfin à l’aéroport où votre avion vous attend. Il y a un énorme mouvement de foule sur place, vous êtes curieux mais risquez de rater le départ si vous vous approchez. Que décidez-vous ?",
     "answers": [
       {
         "title": "Aller voir.",
-        "result": "Bonne idée ! Vous assistez à l’atterrissage de Zara Rutherford, la plus jeune femme pilote à voler en solitaire autour du monde et et la première femme à réaliser un tour du monde en ULM. C’est un moment historique, vous vous en seriez voulu de rater ça !",
+        "result": "Bonne idée ! Vous assistez à l’atterrissage de Zara Rutherford, la plus jeune femme pilote à voler en solitaire autour du monde et la première femme à réaliser un tour du monde en ULM. C’est un moment historique !",
         "score": 10
       },
       {
         "title": "Courir prendre votre avion",
-        "result": "Une fois dans l’avion, le commandant de bord vous annonce un retard de 2h. Dommage, vous avez raté l’atterrissage de Zara Rutherford, la plus jeune femme pilote à voler en solitaire autour du monde et la première femme à réaliser un tour du monde en ULM. Vous vous consolez en grignotant les cacahuètes servies dans l’avion.",
+        "result": "Une fois dans l’avion, le commandant de bord vous annonce un retard de 2h. Dommage, vous avez raté l’atterrissage de Zara Rutherford, la plus jeune femme pilote à voler en solitaire autour du monde et la première femme à réaliser un tour du monde en ULM. Vous vous consolez en grignotant les cacahuètes servies pendant le vol.",
         "score": -10
       }
     ]
@@ -21,7 +21,7 @@
     "answers": [
       {
         "title": "Oui.",
-        "result": "Non seulement vous lisez l’article, mais vous le partagez sur le groupe de votre famille et en profitez pour faire un commentaire désobligeant sur le physique de la chanteuse. Sauf que vous aviez oublié un détail : votre beau-frère est un fan inconditionnel de Rihanna… Il risque d’y avoir de l’ambiance aux prochains repas de famille.",
+        "result": "Non seulement vous lisez l’article, mais vous le partagez sur le groupe de votre famille et en profitez pour faire un commentaire désobligeant sur les looks de grossesse de la chanteuse. Sauf que vous aviez oublié un détail : votre beau-frère est un fan inconditionnel de Rihanna… Il risque d’y avoir de l’ambiance aux prochains repas de famille.",
         "score": -10
       },
       {
@@ -33,7 +33,7 @@
   },
   {
     "type": "january",
-    "mainText": "Vous êtes contacté par le New York Times pour parler de votre petit jeu en ligne qui cartonne actuellement.",
+    "mainText": "Vous recevez un message du New York Times pour présenter votre petit jeu en ligne qui cartonne actuellement sur tous les réseaux.",
     "answers": [
       {
         "title": "Vous acceptez l'invitation.",
@@ -53,12 +53,12 @@
     "answers": [
       {
         "title": "Vous n’avez pas l’habitude de laisser passer ce genre de comportement : vous le réprimandez vertement.",
-        "result": "En le voyant repartir l’air furieux, vous vous dites qu’il vous rappelle quelqu’un, mais vous n’arrivez pas à mettre un nom sur ce visage. C’est quelques jours plus tard que vous vous rendez compte que vous avez sans doute mis de mauvaise humeur la mauvaise personne, quand vous découvrez au JT que Vladimir Poutine a décidé de déclarer la guerre à l’Ukraine…",
+        "result": "En le voyant repartir l’air furieux et grommelant des mots russes, vous vous dites qu’il vous rappelle quelqu’un mais impossible de mettre un nom sur ce visage. Vous réalisez quelques jours plus tard que vous avez sûrement mis de mauvaise humeur la mauvaise personne, quand vous découvrez au JT que Vladimir Poutine a déclaré la guerre à l’Ukraine…",
         "score": -10
       },
       {
         "title": "Le matin, c’est dur pour tout le monde, vous laissez couler, ça aurait pu vous arriver aussi.",
-        "result": "L’homme s’excuse platement, vous explique qu’il est chef cuisinier et très en retard au travail, et pour se faire pardonner, vous offre un bon pour un repas dans son restaurant gastronomique. Quelques jours plus tard, pendant une rediffusion de Top Chef, vous vous rendez compte que l’homme qui vous a bousculé était en fait Philippe Etchebest !",
+        "result": "L’homme s’excuse platement, vous explique qu’il est chef cuisinier et qu'il est très en retard au travail. Pour se faire pardonner, il vous offre un bon pour un repas dans son restaurant gastronomique. Quelques jours plus tard, pendant une rediffusion de Top Chef, vous vous rendez compte que l’homme qui vous a bousculé était en fait Philippe Etchebest !",
         "score": 10
       }
     ]
@@ -70,18 +70,18 @@
       {
         "title": "Vous descendez à l’arrêt suivant et revenez les chercher.",
         "result": "C’est en arrivant chez votre ami et en l’entendant déjà éternuer derrière la porte que vous vous souvenez qu’il est incroyablement allergique au pollen… Oups !",
-        "score": 10
+        "score": -10
       },
       {
         "title": "Vous laissez tomber : si vous revenez sur vos pas, vous arriverez en retard chez votre ami.",
         "result": "Un passant prend en photo ce beau bouquet de fleurs sauvages posé devant un arrêt de bus, son cliché fait le buzz. Coïncidence ou pas, quelques semaines plus tard, l’Angleterre annonce son ambition de créer plus de 1000 arrêts de bus “végétalisés” afin de préserver la biodiversité !",
-        "score": -10
+        "score": 10
       }
     ]
   },
   {
     "type": "february",
-    "mainText": "En vacances à Tahiti, lors d’une promenade en bateau, vous faites tomber dans l’eau le cadeau de Saint Valentin que vous comptiez offrir à l’élu·e de votre cœur. Un groupe de scientifiques équipé de tenues de plongée passe justement à proximité, que faites-vous ?",
+    "mainText": "En vacances à Tahiti, lors d’une promenade en bateau, vous faites tomber dans l’eau le cadeau de Saint Valentin que vous comptiez offrir à votre partenaire. Un groupe de scientifiques équipé de tenues de plongée passe justement à proximité, que faites-vous ?",
     "answers": [
       {
         "title": "Vous leur demandez s’ils peuvent essayer de retrouver votre cadeau : qui ne tente rien n’a rien !",
@@ -100,13 +100,13 @@
     "mainText": "Suite à une épidémie de grippe dans votre entreprise, votre chef vous désigne comme LA bonne personne, la seule en fait, pour mettre en page le prochain catalogue Ikea.",
     "answers": [
       {
-        "title": "En bon développeur, vous maîtrisez très peu Photoshop, mais acceptez la mission.",
+        "title": "Vous maîtrisez très peu Photoshop mais acceptez la mission.",
         "result": "Malheureusement, la seule fonctionnalité que vous connaissez est l'outil “étirer“. Alors que vous faisiez une blague à partir d'une photo de table pour le graphiste malade, votre montage fait le tour des réseaux sociaux et attire l'attention du Kremlin. “Votre“ table de 6m devient mondialement célèbre, et votre entreprise ouvre un nouveau pôle de création de meubles hors-norme.",
         "score": 10
       },
       {
-        "title": "En bon développeur paresseux, vous décidez de créer un programme pour faire le travail à votre place.",
-        "result": "Vous entraînez une intelligence artificielle qui vole le travail de milliers d'artistes et crée les visuels à votre place. Accusé de plagiat, votre catalogue ne sera jamais publié, et vous recevrez un blâme de votre direction. Il ne vous reste plus qu'à espérer que votre IA devienne célèbre...",
+        "title": "En bon•ne dev paresseux•se, vous décidez de créer un programme pour faire le travail à votre place.",
+        "result": "Vous entraînez une intelligence artificielle qui vole le travail de milliers d'artistes et crée les visuels à votre place. Accusé de plagiat, votre catalogue ne sera jamais publié et vous recevrez un blâme de votre direction. Il ne vous reste plus qu'à espérer que votre IA devienne célèbre...",
         "score": -10
       }
     ]
@@ -117,12 +117,12 @@
     "answers": [
       {
         "title": "Vous lui répondez cordialement.",
-        "result": "Au bout de quelques minutes, vous vous rendez compte qu’il s’agit de votre boulanger, qui s’est laissé pousser la barbe pendant les vacances : comme vous ne l’aviez pas vu sans masque depuis des mois, vous ne l’aviez pas reconnu ! Ravi de votre discussion, il vous offre le petit déjeuner.",
+        "result": "Au bout de quelques minutes, vous vous rendez compte qu’il s’agit de votre boulanger qui s’est laissé pousser la barbe pendant les vacances : comme vous ne l’aviez pas vu sans masque depuis des mois, vous ne l’aviez pas reconnu ! Ravi de votre discussion, il vous offre le petit déjeuner.",
         "score": 10
       },
       {
-        "title": "Prudent·e, vous l’ignorez et continuez votre chemin.",
-        "result": "Le lendemain matin, vous vous rendez compte avec surprise qu’il s’agissait de votre boulanger, qui s’est laissé pousser la barbe pendant les vacances : comme vous ne l’aviez pas vu sans masque depuis des mois, vous ne l’aviez pas reconnu ! Il a l’air très vexé de votre comportement, pas sûr qu’il continue à vous réserver ses meilleures viennoiseries le matin…",
+        "title": "Vous l’ignorez et continuez votre chemin.",
+        "result": "Le lendemain matin, vous découvrez avec surprise qu’il s’agissait de votre boulanger qui s’est laissé pousser la barbe pendant les vacances. Comme vous ne l’aviez pas vu sans masque depuis des mois, vous ne l’aviez pas reconnu ! Il a l’air très vexé de votre comportement, pas sûr qu’il continue à vous réserver ses meilleures viennoiseries le matin…",
         "score": -10
       }
     ]
@@ -133,19 +133,19 @@
     "answers": [
       {
         "title": "Vous envoyez une réclamation.",
-        "result": "Le magasin s’excuse platement et pour la peine vous fournit deux fois plus de chocolats que prévu… mais manque de chance, tous les chocolats proviennent d’un lot contaminé à la salmonelle. Heureusement vous obtenez l’information avant d’avoir offert les chocolats… mais pas avant de les avoir goûtés vous-même.",
+        "result": "Le magasin s’excuse platement et pour la peine vous fournit deux fois plus de chocolats que prévu… mais manque de chance, tous les chocolats proviennent d’un lot contaminé à la salmonelle. Heureusement, vous obtenez l’information avant d’avoir offert les chocolats… mais pas avant de les avoir goûtés vous-même.",
         "score": -10
       },
       {
         "title": "Vous vous dites qu'après tout les sauces, ça sera pratique pour les apéros de cet été.",
-        "result": "Quelques mois plus tard, vous êtes le seul dans votre entourage à ne pas souffrir de la pénurie de moutarde qui touche le pays : vous en avez plein le frigo !",
+        "result": "Quelques mois plus tard, vous êtes la seule personne dans votre entourage à ne pas souffrir de la pénurie de moutarde qui touche le pays : vous en avez plein le frigo !",
         "score": 10
       }
     ]
   },
   {
     "type": "march",
-    "mainText": "Vos blagues commencent à vous faire connaître dans le milieu du showbiz, et un ami assez influent vous propose de réaliser un one-man-show pour un événement international, retransmis à la télévision, tenu secret pour le moment. Acceptez-vous ?",
+    "mainText": "Vos blagues commencent à vous faire connaître dans le milieu du showbiz, et un ami assez influent vous propose de réaliser un spectacle pour un événement international retransmis à la télévision, tenu secret pour le moment. Acceptez-vous ?",
     "answers": [
       {
         "title": "Oui.",
@@ -154,7 +154,7 @@
       },
       {
         "title": "Non.",
-        "result": "Vous découvrez après coup qu’il s’agissait de la compétition internationale du lancer de panse de brebis farcie, <a target='blank' rel='noreferrer noopener' href='https://www.ouest-france.fr/leditiondusoir/2022-12-01/le-lancer-de-panse-de-brebis-farcie-cette-blague-devenue-une-discipline-sportive-en-ecosse-63fea313-99ce-4c34-92fd-5d3c277cb20a#Echobox=1669915381'>une étrange discipline sportive écossaise</a>. Vu que vous êtes végétarien, vous auriez passé un sale moment, vous avez bien fait de refuser !",
+        "result": "Vous découvrez après coup qu’il s’agissait de la compétition internationale du lancer de panse de brebis farcie, <a target='blank' rel='noreferrer noopener' href='https://www.ouest-france.fr/leditiondusoir/2022-12-01/le-lancer-de-panse-de-brebis-farcie-cette-blague-devenue-une-discipline-sportive-en-ecosse-63fea313-99ce-4c34-92fd-5d3c277cb20a#Echobox=1669915381'>une étrange discipline sportive écossaise</a>. Vu que vous êtes végétarien•ne, vous auriez passé un sale moment. Vous avez bien fait de refuser !",
         "score": 10
       }
     ]
@@ -164,29 +164,29 @@
     "mainText": "1er avril : en revenant de votre pause café vous vous rendez compte que quelqu'un s'est servi de votre ordi et a commencé à écrire un mail annonçant que vous ramèneriez le petit déjeuner le lendemain matin. Comment réagissez-vous ?",
     "answers": [
       {
-        "title": "Vous sautez sur le Slack de votre entreprise pour exiger que celui ou celle qui a touché à votre ordinateur se dénonce.",
-        "result": "Manque de chance, votre clavier avait également été passé en japonais durant votre absence, rendant votre message incompréhensible pour tout le monde... sauf pour votre collègue originaire de Tokyo qui a trouvé votre texte particulièrement insultant.",
-        "score": -10
+        "title": "Vous n'êtes jamais contre une petite gourmandise accompagnée d'un café, vous cliquez sur le bouton “Envoyer“.",
+        "result": "Votre réaction à la blague leur fait très plaisir et votre patron, touché par votre geste, vous propose même de participer à l’achat des viennoiseries.",
+        "score": 10
       },
       {
-        "title": "Vous cliquez sur le bouton “Envoyer“.",
-        "result": "Votre réaction à la blague leur fait très plaisir, et votre patron, touché par votre geste, vous propose même de participer à l’achat des viennoiseries.",
-        "score": 10
+        "title": "Vous sautez sur la messagerie instantanée de votre entreprise pour exiger que celui ou celle qui a touché à votre ordinateur se dénonce.",
+        "result": "Manque de chance, votre clavier avait également été passé en japonais pendant votre absence, rendant votre message incompréhensible pour tout le monde... sauf pour votre collègue originaire de Tokyo qui a trouvé votre texte particulièrement insultant.",
+        "score": -10
       }
     ]
   },
   {
     "type": "april",
-    "mainText": "Des oiseaux se sont installés juste sous votre fenêtre, et vous êtes réveillés par leurs cris TOUS. LES. MATINS. Que faites-vous ?",
+    "mainText": "Des oiseaux se sont installés juste sous votre fenêtre, et vous êtes réveillé•e par leurs cris TOUS. LES. MATINS. Que faites-vous ?",
     "answers": [
       {
         "title": "Vous faites installer du double vitrage : ça vous permettra des économies de chauffage cet hiver !",
-        "result": "Mais les travaux vous stressent énormément, coûtent plus cher que prévu, et quelques mois plus tard vos oiseaux, qui étaient en fait un couple d’hirondelles, repartent vers les pays chauds. Tout ça pour ça…",
+        "result": "Malheureusement, les travaux vous stressent énormément et coûtent plus cher que prévu. Quelques mois plus tard, vos oiseaux (qui étaient en fait un couple d’hirondelles) repartent vers les pays chauds. Tout ça pour ça…",
         "score": -10
       },
       {
         "title": "Vous achetez des boules Quiès.",
-        "result": "Mais finalement, elles restent dans votre table de nuit : au fil des semaines vous vous rendez compte que vous réveiller au son des chants d’oiseaux vous met d’excellente humeur pour le reste de la journée. C’est d’ailleurs ce que confirmera une étude allemande quelques mois plus tard : écouter 6 minutes de chants d’oiseaux par jour améliore la santé mentale en réduisant l'anxiété !",
+        "result": "Elles restent finalement sur votre table de nuit : au fil des semaines, vous réalisez que vous réveiller au son des chants d’oiseaux vous met d’excellente humeur pour le reste de la journée. C’est d’ailleurs ce que confirmera une étude allemande quelques mois plus tard : écouter 6 minutes de chants d’oiseaux par jour améliore la santé mentale en réduisant l'anxiété !",
         "score": 10
       }
     ]
@@ -196,62 +196,46 @@
     "mainText": "Un ami prof vous fait part d’un dilemme : un de ses élèves grave la lettre “Z” partout, et en cette période électorale il trouve ça plutôt limite mais il n’est pas censé parler politique avec ses élèves. Que lui conseillez-vous ?",
     "answers": [
       {
-        "title": "Vous lui dites de prendre l’élève à part et de lui parler des dangers de l’extrême droite, aduler Eric Zemmour si jeune peut avoir de graves conséquences.",
-        "result": "Quelques jours plus tard, votre ami vous explique qu’il s’est senti bien gêné quand son élève lui a expliqué que le “Z” était pour Zoé, sa copine…",
-        "score": -10
-      },
-      {
         "title": "Vous lui conseillez de laisser les choses se tasser.",
         "result": "Quelques jours plus tard, votre ami vous remercie pour votre conseil, après avoir découvert que son élève était en couple avec une certaine... Zoé.",
         "score": 10
-      }
-    ]
-  },
-  {
-    "type": "april",
-    "mainText": "Vous êtes plutôt :",
-    "answers": [
-      {
-        "title": "Ketchup",
-        "result": "Alain Chabat décide de faire de vous la nouvelle star du Burger Quizz et de vous inviter à chaque émission. Manque de chance, l'émission n'est plus diffusée…",
-        "score": -10
       },
       {
-        "title": "Mayo",
-        "result": "Votre participation à la prochaine saison de Burger Quizz est refusée. Vous balancez votre fiel sur les réseaux sociaux, et êtes invité par Cyril Hanouna qui vous met des nouilles dans le caleçon en vous appelant sa petite beauté. Vous vous sentez certes un peu sale, mais au moins vous faites le buzz : prends ça Alain Chabat !",
-        "score": 10
+        "title": "Vous lui dites de prendre l’élève à part et de lui parler des dangers de l’extrême droite, aduler Eric Zemmour si jeune peut avoir de graves conséquences.",
+        "result": "Quelques jours plus tard, votre ami vous explique qu’il s’est senti bien gêné quand son élève lui a expliqué que le “Z” était pour Zoé, sa copine…",
+        "score": -10
       }
     ]
   },
   {
     "type": "may",
-    "mainText": "Alors que vous roulez sur une route de forêt, vous pensez apercevoir un chevreuil sur le côté de la route. Que faites-vous ?",
+    "mainText": "Alors que vous conduisez sur une route de forêt, vous pensez apercevoir un chevreuil sur le côté de la route. Que faites-vous ?",
     "answers": [
       {
         "title": "Vous vous arrêtez pour essayer de le prendre en photo.",
-        "result": "Mais au moment où vous sortez de votre voiture, l'animal se précipite sur vous, le regard fou, et vous donne un énorme coup de tête avant de repartir en zigzaguant. Ce chevreuil est en fait totalement ivre à cause de la sève contenue dans les bourgeons printaniers. Heureusement, vous vous en tirez juste avec un gros mal de tête et une histoire que personne ne croira.",
+        "result": "Au moment où vous sortez de votre voiture, l'animal se précipite sur vous le regard fou, et vous donne un énorme coup de tête avant de repartir en zigzaguant. Ce chevreuil est en fait totalement ivre à cause de la sève contenue dans les bourgeons printaniers. Heureusement, vous vous en tirez juste avec un gros mal de tête et une histoire que personne ne croira.",
         "score": -10
       },
       {
         "title": "Vous passez votre chemin.",
-        "result": "En roulant juste à côté, vous vous rendez compte que ce que vous avez pris pour un “chevreuil” était en fait un promeneur en train de faire la petite commission contre un arbre. Heureusement que vous ne vous êtes pas arrêté, il ne l’aurait sans doute pas très bien pris…",
+        "result": "En roulant juste à côté, vous découvrez que ce que vous avez pris pour un “chevreuil” était en fait un promeneur en train de faire la petite commission contre un arbre. Heureusement que vous ne vous êtes pas arrêté, il ne l’aurait sans doute pas très bien pris…",
         "score": 10
       }
     ]
   },
   {
     "type": "may",
-    "mainText": "Après une campagne électorale mouvementée et du haut de ses 4,78 % de voix électorales, Valérie Pécresse fait un appel aux dons pour combler la dette de sa campagne. Pour la blague, vous envoyez au QG des républicains :",
+    "mainText": "Après une campagne électorale mouvementée et du haut de ses 4,78 % de voix électorales, une candidate aux présidentielles fait un appel aux dons pour combler la dette de sa campagne. Pour la blague, vous envoyez au QG de son parti :",
     "answers": [
       {
-        "title": "Dix chèques de 1 centime.",
-        "result": "Malheureusement, des milliers de personnes ont eu la même idée que vous et Valérie Pécresse rembourse sa dette en un temps record…",
-        "score": -10
+        "title": "Des billets de Monopoly dans une enveloppe sans timbre.",
+        "result": "Des milliers de gens ont la même idée que vous ! Obligée de payer la franchise de chaque lettre, cette candidate se retrouve encore plus endettée qu’avant son appel aux dons.",
+        "score": 10
       },
       {
-        "title": "Des billets de monopoly dans une enveloppe sans timbre.",
-        "result": "Des milliers de gens ont la même idée que vous ! Obligée de payer la franchise de chaque lettre, Valérie Pécresse se retrouve encore plus endettée qu’avant son appel aux dons.",
-        "score": 10
+        "title": "Dix chèques de 1 centime.",
+        "result": "Malheureusement, des milliers de personnes ont eu la même idée que vous et cette candidate rembourse sa dette en un temps record…",
+        "score": -10
       }
     ]
   },
@@ -266,7 +250,7 @@
       },
       {
         "title": "Vous la laissez finir sa chanson.",
-        "result": "Le contrôleur arrive et vous explique qu’il est un grand fan de la reine des neiges, oubliant par la même occasion de vous réclamer votre ticket. Cerise sur le gâteau : il y avait également le ministre gallois de l’éducation dans votre wagon, et en voyant à quel point la musique illumine le visage de votre nièce, il décide de créer un programme pour permettre à tous les enfants du Pays de Galles de recevoir gratuitement un instrument et des cours de musique.",
+        "result": "Le contrôleur arrive et vous explique qu’il est un grand fan de la Reine des Neiges, oubliant par la même occasion de vous réclamer votre ticket. Cerise sur le gâteau : il y avait également le ministre gallois de l’éducation dans votre wagon, et en voyant à quel point la musique illumine le visage de votre nièce, il décide de créer un programme pour permettre à tous les enfants du Pays de Galles de recevoir gratuitement un instrument et des cours de musique.",
         "score": 10
       }
     ]
@@ -276,24 +260,24 @@
     "mainText": "Lors d’une escale en Turquie, vous voyez au loin un gros chat tacheté. Quelle est votre réaction ?",
     "answers": [
       {
-        "title": "Vous passez votre chemin, vous n’aimez pas les chats de toute façon, votre truc, ce sont les chiens.",
-        "result": "Sans le savoir, vous venez de rater un super scoop : en vous approchant un peu vous auriez découvert que ce “chat” était en fait un léopard d’Anatolie, espèce qu’on pensait disparue depuis 50 ans !",
-        "score": -10
-      },
-      {
         "title": "Vous vous approchez pour mieux le voir : vous adorez les chats !",
         "result": "Mais après quelques pas, vous vous rendez compte qu’il est bien trop gros pour être un simple chat, et le prenez juste en photo. Le lendemain, votre cliché fait le buzz : vous avez photographié un léopard d’Anatolie, espèce qu’on pensait disparue depuis 50 ans !",
         "score": 10
+      },
+      {
+        "title": "Vous passez votre chemin : vous n’aimez pas les chats. Votre truc, ce sont les chiens.",
+        "result": "Sans le savoir, vous venez de rater un super scoop : en vous approchant un peu vous auriez découvert que ce “chat” était en fait un léopard d’Anatolie, espèce qu’on pensait disparue depuis 50 ans !",
+        "score": -10
       }
     ]
   },
   {
     "type": "june",
-    "mainText": "On vous propose d’assister à un concert des Guns N’ Roses le 28 juin à Dublin ! Vous adorez ce groupe, mais le concert tombe pile pour les 60 ans de votre oncle, qui a prévu une immense fête pour l’occasion. Que faites-vous ?",
+    "mainText": "On vous propose d’assister à un concert des Guns N’ Roses le 28 juin à Dublin ! Vous adorez ce groupe, mais le concert tombe pile pour les 60 ans de votre oncle qui a prévu une immense fête pour l’occasion. Que faites-vous ?",
     "answers": [
       {
         "title": "Tant pis pour le tonton, vous foncez au concert !",
-        "result": "Le concert est bien sûr incroyable, mais à la fin du show Axl Rose lance son micro dans le public, et celui-ci vous arrive pile dans l'œil… Résultat : un magnifique coquard qui mettra des semaines à partir, et un oncle terriblement déçu.",
+        "result": "Le concert est incroyable mais à la fin du show, Axl Rose lance son micro dans le public et celui-ci vous arrive pile dans l'œil… Résultat : un magnifique coquard qui mettra des semaines à partir, et un oncle terriblement déçu.",
         "score": -10
       },
       {
@@ -305,7 +289,7 @@
   },
   {
     "type": "june",
-    "mainText": "Votre petit neveu vous a fait un dessin et vous demande si vous l’aimez, vous avez bien du mal à reconnaître ce que représente cette tâche rose mais vous tentez le tout pour le tout :",
+    "mainText": "Votre petit neveu vous a fait un dessin et vous demande si vous l’aimez. Vous avez bien du mal à reconnaître ce que représente cette tâche rose mais vous tentez le tout pour le tout :",
     "answers": [
       {
         "title": "Il est super joli ton chien !",
@@ -314,40 +298,24 @@
       },
       {
         "title": "Quelle jolie baleine !",
-        "result": "Votre neveu rayonne de fierté, et pour lui montrer à quel point vous aimez son dessin vous l’envoyez à quelques amis. Cette petite baleine rose finit on ne sait comment par atterrir dans les mails de Svandís Svavarsdóttir, le ministre islandais de la pêche. Emu par ce dessin, il prend une grande décision et décide de faire arrêter la chasse à la baleine à partir de 2024.",
+        "result": "Votre neveu rayonne de fierté et pour lui prouver à quel point vous aimez son dessin, vous le montrez à quelques amis. Cette petite baleine rose finit on ne sait comment par atterrir dans les mails de Svandís Svavarsdóttir, le ministre islandais de la pêche. Emu par ce dessin, il prend une grande décision et décide de faire arrêter la chasse à la baleine à partir de 2024.",
         "score": 10
-      }
-    ]
-  },
-  {
-    "type": "june",
-    "mainText": "Votre petit neveu vous a fait un dessin et vous demande si vous l’aimez, vous avez bien du mal à reconnaître ce que représente cette tâche rose mais vous tentez le tout pour le tout :",
-    "answers": [
-      {
-        "title": "Ça c'est une jolie baleine !",
-        "result": "Votre neveu rayonne de fierté, et pour lui montrer à quel point vous aimez son dessin vous l’envoyez à quelques amis. Cette petite baleine rose finit on ne sait comment par atterrir dans les mails de Svandís Svavarsdóttir, le ministre islandais de la pêche. Emu par ce dessin, il prend une grande décision et décide de faire arrêter la chasse à la baleine à partir de 2024.",
-        "score": 10
-      },
-      {
-        "title": "Il est super joli ton chien !",
-        "result": "Votre neveu se met à pleurer en vous disant que vous tenez le dessin à l’envers, et qu’il s’agissait bien évidemment d’un portrait de vous. Vous avez beau accrocher fièrement son dessin sur votre lieu de travail, les parents de l’enfant vous en veulent à mort et refusent de vous adresser la parole pendant des mois.",
-        "score": -10
       }
     ]
   },
   {
     "type": "july",
-    "mainText": "Cette année, vous partez en vacances en Gironde. On vous propose deux activités : du camping en forêt, ou des balades dans les dunes du Cap Ferret. Que préférez-vous ?",
+    "mainText": "Cette année, vous partez en vacances en Gironde. On vous propose deux activités : du camping en forêt ou des balades dans les dunes du Cap Ferret. Que préférez-vous ?",
     "answers": [
-      {
-        "title": "Le camping, évidemment !",
-        "result": "Promenade en forêt, nuits à la belle étoile, et pour fêter votre dernier jour vous grillez des chamallows autour d’un bon feu. Quelques jours plus tard, vous apprenez qu’un énorme feu de forêt s’est déclenché près de l’endroit où vous avez séjourné. Heureusement, vous êtes sûr d’avoir éteint correctement le feu avant de partir… vraiment sûr ?",
-        "score": -10
-      },
       {
         "title": "Les balades dans les dunes, bien entendu !",
         "result": "Au cours d’une promenade, vous découvrez sous une plante une étrange araignée. Incroyable, c’est une veuve noire, espèce qu’on n’avait pas aperçue dans cette région depuis près de 2 siècles ! Vous la prenez en photo, cette rencontre fera une super anecdote à raconter à votre retour de vacances !",
         "score": 10
+      },
+      {
+        "title": "Le camping, évidemment !",
+        "result": "Promenade en forêt, nuits à la belle étoile, et pour fêter votre dernier jour vous grillez des chamallows autour d’un bon feu. Quelques jours plus tard, vous apprenez qu’un énorme feu de forêt s’est déclenché près de l’endroit où vous avez séjourné. Heureusement, vous aviez éteint correctement le feu avant de partir mais vous n'en avez plus la certitude...",
+        "score": -10
       }
     ]
   },
@@ -362,34 +330,34 @@
       },
       {
         "title": "Un superbe tapis qui irait très bien dans votre salon.",
-        "result": "Vous l’installez dès votre retour à la maison. Quelques jours plus tard, c’est la catastrophe, votre maison est envahie par les punaises de lit !",
+        "result": "Vous l’installez dès votre retour à la maison. Quelques jours plus tard, c’est la catastrophe : votre maison est envahie par les punaises de lit !",
         "score": -10
       }
     ]
   },
   {
     "type": "july",
-    "mainText": "Pas de chance, le verdict est tombé, vous faites une appendicite et devez vous faire opérer. Juste avant que l’anesthésiste ne vous endorme, vous entendez que les chirurgiens sont en train de passer un best of d’AC/DC. Comment réagissez-vous ?",
+    "mainText": "Pas de chance, le verdict est tombé : vous faites une appendicite et devez vous faire opérer. Juste avant que l’anesthésiste ne vous endorme, vous entendez que les chirurgiens sont en train de passer un best of d’AC/DC. Comment réagissez-vous ?",
     "answers": [
       {
         "title": "Vous leur demandez de passer de la musique plus calme.",
-        "result": "A peine endormi, le chirurgien un peu vexé change la playlist pour passer à la place un best of de Patrick Sebastien. L’opération est un succès, mais quelques jours après votre sortie de l’hôpital vous devez vous faire ré-opérer en urgence afin de récupérer un gant en latex oublié par un infirmier, sans doute trop occupé à fredonner “le petit bonhomme en mousse”.",
+        "result": "À peine endormi, le chirurgien un peu vexé change la playlist pour passer à la place un best of de Patrick Sebastien. L’opération est un succès, mais quelques jours après votre sortie de l’hôpital vous devez vous faire ré-opérer en urgence afin de récupérer un gant en latex oublié par un infirmier, sans doute trop occupé à fredonner “le petit bonhomme en mousse”...",
         "score": -10
       },
       {
-        "title": "Vous ne dites rien, après tout vous serez endormi.",
-        "result": "Excellent choix : une étude réalisée par une université allemande a démontré que la musique avait un impact positif sur le travail des chirurgiens, et que de la musique rythmée et entrainante augmentait leur vitesse et leur précision. L’opération est une réussite, vous sortez de l’hôpital serein en sifflotant Highway to Hell.",
+        "title": "Vous ne dites rien, après tout vous n'allez rien entendre",
+        "result": "Excellent choix : une étude réalisée par une université allemande a démontré que la musique avait un impact positif sur le travail des chirurgiens, et que de la musique rythmée et entrainante augmentait leur vitesse et leur précision. L’opération est une réussite, vous sortez de l’hôpital en pleine forme sifflotant Highway to Hell.",
         "score": 10
       }
     ]
   },
   {
     "type": "august",
-    "mainText": "Le site cepacher.fr lance un jeu concours permettant de gagner un séjour tous frais payés à Londres. Vous avez toujours rêvé de visiter la ville mais n’en avez jamais eu l’occasion. Que faites-vous ?",
+    "mainText": "Le site cepacher.fr lance un jeu concours permettant de gagner un séjour tous frais payés à Londres. Vous avez toujours rêvé de visiter la capitale britannique mais n’en avez jamais eu l’occasion. Que faites-vous ?",
     "answers": [
       {
         "title": "Vous participez.",
-        "result": "Et vous gagnez ! Manque de chance, le voyage a lieu en septembre, pile le weekend du décès de la reine d’Angleterre Elizabeth II. Les anglais sont moroses, tous les monuments de la ville sont fermés au public, et vous passez le weekend sous la pluie. Cerise sur le gâteau, votre boîte mail est à présent totalement saturée de mails de cepacher.fr qui ne connaît visiblement pas les liens de désinscription.",
+        "result": "Et vous gagnez ! Manque de chance, le voyage a lieu en septembre, pile le weekend du décès de la reine d’Angleterre, Elizabeth II. Les anglais sont moroses, tous les monuments de la ville sont fermés au public et vous passez le weekend sous la pluie. Cerise sur le gâteau, votre boîte mail est à présent totalement saturée de mails de cepacher.fr qui ne connaît visiblement pas les liens de désinscription.",
         "score": -10
       },
       {
@@ -420,14 +388,14 @@
     "mainText": "Vous attendez au passage piéton. Le feu passe au vert :",
     "answers": [
       {
-        "title": "Vous traversez immédiatement.",
-        "result": "Une tesla en pilotage automatique a grillé le feu rouge et vous fauche. Vos 12 fractures vous rappelleront sans cesse de bien remplir les captcha qui vous demandent de reconnaître les feux de signalisation.",
-        "score": -10
-      },
-      {
         "title": "Vous attendez quelques secondes avant de passer.",
         "result": "Une trottinette électrique a grillé le feu rouge et s'est ruée dans une énorme flaque d'eau, arrosant au passage tous les piétons trop pressés... Mais pas vous.",
         "score": 10
+      },
+      {
+        "title": "Vous traversez immédiatement.",
+        "result": "Une  Tesla en pilotage automatique a grillé le feu rouge et vous fauche. Vos 12 fractures vous rappelleront sans cesse de bien remplir les captcha qui vous demandent de reconnaître les feux de signalisation.",
+        "score": -10
       }
     ]
   },
@@ -436,8 +404,8 @@
     "mainText": "Vous organisez l’anniversaire d’un enfant de votre famille fan de Pixar. Après des heures de recherche sur Pinterest, vous hésitez entre deux thèmes. Vous choisissez : ",
     "answers": [
       {
-        "title": "Là haut",
-        "result": "Vous trouvez un max d’idées sur ce thème, et votre déco cartonne ! Le clou de la journée : les ballons à l’hélium mis sur la niche du chien. Sauf que vous y avez peut-être été un peu fort sur le nombre de ballons : à la fin de la journée, la niche s’est envolée… Quelques jours plus tard, au JT, on annonce que le télescope James Webb a été percuté par un objet non identifié et que sa mission est compromise. Les scientifiques essaient de déterminer l’origine de la collision, pour l’instant ils n’ont retrouvé qu’un morceau de bois sur lequel il est écrit “Médor”.",
+        "title": "Là-haut",
+        "result": "Vous trouvez un max d’idées sur ce thème et votre déco cartonne ! Le clou de la journée : les ballons à l’hélium mis sur la niche du chien. Sauf que vous y avez peut-être été un peu fort sur le nombre de ballons : à la fin de la journée, la niche s’est envolée… Quelques jours plus tard, au JT, on annonce que le télescope James Webb a été percuté par un objet non identifié et que sa mission est compromise. Les scientifiques essaient de déterminer l’origine de la collision, pour l’instant ils n’ont retrouvé qu’un morceau de bois sur lequel il est écrit “Médor”.",
         "score": 10
       },
       {
@@ -453,12 +421,12 @@
     "answers": [
       {
         "title": "Une trousse Hello Kitty, vous vous souvenez qu’elle adore ça.",
-        "result": "Effectivement, votre petite cousine adorait Hello Kitty… quand elle avait 5 ans. Elle en a 13 aujourd’hui, et vous devenez officiellement le boomer de la famille.",
+        "result": "Effectivement, votre petite cousine adorait ce chaton quand elle avait 5 ans. Elle en a 13 aujourd’hui, et vous devenez officiellement le boomer de la famille.",
         "score": -10
       },
       {
         "title": "Votre ancienne collection de pogs.",
-        "result": "Vous aviez peur de faire fausse route avec ce cadeau un peu old school, mais les petits disques de carton sont revenus en force dans les écoles dans les années 2020, et grâce à vos pogs collector votre cousine finit par devenir la star de la cour de récré.",
+        "result": "Vous aviez peur de faire fausse route avec ce cadeau un peu vintage, mais les petits disques de carton sont revenus en force dans les écoles et grâce à vos pogs collector votre cousine finit par devenir la star de la cour de récré.",
         "score": 10
       }
     ]
@@ -469,51 +437,51 @@
     "answers": [
       {
         "title": "Le bleu, c'est bien le bleu.",
-        "result": "Aïe ! Ce week-end, c'est l'ouverture de la chasse et le bleu est sans doute trop proche de la couleur des sangliers. Bon chance !",
+        "result": "Aïe ! Ce week-end, c'est l'ouverture de la chasse et le bleu est sans doute trop proche de la couleur des sangliers...",
         "score": -10
       },
       {
         "title": "L'orange fluo, c’est discret l’orange fluo.",
-        "result": "Ce week-end, c'est l'ouverture de la chasse. Vous prenant pour l'un deux, un groupe de chasseurs vous offre une 8.6 et un bout de saucisson. Vous vous prendrez peut-être la balle d'un confrère, mais au moins vous vous serez mis bien.",
+        "result": "Ce week-end, c'est l'ouverture de la chasse. Vous prenant pour l'un deux, un groupe de chasseurs vous offre une 8.6 et un bout de saucisson. Vous vous prendrez peut-être la balle d'un confrère, mais au moins vous aurez l'estomac rempli.",
         "score": 10
       }
     ]
   },
   {
     "type": "october",
-    "mainText": "Après un énième clic sur le bouton “Tweeter“ à l'instant où vous veniez de détecter une faute dans le tweet que vous rédigiez pour la troisième fois, vous décidez de prendre les choses en main. Pour ce faire :",
+    "mainText": "Après un énième clic sur le bouton “Tweeter“ à l'instant où vous veniez de détecter une faute dans le message que vous rédigiez pour la troisième fois, vous décidez, excédé•e, de :",
     "answers": [
       {
-        "title": "Vous interpellez Elon Musk.",
-        "result": "Le milliardaire décide de racheter Twitter pour 44 milliards de dollars. Il vire les deux tiers de ses employés, essaie d'implémenter toutes les fonctionnalités qui lui passent par la tête, Twitter ferme, Elon finit sous les ponts et toutes les instances de Mastodon voient leur nombre d'utilisateurs exploser.",
+        "title": "Interpeller Elon Musk.",
+        "result": "Le milliardaire décide de racheter Twitter pour 44 milliards de dollars. Il vire les deux tiers de ses employés, essaie d'implémenter toutes les fonctionnalités qui lui passent par la tête. Twitter ferme, Elon finit sous les ponts et toutes les instances de Mastodon voient leur nombre d'utilisateurs exploser.",
         "score": 10
       },
       {
         "title": "Vous décidez de racheter Twitter.",
-        "result": "Vous en profitez pour y inclure toutes les fonctionnalités dont ses utilisateurs ont toujours rêvé (édition, système anti-bot, réaction en emoji, story, ...). Finalement, les gens se rendent compte que tout ce qu’ils voulaient, c’était revenir sur Facebook, ils migrent, et Twitter ferme à cause de vous.",
+        "result": "Vous en profitez pour y inclure toutes les fonctionnalités dont ses utilisateurs ont toujours rêvé (édition, système anti-bot, réactions en emoji...). Finalement, les gens se rendent compte que tout ce qu’ils voulaient, c’était revenir sur Facebook. Ils migrent et Twitter ferme à cause de vous.",
         "score": -10
       }
     ]
   },
   {
     "type": "october",
-    "mainText": "Vous êtes à Cergy et vous rencontrez par hasard Annie Ernaux dans la rue (et oui, elle habite là depuis X années). En bon auditeur de France Inter, vous avez entendu parler de la polémique survenue après l’obtention de son prix Nobel de littérature.",
+    "mainText": "Vous êtes à Cergy et vous rencontrez par hasard Annie Ernaux dans la rue (et oui, elle habite là depuis de nombreuses années). Vous vous rappelez de la polémique survenue après l’obtention de son prix Nobel de littérature.",
     "answers": [
       {
-        "title": "Vous l'interpellez.",
-        "result": "vous la remerciez sincèrement parce qu’elle balaye d’un revers de main, tous les clichés liés à la vieillesse. Eh ouais, tous les vieux ne sont pas réac, égoïstes et asexuels. Mais vous ne voyez pas le temps passer, et vous arrivez très en retard à une réunion de travail importante où votre patron n’accorde aucun crédit à votre excuse. ",
-        "score": -10
+        "title": "Vous n'osez pas l'aborder",
+        "result": "...mais vous remerciez du fond du cœur ses détracteurs qui, en déversant leur fiel, vous ont donné envie de découvrir ses ouvrages. Plus loin, sur votre chemin, vous apercevez Alain Finkielkraut à qui vous conseillez de se jeter dans le canal. Vous devenez une star des réseaux sociaux.",
+        "score": 10
       },
       {
-        "title": "Vous n'osez pas l'aborder",
-        "result": "...mais vous remerciez du fond du cœur ses détracteurs qui, en déversant leur fiel, vous ont donné envie de découvrir son œuvre. Plus loin, sur votre chemin, vous apercevez Alain Finkielkraut à qui vous conseillez de se jeter dans le canal. Vous devenez une star des réseaux sociaux.",
-        "score": 10
+        "title": "Vous l'interpellez.",
+        "result": "Vous la remerciez sincèrement parce qu’elle balaye d’un revers de main, tous les clichés liés à la vieillesse. Eh ouais, tous les vieux ne sont pas réac, égoïstes et asexuels. Mais vous ne voyez pas le temps passer, et vous arrivez très en retard à une réunion de travail importante où votre patron n’accorde aucun crédit à votre excuse.",
+        "score": -10
       }
     ]
   },
   {
     "type": "october",
-    "mainText": "Sur un vieil ordinateur, vous découvrez un dossier crypté, mais impossible de vous souvenir du mot de passe. Que faites-vous ?",
+    "mainText": "Sur un vieil ordinateur, vous découvrez un dossier crypté mais impossible de vous souvenir du mot de passe. Que faites-vous ?",
     "answers": [
       {
         "title": "Vous demandez à votre sœur, qui s’y connaît un peu en informatique, de vous aider. ",
@@ -529,26 +497,26 @@
   },
   {
     "type": "november",
-    "mainText": "Lors d’un repas de famille où vous pensiez pouvoir rester assis tranquillement toute la journée, un invité met de la musique et tout le monde se met à danser. Problème : vous êtes aussi souple et gracieux qu’un porte manteau. Votre famille insiste, que faites-vous ?",
+    "mainText": "Lors d’un repas de famille où vous pensiez pouvoir rester assis tranquillement toute la journée, un invité met de la musique et tout le monde se met à danser. Problème : vous êtes aussi souple qu’un porte manteau mais votre famille insiste, que faites-vous ?",
     "answers": [
       {
         "title": "Vous vous laissez convaincre.",
-        "result": "Tant pis, vous vous lancez : vous battez des bras, le dos bien droit, vous faites du “air piano”, mimez un lancer de canne à pêche, vous vous donnez à fond malgré votre timidité. Un lointain cousin vous filme et poste la vidéo sur Tiktok : c’est un carton, votre danse surpasse même celle de Jenna Ortega dans la série Mercredi, et vous donnez le courage de s’affirmer à des milliers de personnes timides dans le monde.",
+        "result": "Tant pis, vous vous lancez : vous battez des bras, le dos bien droit, vous faites du “air piano”, mimez un lancer de canne à pêche, vous vous donnez à fond malgré votre timidité. Un lointain cousin vous filme et poste la vidéo sur TikTok : c’est un carton, votre danse surpasse même celle de Jenna Ortega dans la série Mercredi, et vous donnez le courage de s’affirmer à des milliers de personnes timides dans le monde.",
         "score": 10
       },
       {
         "title": "Vous restez assis.",
-        "result": "Personne n’arrive à vous convaincre, vous restez vissé à votre chaise, l’air renfrogné. Un lointain cousin vous filme et poste la vidéo en y ajoutant la chanson d’Orelsan “défaite de famille”, vous créez une nouvelle trend sur Tiktok et devenez un mème à vos dépends.",
+        "result": "Personne n’arrive à vous convaincre, vous restez vissé•e à votre chaise, l’air renfrogné. Un lointain cousin vous filme et poste la vidéo en y ajoutant la chanson d’Orelsan “défaite de famille”, vous créez une nouvelle trend sur Tiktok et devenez un mème à vos dépends.",
         "score": -10
       }
     ]
   },
   {
     "type": "november",
-    "mainText": "C’est l’anniversaire d’un ami, et vous avez envie de lui souhaiter de manière originale. Que décidez-vous ?",
+    "mainText": "C’est l’anniversaire d’un ami et vous avez envie de lui souhaiter de manière originale. Que décidez-vous ?",
     "answers": [
       {
-        "title": "Vous lui envoyez un montage de Donald Trump habillé en superman avec le texte “Make your super birthday great again !”.",
+        "title": "Vous lui envoyez un montage de Donald Trump habillé en Superman avec le texte “Make your super birthday great again !”.",
         "result": "Votre ami est mort de rire, et partage votre création en masse. Donald Trump finit par tomber dessus, et se voir habillé en super héros lui donne une idée formidable : créer sa collection de cartes à collectionner en NFT…",
         "score": 10
       },
@@ -580,8 +548,8 @@
     "mainText": "Bientôt la finale de la coupe du monde ! Vous souhaitez encourager les joueurs de l’équipe de France, mais vous ne savez pas trop comment…",
     "answers": [
       {
-        "title": "Vous leur envoyez juste un petit message.",
-        "result": "Dans ce texte très émouvant, vous leur expliquez qu’ils vous ont fait vibrer pendant toute la coupe du monde de 2018 et que quel que soit le résultat final, vous serez fier de votre équipe. Kylian Mbappé, très ému par votre message, donne tout pendant le dernier match et devient le meilleur buteur du mondial. La France n’a pas gagné, mais dans votre coeur, si !",
+        "title": "Vous leur envoyez un petit message sur les réseaux sociaux.",
+        "result": "Dans ce texte très émouvant, vous leur expliquez qu’ils vous ont fait vibrer pendant toute la coupe du monde de 2018 et que quel que soit le résultat final, vous serez fier de votre équipe. Kylian Mbappé, très ému par votre mot, donne tout pendant le dernier match et devient le meilleur buteur du mondial. La France n’a pas gagné, mais dans votre coeur, si !",
         "score": 10
       },
       {
@@ -597,12 +565,12 @@
     "answers": [
       {
         "title": "Vous achetez un immense sapin de Noël.",
-        "result": "C’est la première fois que vous prenez un vrai sapin, il est magnifique, majestueux… Mais vous découvrez après quelques jours que vous souffrez du “syndrome du sapin de Noël”, une violente allergie semblable au rhume des foins, et devez dire adieu à votre bel arbre.",
+        "result": "C’est la première fois que vous prenez un vrai sapin. Il est magnifique, majestueux… Mais vous découvrez après quelques jours que vous souffrez du “syndrome du sapin de Noël” : une violente allergie semblable au rhume des foins vous attaque et devez dire adieu à votre bel arbre.",
         "score": -10
       },
       {
         "title": "Vous achetez un max de guirlandes lumineuses bon marché.",
-        "result": "Pas de chance, elles ne sont pas aussi étanches que prévu, et le 15 décembre elles ne fonctionnent plus. Vous êtes bien sûr un peu déçu, mais obtenez les félicitations du maire qui vous remercie d’être le seul habitant de la rue à respecter les règles de sobriété énergétique.",
+        "result": "Pas de chance, elles ne sont pas aussi étanches que prévu et le 15 décembre elles ne fonctionnent déjà plus. Vous êtes bien sûr un peu déçu•e, mais obtenez les félicitations du maire qui vous remercie d’être la seule personne de la rue à respecter les règles de sobriété énergétique.",
         "score": 10
       }
     ]
@@ -613,7 +581,7 @@
     "answers": [
       {
         "title": "Fidèle à l'esprit de Noël, vous décidez de le garder.",
-        "result": "Vous découvrez que la porcelaine est la matière préférée des oiseaux. Votre maison prend des allures de film d'Hitchcock, et les volatiles re-décorent votre intérieur en faisant du homestaging à base de fiente.",
+        "result": "Vous découvrez que la porcelaine est la matière préférée des oiseaux. Votre maison prend des allures d'un film d'Hitchcock, et les volatiles re-décorent votre intérieur en faisant du homestaging à base de fiente.",
         "score": -10
       },
       {
