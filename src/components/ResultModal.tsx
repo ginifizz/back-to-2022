@@ -252,7 +252,9 @@ const ResultModal: React.ComponentType<Omit<DialogProps, "open">> = (props) => {
             align="center"
             gutterBottom
           >
-            Vous avez aimé ce voyage dans le temps&nbsp;?<br/>Partagez-le à vos amis&nbsp;!
+            Vous avez aimé ce voyage dans le temps&nbsp;?
+            <br />
+            Partagez-le autour de vous&nbsp;!
           </Typography>
           <Box display="flex" flexDirection="row" alignItems="center">
             <FacebookShareButton

@@ -8,15 +8,6 @@ import CaseModal from "./components/CaseModal";
 import Board from "./components/Board";
 import boardCases from "./data/board";
 import cards from "./data/game.json";
-import { Helmet } from "react-helmet";
-import {
-  DESCRIPTION,
-  TITLE,
-  URL,
-  OG_IMAGE,
-  TITLE_SHORT,
-  TWITTER_ACCOUNT,
-} from "./data/SEO";
 
 export enum GAME_STEPS {
   START_SCREEN = 0,
@@ -216,50 +207,6 @@ const Game: React.ComponentType = () => {
 
   return (
     <div className={classes.background}>
-      <Helmet>
-        <meta name="description" content={DESCRIPTION} key="description" />
-        <meta name="application-name" content={TITLE_SHORT}></meta>
-        <meta name="theme-color" content="#40c1da" />
-        <meta property="og:url" content={URL} key="ogurl" />
-        <meta property="og:type" content="website" key="ogtype" />
-        <meta property="og:title" content={TITLE} key="ogtitle" />
-        <meta property="og:site_name" content={TITLE_SHORT} />
-        <meta property="og:locale" content="fr_FR" />
-        <meta
-          property="og:description"
-          content={DESCRIPTION}
-          key="ogdescription"
-        />
-        <meta property="og:image" content={OG_IMAGE} key="ogimage" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content={TWITTER_ACCOUNT} />
-        <meta name="twitter:site" content={TWITTER_ACCOUNT} />
-        <meta name="twitter:title" content={TITLE} key="twittertitle" />
-        <meta
-          name="twitter:description"
-          content={DESCRIPTION}
-          key="twitterdescription"
-        />
-        <meta name="twitter:image" content={OG_IMAGE} key="twitterimage" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          href={`${process.env.PUBLIC_URL}/icon.svg`}
-          type="image/svg+xml"
-        />
-        <link
-          rel="apple-touch-icon"
-          href={`${process.env.PUBLIC_URL}/apple-touche-icon.png`}
-        />
-        <link
-          rel="manifest"
-          href={`${process.env.PUBLIC_URL}/site.webmanifest`}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-      </Helmet>
       <Levels />
       <StartModal open={step === GAME_STEPS.START_SCREEN} onClose={startGame} />
       <ResultModal />
