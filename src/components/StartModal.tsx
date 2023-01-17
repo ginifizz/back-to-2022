@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "100%",
     transform: "scale(1.4) rotate(-15deg) translateX(-20px)",
     marginRight: theme.spacing(2),
+    zIndex: 2,
+    position: "relative",
     [theme.breakpoints.down("md")]: {
       width: "35%",
       maxHeight: "70vh",

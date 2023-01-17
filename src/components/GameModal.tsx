@@ -70,6 +70,11 @@ const useStyles = (color: any) =>
       borderRadius: theme.shape.borderRadius,
       border: "3px solid #4cd8ed",
       zIndex: 1,
+      [theme.breakpoints.down("sm")]: {
+        "@media (orientation: portrait)": {
+          padding: theme.spacing(1)
+        },
+      },
     },
     back: {
       transform: "rotateX(-180deg) translate(-100%, 0)",
@@ -80,7 +85,7 @@ const useStyles = (color: any) =>
       borderRadius: theme.shape.borderRadius,
       border: "3px solid #4cd8ed",
       zIndex: 2,
-      display: "flex"
+      display: "flex",
     },
   }));
 

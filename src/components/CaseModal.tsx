@@ -48,8 +48,8 @@ const useStyles = (color: any) =>
       [theme.breakpoints.down("sm")]: {
         width: "25%",
         "@media (orientation: portrait)": {
-          width: "80%",
-          maxWidth: "300px",
+          width: "50%",
+          maxWidth: "200px",
           transform: "translateY(-10%)",
         },
       },

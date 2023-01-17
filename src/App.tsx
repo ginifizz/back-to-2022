@@ -4,14 +4,6 @@ import { ThemeProvider } from "@material-ui/core";
 import theme from "./theme";
 import Game from "./Game";
 import { Helmet } from "react-helmet";
-import {
-  DESCRIPTION,
-  TITLE,
-  URL,
-  OG_IMAGE,
-  TITLE_SHORT,
-  TWITTER_ACCOUNT,
-} from "./data/SEO";
 
 const App: React.ComponentType = () => {
   const websiteSchema = {
